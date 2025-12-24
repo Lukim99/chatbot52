@@ -228,14 +228,14 @@ client.on('chat', async (data, channel) => {
 
         if (true) {
             if (! sender) {
-                if (data.text.startsWith(PREFIX)) {
+                if (data.text.startsWith("/")) {
                     channel.sendChat("알 수 없는 오류가 발생했습니다.");
                 }
                 return;
             }
             
             if (! bot) {
-                if (data.text.startsWith(PREFIX)) {
+                if (data.text.startsWith("/")) {
                     channel.sendChat("알 수 없는 오류가 발생했습니다.");
                 }
                 return;
@@ -354,10 +354,10 @@ client.on('chat', async (data, channel) => {
             }
 
             if (msg == "/출석") {
-                if (user_data.last_attend && new Date(user_data.last_attend).getKoreanTime().toYYYYMMDD() == new Date().getKoreanTime().toYYYYMMDD()) {
+                if (user_data.last_attend && new Date(user_data.last_attend).toYYYYMMDD() == new Date().getKoreanTime().toYYYYMMDD()) {
                     channel.sendChat(`💞 출석체크 되어있어! 💞\n닉네임: ${sender.nickname}`);
                 } else {
-                    user_data.last_attend = new Date().toString();
+                    user_data.last_attend = new Date().getKoreanTime().toString();
                     channel.sendChat(`💞 출석체크 완료 💞\n닉네임: ${sender.nickname}\n출석일: ${new Date().getKoreanTime().toDateString()}`);
                 }
             }
@@ -369,7 +369,7 @@ client.on('chat', async (data, channel) => {
                 
                 let rank = [];
                 userList.forEach(user => {
-                    if (user.last_attend && new Date(user.last_attend).getKoreanTime().toYYYYMMDD() == new Date().getKoreanTime().toYYYYMMDD()) {
+                    if (user.last_attend && new Date(user.last_attend).toYYYYMMDD() == new Date().getKoreanTime().toYYYYMMDD()) {
                         rank.push({nickname: user.nickname || '알 수 없음', attend: new Date(user.last_attend)});
                     }
                 });
@@ -1699,6 +1699,14 @@ client.on('profile_changed', (channel, lastInfo, user) => {
             date: new Date().toString()
         });
         save(`user_data/${user.userId}.json`, JSON.stringify(user_data, null, 4));
+        
+        const recentLogs = user_data.profile_change_log.slice(-3);
+        const logMessages = recentLogs.map(log => {
+            const logDate = new Date(log.date);
+            return `· ${log.prev} → ${log.name}\n(${logDate.toDateString()})`;
+        });
+        
+        channel.sendChat(`🔁 닉네임 변경 기록 (최근 ${recentLogs.length}개)\n\n${logMessages.join('\n\n')}`);
     }
 });
 

@@ -1,0 +1,65 @@
+{
+    "nickname": "서윤 여 🐣",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 00:18:59 GMT+0900 (대한민국 표준시)",
+            "name": "부끄러운 앙몬드"
+        },
+        {
+            "type": "퇴장",
+            "date": "Thu Dec 25 2025 00:18:59 GMT+0900 (대한민국 표준시)",
+            "name": "부끄러운 앙몬드"
+        }
+    ],
+    "info": {
+        "name": "서윤",
+        "role": "친구",
+        "date": "25.12.25",
+        "mbti": null,
+        "gender": "여자",
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 0,
+    "total_chat": 0,
+    "last_chat": null,
+    "profile_change_log": [
+        {
+            "prev": "부끄러운 앙몬드",
+            "name": "서윤여 /삐약",
+            "date": "Thu Dec 25 2025 00:20:35 GMT+0900 (대한민국 표준시)"
+        },
+        {
+            "prev": "서윤여 /삐약",
+            "name": "서윤 여 🐣",
+            "date": "Thu Dec 25 2025 00:21:11 GMT+0900 (대한민국 표준시)"
+        },
+        {
+            "prev": "서윤 여 🐣",
+            "name": "서윤 여 🐣",
+            "date": "Thu Dec 25 2025 00:24:15 GMT+0900 (대한민국 표준시)"
+        }
+    ],
+    "daily_chat_log": {},
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

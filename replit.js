@@ -1,0 +1,1761 @@
+const node_kakao = require('node-kakao');
+const fs = require('fs');
+const express = require('express');
+const request = require('request');
+const convert = require('xml-js');
+const html2json = require('html2json').html2json;
+const keepAlive = require('./server.js');
+const { TalkClient, AuthApiClient, xvc, KnownAuthStatusCode, util, AttachmentApi } = require("node-kakao");
+const { isString } = require('util');
+const { get } = require('request');
+const { userInfo } = require('os');
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const view_all = ('\u200e'.repeat(500));
+
+const DEVICE_TYPE = "tablet";
+let DEVICE_UUID = "d2b072b2e284e65b40a55e9a9ac5d9e818f4562fb865b534285dc4e5bec11b72";
+const DEVICE_NAME = "DeluTive_ChatBot52";
+const EMAIL = process.env.EMAIL;
+const PASSWORD = process.env.PASSWORD;
+let client = new node_kakao.TalkClient();
+
+function read(path) {
+    try {
+      var data = fs.readFileSync(path, 'utf8');
+    } catch(e) {
+      var data = null;
+    }
+    return data;
+}
+function save(path, data) {
+    fs.writeFileSync(path, data, 'utf8');
+    return data;
+}
+
+
+Array.prototype.shuffle = function() {
+    const source_array = this.concat();
+    const arrayLength = source_array.length;
+    for (let i = arrayLength - 1; i >= 0; i--) {
+        const randomIndex = Math.floor(Math.random() * (i + 1));
+        [source_array[i], source_array[randomIndex]] = [source_array[randomIndex], source_array[i]];
+    }
+    return source_array;
+}
+
+Array.prototype.remove = function(element) {
+    if (this.indexOf(element) == -1)
+        return this;
+    else {
+        this.splice(this.indexOf(element), 1);
+        return this;
+    }
+}
+
+function pad_han(kor, max_len) {
+    if(kor.length >= max_len)
+        return kor;
+    return kor + (new Array(max_len - kor.length + 1).join("ㅤ"));
+}
+
+function pad_num(kor, max_len) {
+    if (typeof kor != 'string') kor = kor.toString();
+    max_len = max_len || 2;
+    if(kor.length >= max_len)
+        return kor;
+    return (new Array(max_len - kor.length + 1).join("0")) + kor;
+}
+
+Date.prototype.toYYYYMMDD = function() {
+    return this.getFullYear() + "-" + pad_num(this.getMonth() + 1) + "-" + pad_num(this.getDate());
+}
+
+Date.prototype.toYYMMDD = function() {
+    return this.getFullYear().toString().slice(-2) + "." + pad_num(this.getMonth() + 1) + "." + pad_num(this.getDate());
+}
+
+Date.prototype.getKoreanTime = function() {
+    const curr = new Date();
+    const utc = curr.getTime() + (curr.getTimezoneOffset() * 60 * 1000);
+    const korea = new Date(utc + (3600000 * 9));
+    return korea;
+}
+
+var CHOSEONG = ["ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"],
+	JUNGSEONG = ["ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ", "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ", "ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ", "ㅣ"],
+	JONGSEONG = ["", "ㄱ", "ㄲ", "ㄳ", "ㄴ", "ㄵ", "ㄶ", "ㄷ", "ㄹ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ", "ㅀ", "ㅁ", "ㅂ", "ㅄ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"],
+	CHOSEONG_LEN = CHOSEONG.length,
+	JUNGSEONG_LEN = JUNGSEONG.length,
+	JONGSEONG_LEN = JONGSEONG.length;
+
+var HANGUL_FIRST_CODE = '가'.charCodeAt(0),
+	HANGUL_LAST_CODE = '힣'.charCodeAt(0);
+
+function dueum(s) {
+  if (!s)
+    return '';
+  var c = s.charCodeAt(0);
+  if (c < HANGUL_FIRST_CODE || c > HANGUL_LAST_CODE)
+    return s;
+  switch (0 | (c - HANGUL_FIRST_CODE) / JONGSEONG_LEN) {
+    // 녀, 뇨, 뉴, 니
+    case 48: case 54:
+    case 59: case 62:
+      c += 5292; break;
+    // 랴, 려, 례, 료, 류, 리
+    case 107: case 111:
+    case 112: case 117:
+    case 122: case 125:
+      c += 3528; break;
+    // 라, 래, 로, 뢰, 루, 르
+    case 105: case 106:
+    case 113: case 116:
+    case 118: case 123:
+      c -= 1764; break;
+  }
+  return String.fromCharCode(c) + s.slice(1);
+}
+
+function dec_han(s) {
+  if(s.match(/[^가-힣ㄱ-ㅎ]/gi) != null)
+    return s;
+  const ga = 44032;
+  let uni = s.charCodeAt(0);
+
+  uni = uni - ga;
+
+  let fn = parseInt(uni / 588);
+  let sn = parseInt((uni - (fn * 588)) / 28);
+  let tn = parseInt(uni % 28);
+
+  return `${CHOSEONG[fn]}${JUNGSEONG[sn]}${JONGSEONG[tn]}`;
+}
+
+function com_han(s) {
+  if(s.match(/[^가-힣ㄱ-ㅎㅏ-ㅣ]/gi) != null)
+    return s;
+  let cho = CHOSEONG.indexOf(s[0]);
+  let jung = JUNGSEONG.indexOf(s[1]);
+  let jong = (s[2] == undefined ? 0 : JONGSEONG.indexOf(s[2]));
+
+  return String.fromCharCode(0xAC00 + cho * 588 + jung * 28 + jong);
+}
+
+Date.prototype.toDateString = function(showYear = true, showTime = true) {
+    let y = this.getFullYear();
+    let m = this.getMonth() + 1;
+    let d = this.getDate();
+    let yo = "일월화수목금토"[this.getDay()];
+    let h = this.getHours();
+    let ampm = h >= 12 ? "오후" : "오전";
+    if (h > 12) h -= 12;
+    if (h == 0) h = 12;
+    let minutes = this.getMinutes();
+    let sec = this.getSeconds();
+    return `${showYear ? `${y}년 ` : ""}${m}월 ${d}일(${yo})${showTime ? ` ${ampm} ${pad_num(h.toString(), 2)}:${pad_num(minutes.toString(), 2)}:${pad_num(sec.toString(), 2)}` : ""}`;
+}
+
+function getRequiredExp(level) {
+    if (level >= 1 && level <= 5) return 200;
+    if (level >= 6 && level <= 10) return 300;
+    if (level >= 11 && level <= 15) return 400;
+    if (level >= 16 && level <= 20) return 500;
+    if (level >= 21 && level <= 25) return 600;
+    if (level >= 26 && level <= 30) return 800;
+    if (level >= 31 && level <= 35) return 1000;
+    if (level >= 36 && level <= 40) return 1200;
+    if (level >= 41 && level <= 45) return 1500;
+    if (level >= 46 && level <= 50) return 1800;
+    if (level >= 51 && level <= 99) return 1800;
+    return 1800;
+}
+
+function getLevelEmoji(level) {
+    if (level >= 1 && level <= 5) return '🖤';
+    if (level >= 6 && level <= 10) return '🩶';
+    if (level >= 11 && level <= 15) return '💜';
+    if (level >= 16 && level <= 20) return '🩵';
+    if (level >= 21 && level <= 25) return '💙';
+    if (level >= 26 && level <= 30) return '💚';
+    if (level >= 31 && level <= 35) return '💛';
+    if (level >= 36 && level <= 40) return '🧡';
+    if (level >= 41 && level <= 45) return '🩷';
+    if (level >= 46 && level <= 50) return '❤️';
+    if (level >= 51 && level <= 99) return '🌈';
+    return '🌈';
+}
+
+function isNameDuplicated(name, currentUserId) {
+    const files = fs.readdirSync('user_data');
+    for (const file of files) {
+        if (!file.endsWith('.json')) continue;
+        
+        const userId = file.replace('.json', '');
+        if (userId === currentUserId.toString()) continue;
+        
+        const userData = JSON.parse(read(`user_data/${file}`));
+        if (userData.info?.name === name) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function checkLevelUp(user_data) {
+    const requiredExp = getRequiredExp(user_data.level);
+    let leveledUp = false;
+    
+    while (user_data.exp >= requiredExp && user_data.level < 99) {
+        user_data.exp -= requiredExp;
+        user_data.level++;
+        leveledUp = true;
+    }
+    
+    return leveledUp;
+}
+
+
+
+client.on('chat', async (data, channel) => {
+    try {
+        const msg = data.text.trim();
+        const sender = data.getSenderInfo(channel) || data._chat.sender;
+        const bot = channel.getUserInfo(client._clientUser);
+        const room = channel.getDisplayName();
+        const roomid = channel.channelId;
+        const roomtype = (channel._channel.info == undefined ? "OM" : channel._channel.info.type);
+        const isReply = (data.originalType === node_kakao.KnownChatType.REPLY);
+
+        if (true) {
+            if (! sender) {
+                if (data.text.startsWith(PREFIX)) {
+                    channel.sendChat("알 수 없는 오류가 발생했습니다.");
+                }
+                return;
+            }
+            
+            if (! bot) {
+                if (data.text.startsWith(PREFIX)) {
+                    channel.sendChat("알 수 없는 오류가 발생했습니다.");
+                }
+                return;
+            }
+
+            const currentYearMonth = new Date().getFullYear() + '-' + pad_num((new Date().getMonth() + 1).toString(), 2);
+            let lastReset = read('last_reset.json');
+            if (lastReset) {
+                lastReset = JSON.parse(lastReset);
+            } else {
+                lastReset = { yearMonth: null };
+            }
+            
+            if (lastReset.yearMonth !== currentYearMonth) {
+                const files = fs.readdirSync('user_data');
+                files.forEach(file => {
+                    if (file.endsWith('.json')) {
+                        const userData = JSON.parse(read(`user_data/${file}`));
+                        userData.level = 1;
+                        userData.exp = 0;
+                        userData.total_chat = 0;
+                        save(`user_data/${file}`, JSON.stringify(userData, null, 4));
+                    }
+                });
+                
+                lastReset.yearMonth = currentYearMonth;
+                save('last_reset.json', JSON.stringify(lastReset, null, 4));
+            }
+
+            let user_data = read(`user_data/${sender.userId}.json`);
+            if (user_data) user_data = JSON.parse(user_data);
+            else {
+                const newName = sender.nickname.split(" ")[0];
+                
+                if (isNameDuplicated(newName, sender.userId)) {
+                    channel.sendChat(`${newName}친구! 그 이름은 이미 사용중이야. 다른 이름으로 바꿔줘!`);
+                    return;
+                }
+                
+                user_data = {
+                    nickname: sender.nickname,
+                    last_attend: null,
+                    entry_log: [{
+                        type: "입장",
+                        date: new Date().toString(),
+                        name: sender.nickname
+                    }],
+                    info: {
+                        name: newName,
+                        role: "친구",
+                        date: new Date().toYYMMDD(),
+                        mbti: null,
+                        gender: sender.nickname.split(" ")[1]?.includes("남") ? "남자" : (sender.nickname.split(" ")[1]?.includes("여") ? "여자" : null),
+                        address: null,
+                        gimidol: null,
+                        isExit: {
+                            type: null
+                        },
+                        couple: {
+                            type: null,
+                            target: null,
+                            emoji: null
+                        },
+                        titles: [
+                            null,
+                            null,
+                            null,
+                            null,
+                            null
+                        ]
+                    },
+                    level: 1,
+                    exp: 0,
+                    total_chat: 0,
+                    last_chat: null,
+                    profile_change_log: [],
+                    daily_chat_log: {},
+                    max_level: 1,
+                    rainbow_stack: 0,
+                    meditation: null
+                };
+            }
+            
+            const reply = str => {
+                if(roomtype != "OM") {
+                    channel.sendChat(
+                        new node_kakao.ChatBuilder()
+                        .append(new node_kakao.ReplyContent(data.chat))
+                        .text(str)
+                        .build(node_kakao.KnownChatType.REPLY)
+                    );
+                }
+                else {
+                    channel.sendChat(new node_kakao.ChatBuilder().text("⤷ ").append(new node_kakao.MentionContent(channel.getUserInfo(sender))).text(`님에게 답장\n\n${str}`).build(node_kakao.KnownChatType.TEXT));
+                }
+            }
+            const sendChat = (str, mids) => {
+                if (! mids)
+                    channel.sendChat(str);
+                else {
+                    if (mids === true) {
+                        var _mentions = [];
+                        for(const channel_user of channel.getAllUserInfo()) {
+                            _mentions.push({"user_id": channel_user.userId, "at": [1], "len": 3});
+                        }
+                        channel.sendChat(new node_kakao.ChatBuilder().text(str).attachment({"mentions":_mentions}).build(node_kakao.KnownChatType.TEXT));
+                    }
+                    else if (typeof mids == "object") {
+                        var _mentions = [];
+                        for(const ID of mids) {
+                            _mentions.push({"user_id": ID, "at": [1], "len": 3});
+                        }
+                        channel.sendChat(new node_kakao.ChatBuilder().text(str).attachment({"mentions":_mentions}).build(node_kakao.KnownChatType.TEXT));
+                    }
+                }
+            }
+
+            if (msg == "/출석") {
+                if (user_data.last_attend && new Date(user_data.last_attend).getKoreanTime().toYYYYMMDD() == new Date().getKoreanTime().toYYYYMMDD()) {
+                    channel.sendChat(`💞 출석체크 되어있어! 💞\n닉네임: ${sender.nickname}`);
+                } else {
+                    user_data.last_attend = new Date().toString();
+                    channel.sendChat(`💞 출석체크 완료 💞\n닉네임: ${sender.nickname}\n출석일: ${new Date().getKoreanTime().toDateString()}`);
+                }
+            }
+
+            else if (msg == "/출석순위") {
+                const files = fs.readdirSync('user_data');
+                const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                    .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
+                
+                let rank = [];
+                userList.forEach(user => {
+                    if (user.last_attend && new Date(user.last_attend).getKoreanTime().toYYYYMMDD() == new Date().getKoreanTime().toYYYYMMDD()) {
+                        rank.push({nickname: user.nickname || '알 수 없음', attend: new Date(user.last_attend)});
+                    }
+                });
+                rank.sort((a, b) => a.attend - b.attend);
+                rank = rank.map((r, index) => `${index + 1}위: ${r.nickname}`);
+                channel.sendChat(`🎖️오늘 출석 순위🎖️\n${rank.join("\n")}`);
+            }
+
+            else if (msg == "/레벨순위") {
+                const files = fs.readdirSync('user_data');
+                const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                    .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
+                
+                const levelRank = userList
+                    .map(user => ({
+                        nickname: user.nickname || '알 수 없음',
+                        level: user.level || 1,
+                        exp: user.exp || 0
+                    }))
+                    .sort((a, b) => {
+                        if (b.level !== a.level) {
+                            return b.level - a.level;
+                        }
+                        return b.exp - a.exp;
+                    });
+                
+                const rankList = levelRank.map((user, index) => {
+                    const emoji = getLevelEmoji(user.level);
+                    return `${index + 1}위: ${user.nickname} - Lv.${user.level} ${emoji}`;
+                });
+                
+                channel.sendChat(`🏆 레벨 순위 TOP 50 🏆\n(1위 - 10위)\n${rankList.slice(0, 10).join("\n")}${rankList.length > 10 ? `\n${view_all}\n🔽 (11위 - 50위)\n${rankList.slice(10, 50).join("\n")}` : ""}`);
+            }
+
+            else if (msg == "/내정보") {
+                let roleText = "";
+                if (sender.perm == 4 || sender.perm == 1) {
+                    roleText = sender.perm == 4 ? "\n우리방 부방장 ⭐" : "\n우리방 방장 ⭐";
+                }
+                
+                const infoLines = [];
+                const displayName = user_data.info.name || '(이름없음)';
+                infoLines.push(`내 정보야 ✨ ${displayName}${roleText}`);
+                infoLines.push(`[ ${user_data.info.date} ▪ MBTI: ${user_data.info.mbti?.toUpperCase() || '미등록'} ]`);
+                
+                const details = [
+                    user_data.info.address,
+                    user_data.info.gimidol,
+                    user_data.info.gender ? `${user_data.info.gender}친구` : null
+                ].filter(Boolean).join(' ');
+                
+                // 최고 레벨 기준 이모지 (무지개는 스택만큼 반복)
+                const maxLevel = user_data.max_level || user_data.level;
+                const rainbowStack = user_data.rainbow_stack || 0;
+                let levelEmoji = getLevelEmoji(maxLevel);
+                if (maxLevel >= 51 && rainbowStack > 0) {
+                    levelEmoji = levelEmoji.repeat(rainbowStack);
+                }
+                
+                if (details) {
+                    infoLines.push(`${details} ${levelEmoji}`);
+                } else {
+                    infoLines.push("정보 입력해줘!")
+                }
+                
+                const extraInfo = [
+                    user_data.info.isExit?.type ? `${user_data.info.isExit.type}친구` : null,
+                    user_data.info.couple?.type ? 
+                        user_data.info.couple.type + (user_data.info.couple.emoji ? ` ${user_data.info.couple.emoji}` : '') 
+                        : null
+                ].filter(Boolean).join(' ');
+                
+                if (extraInfo) {
+                    infoLines.push(extraInfo);
+                }
+                
+                const titles = user_data.info.titles.filter(Boolean);
+                if (titles.length > 0) {
+                    infoLines.push(...titles);
+                }
+                
+                channel.sendChat(infoLines.join('\n'));
+            }
+
+            else if (msg == "/레벨표") {
+                const levelTable = [
+                    "💎레벨 구간표💎",
+                    `Lv.01~05 : ${getLevelEmoji(1)}`,
+                    `Lv.06~10 : ${getLevelEmoji(6)}`,
+                    `Lv.11~15 : ${getLevelEmoji(11)}`,
+                    `Lv.16~20 : ${getLevelEmoji(16)}`,
+                    `Lv.21~25 : ${getLevelEmoji(21)}`,
+                    `Lv.26~30 : ${getLevelEmoji(26)}`,
+                    `Lv.31~35 : ${getLevelEmoji(31)}`,
+                    `Lv.36~40 : ${getLevelEmoji(36)}`,
+                    `Lv.41~45 : ${getLevelEmoji(41)}`,
+                    `Lv.46~50 : ${getLevelEmoji(46)}`,
+                    `Lv.51~99 : ${getLevelEmoji(51)}`
+                ].join('\n');
+                
+                channel.sendChat(levelTable);
+            }
+
+            else if (msg.startsWith("/소개 ")) {
+                const targetName = msg.substring(4).trim();
+                
+                if (!targetName) {
+                    channel.sendChat("❌ 이름을 입력해줘!");
+                    return;
+                }
+                
+                const files = fs.readdirSync('user_data');
+                let targetUserData = null;
+                let targetUserInfo = null;
+                
+                for (const file of files) {
+                    if (file.endsWith('.json')) {
+                        const userData = JSON.parse(read(`user_data/${file}`));
+                        if (userData.info?.name === targetName) {
+                            targetUserData = userData;
+                            for (const channelUser of channel.getAllUserInfo()) {
+                                if (file.replace('.json', '') === channelUser.userId.toString()) {
+                                    targetUserInfo = channelUser;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+                
+                if (!targetUserData) {
+                    channel.sendChat(`❌ "${targetName}" 이름을 가진 친구를 찾을 수 없어!`);
+                    return;
+                }
+                
+                let roleText = "";
+                if (targetUserInfo && (targetUserInfo.perm == 4 || targetUserInfo.perm == 1)) {
+                    roleText = targetUserInfo.perm == 4 ? "\n우리방 부방장 ⭐" : "\n우리방 방장 ⭐";
+                }
+                
+                const infoLines = [];
+                infoLines.push(`내 친구 ✨ ${targetUserData.info.name} 소개${roleText}`);
+                infoLines.push(`[ ${targetUserData.info.date} ▪ MBTI: ${targetUserData.info.mbti?.toUpperCase() || '미등록'} ]`);
+                
+                const details = [
+                    targetUserData.info.address,
+                    targetUserData.info.gimidol,
+                    targetUserData.info.gender ? `${targetUserData.info.gender}친구` : null
+                ].filter(Boolean).join(' ');
+                
+                const maxLevel = targetUserData.max_level || targetUserData.level;
+                const rainbowStack = targetUserData.rainbow_stack || 0;
+                let levelEmoji = getLevelEmoji(maxLevel);
+                if (maxLevel >= 51 && rainbowStack > 0) {
+                    levelEmoji = levelEmoji.repeat(rainbowStack);
+                }
+                
+                if (details) {
+                    infoLines.push(`${details} ${levelEmoji}`);
+                } else {
+                    infoLines.push("정보 입력해줘!")
+                }
+                
+                const extraInfo = [
+                    targetUserData.info.isExit?.type ? `${targetUserData.info.isExit.type}친구` : null,
+                    targetUserData.info.couple?.type ? 
+                        targetUserData.info.couple.type + (targetUserData.info.couple.emoji ? ` ${targetUserData.info.couple.emoji}` : '') 
+                        : null
+                ].filter(Boolean).join(' ');
+                
+                if (extraInfo) {
+                    infoLines.push(extraInfo);
+                }
+                
+                const titles = targetUserData.info.titles.filter(Boolean);
+                if (titles.length > 0) {
+                    infoLines.push(...titles);
+                }
+                
+                channel.sendChat(infoLines.join('\n'));
+            }
+
+            else if (msg == "/내레벨") {
+                const levelEmoji = getLevelEmoji(user_data.level);
+                const requiredExp = getRequiredExp(user_data.level);
+                const remainingExp = requiredExp - user_data.exp;
+                
+                const levelInfo = [
+                    `📘 ${sender.nickname} 레벨 정보`,
+                    `레벨 : ${user_data.level} ${levelEmoji}`,
+                    `총 채팅수 : ${user_data.total_chat}개`,
+                    `진행도 : ${user_data.exp} / ${requiredExp}`,
+                    `다음 레벨까지 : ${remainingExp}개`
+                ].join('\n');
+                
+                channel.sendChat(levelInfo);
+            }
+
+            else if (msg == "/외출") {
+                const files = fs.readdirSync('user_data');
+                const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                    .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
+                
+                const exitUsers = [];
+                const inoutUsers = [];
+                
+                userList.forEach(user => {
+                    const name = user.info?.name;
+                    const exitInfo = user.info?.isExit;
+                    
+                    if (!name || !exitInfo || !exitInfo.type) return;
+                    
+                    if (exitInfo.type === "외출") {
+                        exitUsers.push(name);
+                    } else if (exitInfo.type === "출퇴") {
+                        inoutUsers.push(name);
+                    }
+                });
+                
+                const result = [];
+                
+                if (exitUsers.length > 0) {
+                    result.push(`📌 외출 (${exitUsers.length}명)`);
+                    const exitLines = [];
+                    for (let i = 0; i < exitUsers.length; i += 3) {
+                        const line = exitUsers.slice(i, i + 3).map(n => `◼️ ${n}`).join(' ');
+                        exitLines.push(`    ${line}`);
+                    }
+                    result.push(exitLines.join('\n'));
+                }
+                
+                if (inoutUsers.length > 0) {
+                    result.push(`📌 출퇴 (${inoutUsers.length}명)`);
+                    const inoutLines = [];
+                    for (let i = 0; i < inoutUsers.length; i += 3) {
+                        const line = inoutUsers.slice(i, i + 3).map(n => `◼️ ${n}`).join(' ');
+                        inoutLines.push(`    ${line}`);
+                    }
+                    result.push(inoutLines.join('\n'));
+                }
+                
+                if (result.length > 0) {
+                    channel.sendChat(result.join('\n\n'));
+                } else {
+                    channel.sendChat('현재 외출/출퇴 친구가 없어🥺');
+                }
+            }
+
+            else if (msg == "/커플") {
+                const files = fs.readdirSync('user_data');
+                const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                    .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
+                
+                const publicCouples = [];
+                const privateCouples = [];
+                const outsideCouples = [];
+                const processed = new Set();
+                
+                userList.forEach(user => {
+                    const name = user.info?.name;
+                    const coupleInfo = user.info?.couple;
+                    
+                    if (!name || !coupleInfo || !coupleInfo.type) return;
+                    
+                    if (coupleInfo.type === "공개") {
+                        const partner = coupleInfo.target;
+                        if (partner) {
+                            const coupleKey = [name, partner].sort().join('-');
+                            if (!processed.has(coupleKey)) {
+                                publicCouples.push(`    ◼️ ${name} ♥️ ${partner}`);
+                                processed.add(coupleKey);
+                            }
+                        }
+                    } else if (coupleInfo.type === "일방") {
+                        const partner = coupleInfo.target;
+                        const emoji = coupleInfo.emoji || '💕';
+                        if (partner) {
+                            const coupleKey = [name, partner].sort().join('-');
+                            if (!processed.has(coupleKey)) {
+                                privateCouples.push(`    ◼️ ${name} ${emoji} ${partner}`);
+                                processed.add(coupleKey);
+                            }
+                        }
+                    } else if (coupleInfo.type === "바깥") {
+                        outsideCouples.push(name);
+                    }
+                });
+                
+                const result = [];
+                
+                if (publicCouples.length > 0) {
+                    result.push(`🚩 공식커플 (${publicCouples.length})`);
+                    result.push(publicCouples.join('\n'));
+                }
+                
+                if (privateCouples.length > 0) {
+                    result.push(`🚩 일방커플 (${privateCouples.length})`);
+                    result.push(privateCouples.join('\n'));
+                }
+                
+                if (outsideCouples.length > 0) {
+                    result.push(`🚩 바깥커플 (${outsideCouples.length})`);
+                    const outsideLines = [];
+                    for (let i = 0; i < outsideCouples.length; i += 3) {
+                        const line = outsideCouples.slice(i, i + 3).map(n => `◼️ ${n}`).join(' ');
+                        outsideLines.push(`    ${line}`);
+                    }
+                    result.push(outsideLines.join('\n'));
+                }
+                
+                if (result.length > 0) {
+                    channel.sendChat(result.join('\n\n'));
+                } else {
+                    channel.sendChat('현재 등록된 커플이 없어🥺');
+                }
+            }
+
+            else if (msg.startsWith("/잠수 ")) {
+                const daysMatch = msg.match(/^\/잠수 (\d+)$/);
+                if (daysMatch) {
+                    const days = parseInt(daysMatch[1]);
+                    const now = new Date();
+                    const threshold = new Date(now.getTime() - (days * 24 * 60 * 60 * 1000));
+                    
+                    const files = fs.readdirSync('user_data');
+                    const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                        .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
+                    
+                    const inactiveUsers = userList
+                        .filter(user => {
+                            if (!user.last_chat) return true;
+                            const lastChatDate = new Date(user.last_chat);
+                            return lastChatDate < threshold;
+                        })
+                        .map(user => ({
+                            name: user.info?.name || user.nickname || '알 수 없음',
+                            lastChat: user.last_chat
+                        }))
+                        .sort((a, b) => {
+                            if (!a.lastChat && !b.lastChat) return 0;
+                            if (!a.lastChat) return -1;
+                            if (!b.lastChat) return 1;
+                            return new Date(a.lastChat) - new Date(b.lastChat);
+                        });
+                    
+                    if (inactiveUsers.length > 0) {
+                        const userLines = inactiveUsers.map(user => {
+                            const lastChatStr = user.lastChat 
+                                ? new Date(user.lastChat).toDateString(true, true)
+                                : '기록 없음';
+                            return `· ${user.name} ㅡ 마지막 대화: ${lastChatStr}`;
+                        });
+                        
+                        channel.sendChat(`⌛ 최근 ${days}일 잠수자 (${inactiveUsers.length}명)\n${view_all}\n\n${userLines.join('\n')}`);
+                    } else {
+                        channel.sendChat(`⌛ 최근 ${days}일 잠수자가 없어!`);
+                    }
+                }
+            }
+
+            else if (msg.startsWith("/정보수정 ")) {
+                if (!(sender.perm == 4 || sender.perm == 1)) {
+                    channel.sendChat("❌ 관리자만 사용할 수 있는 명령어야.");
+                } else {
+                    const lines = msg.split('\n');
+                    const firstLine = lines[0].trim();
+                    const targetName = firstLine.substring(6).trim();
+                    
+                    if (!targetName) {
+                        channel.sendChat("❌ 이름을 입력해줘!");
+                        return;
+                    }
+                    
+                    const files = fs.readdirSync('user_data');
+                    let targetUserData = null;
+                    let targetUserId = null;
+                    
+                    for (const file of files) {
+                        if (file.endsWith('.json')) {
+                            const userData = JSON.parse(read(`user_data/${file}`));
+                            if (userData.info?.name === targetName) {
+                                targetUserData = userData;
+                                targetUserId = file.replace('.json', '');
+                                break;
+                            }
+                        }
+                    }
+                    
+                    if (!targetUserData) {
+                        channel.sendChat(`❌ "${targetName}" 이름을 가진 친구를 찾을 수 없어!`);
+                        return;
+                    }
+                    
+                    const validMBTI = ['ISTJ', 'ISFJ', 'INFJ', 'INTJ', 'ISTP', 'ISFP', 'INFP', 'INTP', 
+                                       'ESTP', 'ESFP', 'ENFP', 'ENTP', 'ESTJ', 'ESFJ', 'ENFJ', 'ENTJ'];
+                    const validGimidol = ['기혼', '미혼', '돌싱'];
+                    const validGender = ['남자', '여자'];
+                    const validExit = ['외출', '출퇴'];
+                    
+                    let errors = [];
+                    let updates = [];
+                    
+                    for (let i = 1; i < lines.length; i++) {
+                        const line = lines[i].trim();
+                        if (!line) continue;
+                        
+                        const colonIndex = line.indexOf(':');
+                        if (colonIndex === -1) continue;
+                        
+                        const key = line.substring(0, colonIndex).trim();
+                        const value = line.substring(colonIndex + 1).trim();
+                        
+                        if (!value) continue;
+                        
+                        if (key === '이름') {
+                            if (value === 'X' || value === 'x') {
+                                targetUserData.info.name = null;
+                                updates.push(`이름 → 제거`);
+                            } else {
+                                if (isNameDuplicated(value, targetUserId)) {
+                                    errors.push(`"${value}" 이름은 이미 사용중이야!`);
+                                } else {
+                                    targetUserData.info.name = value;
+                                    updates.push(`이름 → ${value}`);
+                                }
+                            }
+                        } else if (key === '날짜') {
+                            if (/^\d{2}\.\d{2}\.\d{2}$/.test(value)) {
+                                targetUserData.info.date = value;
+                                updates.push(`날짜 → ${value}`);
+                            } else {
+                                errors.push(`날짜 형식이 올바르지 않아! (YY.MM.DD)`);
+                            }
+                        } else if (key === 'MBTI') {
+                            const mbtiUpper = value.toUpperCase();
+                            if (validMBTI.includes(mbtiUpper)) {
+                                targetUserData.info.mbti = mbtiUpper;
+                                updates.push(`MBTI → ${mbtiUpper}`);
+                            } else {
+                                errors.push(`MBTI를 제대로 입력해줘!`);
+                            }
+                        } else if (key === '사는곳') {
+                            targetUserData.info.address = value;
+                            updates.push(`사는곳 → ${value}`);
+                        } else if (key === '기미돌') {
+                            if (validGimidol.includes(value)) {
+                                targetUserData.info.gimidol = value;
+                                updates.push(`기미돌 → ${value}`);
+                            } else {
+                                errors.push(`기미돌을 제대로 입력해줘! (기혼/미혼/돌싱)`);
+                            }
+                        } else if (key === '성별') {
+                            if (validGender.includes(value)) {
+                                targetUserData.info.gender = value;
+                                updates.push(`성별 → ${value}`);
+                            } else {
+                                errors.push(`성별을 제대로 입력해줘! (남자/여자)`);
+                            }
+                        } else if (key === '외출상태') {
+                            if (value === 'X' || value === 'x') {
+                                targetUserData.info.isExit.type = null;
+                                updates.push(`외출상태 → 초기화`);
+                            } else if (validExit.includes(value)) {
+                                targetUserData.info.isExit.type = value;
+                                updates.push(`외출상태 → ${value}`);
+                            } else {
+                                errors.push(`외출상태를 제대로 입력해줘! (외출/출퇴/X)`);
+                            }
+                        } else if (key === '타이틀1') {
+                            targetUserData.info.titles[0] = value;
+                            updates.push(`타이틀1 → ${value}`);
+                        } else if (key === '타이틀2') {
+                            targetUserData.info.titles[1] = value;
+                            updates.push(`타이틀2 → ${value}`);
+                        } else if (key === '타이틀3') {
+                            targetUserData.info.titles[2] = value;
+                            updates.push(`타이틀3 → ${value}`);
+                        } else if (key === '타이틀4') {
+                            targetUserData.info.titles[3] = value;
+                            updates.push(`타이틀4 → ${value}`);
+                        } else if (key === '타이틀5') {
+                            targetUserData.info.titles[4] = value;
+                            updates.push(`타이틀5 → ${value}`);
+                        }
+                    }
+                    
+                    if (errors.length > 0) {
+                        channel.sendChat(`❌ ${errors.join('\n')}`);
+                    } else if (updates.length > 0) {
+                        save(`user_data/${targetUserId}.json`, JSON.stringify(targetUserData, null, 4));
+                        channel.sendChat(`✅ ${targetName} 친구의 정보가 수정되었어!\n${updates.join('\n')}`);
+                    } else {
+                        channel.sendChat(`❌ 수정할 정보가 없어..`);
+                    }
+                }
+            }
+
+            else if (msg.startsWith("/커플등록 ")) {
+                if (!(sender.perm == 4 || sender.perm == 1)) {
+                    channel.sendChat("❌ 관리자만 사용할 수 있는 명령어야.");
+                } else {
+                    const cmdParts = msg.trim().split(' ');
+                    
+                    if (cmdParts.length < 2) {
+                        channel.sendChat("❌ 명령어 형식이 올바르지 않아!");
+                        return;
+                    }
+                    
+                    const typeAndArgs = cmdParts[1];
+                    
+                    if (typeAndArgs.startsWith("공커:")) {
+                        const names = typeAndArgs.substring(3).split(' ').concat(cmdParts.slice(2));
+                        if (names.length < 2) {
+                            channel.sendChat("❌ 공커는 두 사람의 이름이 필요해!\n예: /커플등록 공커:길동 영희");
+                            return;
+                        }
+                        
+                        const name1 = names[0].trim();
+                        const name2 = names[1].trim();
+                        
+                        const files = fs.readdirSync('user_data');
+                        let user1Data = null, user1Id = null;
+                        let user2Data = null, user2Id = null;
+                        
+                        for (const file of files) {
+                            if (file.endsWith('.json')) {
+                                const userData = JSON.parse(read(`user_data/${file}`));
+                                if (userData.info?.name === name1) {
+                                    user1Data = userData;
+                                    user1Id = file.replace('.json', '');
+                                }
+                                if (userData.info?.name === name2) {
+                                    user2Data = userData;
+                                    user2Id = file.replace('.json', '');
+                                }
+                            }
+                        }
+                        
+                        if (!user1Data) {
+                            channel.sendChat(`❌ "${name1}" 이름을 가진 친구를 찾을 수 없어!`);
+                            return;
+                        }
+                        if (!user2Data) {
+                            channel.sendChat(`❌ "${name2}" 이름을 가진 친구를 찾을 수 없어!`);
+                            return;
+                        }
+                        
+                        // 커플 등록
+                        user1Data.info.couple = { type: "공개", target: name2, emoji: null };
+                        user2Data.info.couple = { type: "공개", target: name1, emoji: null };
+                        
+                        save(`user_data/${user1Id}.json`, JSON.stringify(user1Data, null, 4));
+                        save(`user_data/${user2Id}.json`, JSON.stringify(user2Data, null, 4));
+                        
+                        channel.sendChat(`💕 ${name1} 친구와 ${name2} 친구가 공개커플로 등록되었어!`);
+                    }
+                    else if (typeAndArgs.startsWith("일방:")) {
+                        const args = typeAndArgs.substring(3).split(' ').concat(cmdParts.slice(2));
+                        if (args.length < 3) {
+                            channel.sendChat("❌ 일방은 사람1, 이모지, 사람2가 필요해! 예: /커플등록 일방:길동 💕 영희");
+                            return;
+                        }
+                        
+                        const name1 = args[0].trim();
+                        const emoji = args[1].trim();
+                        const name2 = args[2].trim();
+                        
+                        const files = fs.readdirSync('user_data');
+                        let user1Data = null, user1Id = null;
+                        let user2Data = null, user2Id = null;
+                        
+                        for (const file of files) {
+                            if (file.endsWith('.json')) {
+                                const userData = JSON.parse(read(`user_data/${file}`));
+                                if (userData.info?.name === name1) {
+                                    user1Data = userData;
+                                    user1Id = file.replace('.json', '');
+                                }
+                                if (userData.info?.name === name2) {
+                                    user2Data = userData;
+                                    user2Id = file.replace('.json', '');
+                                }
+                            }
+                        }
+                        
+                        if (!user1Data) {
+                            channel.sendChat(`❌ "${name1}" 이름을 가진 친구를 찾을 수 없어!`);
+                            return;
+                        }
+                        if (!user2Data) {
+                            channel.sendChat(`❌ "${name2}" 이름을 가진 친구를 찾을 수 없어!`);
+                            return;
+                        }
+                        
+                        user1Data.info.couple = { type: "일방", target: name2, emoji: emoji };
+                        user2Data.info.couple = { type: "일방", target: name1, emoji: emoji };
+                        
+                        save(`user_data/${user1Id}.json`, JSON.stringify(user1Data, null, 4));
+                        save(`user_data/${user2Id}.json`, JSON.stringify(user2Data, null, 4));
+                        
+                        channel.sendChat(`${emoji} ${name1} 친구와 ${name2} 친구가 일방커플로 등록되었어! ${emoji}`);
+                    }
+                    else if (typeAndArgs.startsWith("바커:")) {
+                        const name = typeAndArgs.substring(3).trim() || (cmdParts.length > 2 ? cmdParts[2].trim() : '');
+                        
+                        if (!name) {
+                            channel.sendChat("❌ 바커는 한 사람의 이름이 필요해! 예: /커플등록 바커:길동");
+                            return;
+                        }
+                        
+                        // 사람 찾기
+                        const files = fs.readdirSync('user_data');
+                        let userData = null, userId = null;
+                        
+                        for (const file of files) {
+                            if (file.endsWith('.json')) {
+                                const data = JSON.parse(read(`user_data/${file}`));
+                                if (data.info?.name === name) {
+                                    userData = data;
+                                    userId = file.replace('.json', '');
+                                    break;
+                                }
+                            }
+                        }
+                        
+                        if (!userData) {
+                            channel.sendChat(`❌ "${name}" 이름을 가진 친구를 찾을 수 없어!`);
+                            return;
+                        }
+                        
+                        userData.info.couple = { type: "바깥", target: null, emoji: null };
+                        
+                        save(`user_data/${userId}.json`, JSON.stringify(userData, null, 4));
+                        
+                        channel.sendChat(`💑 ${name} 친구가 바깥커플로 등록되었어!`);
+                    }
+                    else {
+                        channel.sendChat("❌ 올바른 형식을 사용해줘!\n• /커플등록 공커:이름1 이름2\n• /커플등록 일방:이름1 이모지 이름2\n• /커플등록 바커:이름");
+                    }
+                }
+            }
+
+            else if (msg.startsWith("/커플해제 ")) {
+                if (!(sender.perm == 4 || sender.perm == 1)) {
+                    channel.sendChat("❌ 관리자만 사용할 수 있는 명령어야.");
+                } else {
+                    const name = msg.substring(6).trim();
+                    
+                    if (!name) {
+                        channel.sendChat("❌ 이름을 입력해줘! 예: /커플해제 길동");
+                        return;
+                    }
+                    
+                    const files = fs.readdirSync('user_data');
+                    let userData = null, userId = null;
+                    
+                    for (const file of files) {
+                        if (file.endsWith('.json')) {
+                            const data = JSON.parse(read(`user_data/${file}`));
+                            if (data.info?.name === name) {
+                                userData = data;
+                                userId = file.replace('.json', '');
+                                break;
+                            }
+                        }
+                    }
+                    
+                    if (!userData) {
+                        channel.sendChat(`❌ "${name}" 이름을 가진 친구를 찾을 수 없어!`);
+                        return;
+                    }
+                    
+                    const partnerName = userData.info.couple?.target;
+                    let partnerData = null, partnerId = null;
+                    
+                    if (partnerName) {
+                        for (const file of files) {
+                            if (file.endsWith('.json')) {
+                                const data = JSON.parse(read(`user_data/${file}`));
+                                if (data.info?.name === partnerName) {
+                                    partnerData = data;
+                                    partnerId = file.replace('.json', '');
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    
+                    userData.info.couple = { type: null, target: null, emoji: null };
+                    save(`user_data/${userId}.json`, JSON.stringify(userData, null, 4));
+                    
+                    if (partnerData) {
+                        partnerData.info.couple = { type: null, target: null, emoji: null };
+                        save(`user_data/${partnerId}.json`, JSON.stringify(partnerData, null, 4));
+                        channel.sendChat(`💔 ${name} 친구와 ${partnerName} 친구의 커플이 해제되었어!`);
+                    } else {
+                        channel.sendChat(`💔 ${name} 친구의 커플이 해제되었어!`);
+                    }
+                }
+            }
+
+            else if (msg.startsWith("/명상 ")) {
+                if (!(sender.perm == 4 || sender.perm == 1)) {
+                    channel.sendChat("❌ 관리자만 사용할 수 있는 명령어야.");
+                } else {
+                    const args = msg.substring(4).trim().split(' ');
+                    
+                    if (args.length < 2) {
+                        channel.sendChat("❌ 형식: /명상 [이름] (1주/2주)");
+                        return;
+                    }
+                    
+                    const name = args[0];
+                    const duration = args[1];
+                    
+                    if (duration !== '1주' && duration !== '2주') {
+                        channel.sendChat("❌ 기간은 1주 또는 2주만 가능해!");
+                        return;
+                    }
+                    
+                    const files = fs.readdirSync('user_data');
+                    let userData = null, userId = null;
+                    
+                    for (const file of files) {
+                        if (file.endsWith('.json')) {
+                            const data = JSON.parse(read(`user_data/${file}`));
+                            if (data.info?.name === name) {
+                                userData = data;
+                                userId = file.replace('.json', '');
+                                break;
+                            }
+                        }
+                    }
+                    
+                    if (!userData) {
+                        channel.sendChat(`❌ "${name}" 이름을 가진 친구를 찾을 수 없어!`);
+                        return;
+                    }
+                    
+                    userData.meditation = {
+                        startTime: new Date().toString(),
+                        duration: duration
+                    };
+                    
+                    save(`user_data/${userId}.json`, JSON.stringify(userData, null, 4));
+                    channel.sendChat(`🧘 ${name} 친구의 ${duration} 명상이 시작되었어!`);
+                }
+            }
+
+            else if (msg.startsWith("/내정보수정")) {
+                const lines = msg.split('\n');
+                const validMBTI = ['ISTJ', 'ISFJ', 'INFJ', 'INTJ', 'ISTP', 'ISFP', 'INFP', 'INTP', 
+                                   'ESTP', 'ESFP', 'ENFP', 'ENTP', 'ESTJ', 'ESFJ', 'ENFJ', 'ENTJ'];
+                const validGimidol = ['기혼', '미혼', '돌싱'];
+                const validGender = ['남자', '여자'];
+                const validExit = ['외출', '출퇴'];
+                
+                let errors = [];
+                let updates = [];
+                
+                for (let i = 1; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (!line) continue;
+                    
+                    const colonIndex = line.indexOf(':');
+                    if (colonIndex === -1) continue;
+                    
+                    const key = line.substring(0, colonIndex).trim();
+                    const value = line.substring(colonIndex + 1).trim();
+                    
+                    if (!value) continue;
+                    
+                    if (key === 'MBTI') {
+                        const mbtiUpper = value.toUpperCase();
+                        if (validMBTI.includes(mbtiUpper)) {
+                            user_data.info.mbti = mbtiUpper;
+                            updates.push(`MBTI → ${mbtiUpper}`);
+                        } else {
+                            errors.push(`MBTI를 제대로 입력해줘!`);
+                        }
+                    } else if (key === '사는곳') {
+                        user_data.info.address = value;
+                        updates.push(`사는곳 → ${value}`);
+                    } else if (key === '기미돌') {
+                        if (validGimidol.includes(value)) {
+                            user_data.info.gimidol = value;
+                            updates.push(`기미돌 → ${value}`);
+                        } else {
+                            errors.push(`기미돌을 제대로 입력해줘! (기혼/미혼/돌싱)`);
+                        }
+                    } else if (key === '성별') {
+                        if (validGender.includes(value)) {
+                            user_data.info.gender = value;
+                            updates.push(`성별 → ${value}`);
+                        } else {
+                            errors.push(`성별을 제대로 입력해줘! (남자/여자)`);
+                        }
+                    } else if (key === '외출상태') {
+                        if (value === 'X' || value === 'x') {
+                            user_data.info.isExit.type = null;
+                            updates.push(`외출상태 → 초기화`);
+                        } else if (validExit.includes(value)) {
+                            user_data.info.isExit.type = value;
+                            updates.push(`외출상태 → ${value}`);
+                        } else {
+                            errors.push(`외출상태를 제대로 입력해줘! (외출/출퇴/X)`);
+                        }
+                    } else if (key === '타이틀1') {
+                        user_data.info.titles[0] = value;
+                        updates.push(`타이틀1 → ${value}`);
+                    } else if (key === '타이틀2') {
+                        user_data.info.titles[1] = value;
+                        updates.push(`타이틀2 → ${value}`);
+                    } else if (key === '타이틀3') {
+                        user_data.info.titles[2] = value;
+                        updates.push(`타이틀3 → ${value}`);
+                    } else if (key === '타이틀4') {
+                        user_data.info.titles[3] = value;
+                        updates.push(`타이틀4 → ${value}`);
+                    } else if (key === '타이틀5') {
+                        user_data.info.titles[4] = value;
+                        updates.push(`타이틀5 → ${value}`);
+                    }
+                }
+                
+                if (errors.length > 0) {
+                    channel.sendChat(`❌ ${errors.join('\n')}`);
+                } else if (updates.length > 0) {
+                    save(`user_data/${sender.userId}.json`, JSON.stringify(user_data, null, 4));
+                    channel.sendChat(`✅ 정보가 수정되었어!\n${updates.join('\n')}`);
+                } else {
+                    channel.sendChat(`❌ 수정할 정보가 없어..`);
+                }
+            }
+
+            else if (msg.startsWith("/닉변 ")) {
+                const query = msg.substring(4).trim();
+                
+                if (!query) {
+                    channel.sendChat("❌ 검색할 닉네임을 입력해줘!");
+                    return;
+                }
+                
+                const files = fs.readdirSync('user_data');
+                const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                    .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
+                
+                const matchedUsers = userList.filter(user => {
+                    if (!user.profile_change_log || user.profile_change_log.length === 0) return false;
+                    return user.profile_change_log.some(log => log.name && log.name.includes(query));
+                });
+                
+                if (matchedUsers.length === 0) {
+                    channel.sendChat(`🔎닉변 필터: "${query}"\n\n검색 결과가 없어🥺`);
+                    return;
+                }
+                
+                const result = [`🔎닉변 필터: "${query}"\n`];
+                
+                matchedUsers.forEach(user => {
+                    const logs = user.profile_change_log || [];
+                    if (logs.length === 0) return;
+                    
+                    const lastLog = logs[logs.length - 1];
+                    const lastDate = new Date(lastLog.date);
+                    const recentDate = `${lastDate.getFullYear()}년 ${lastDate.getMonth() + 1}월 ${lastDate.getDate()}일`;
+                    
+                    const currentNickname = user.nickname || '알 수 없음';
+                    
+                    result.push(`\n👤 ${currentNickname} [최근 : ${recentDate}]`);
+                    
+                    logs.forEach(log => {
+                        const logDate = new Date(log.date);
+                        result.push(`· ${logDate.toDateString()} · ${log.prev} → ${log.name}`);
+                    });
+                });
+                
+                channel.sendChat(result.join('\n'));
+            }
+
+            else if (msg == "/성비") {
+                const files = fs.readdirSync('user_data');
+                const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                    .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
+                
+                let maleCount = 0;
+                let femaleCount = 0;
+                
+                userList.forEach(user => {
+                    if (user.info?.gender === "남자") {
+                        maleCount++;
+                    } else if (user.info?.gender === "여자") {
+                        femaleCount++;
+                    }
+                });
+                
+                channel.sendChat(`현재 등록된 친구 수:\n♂ 남자친구: ${maleCount}명\n♀ 여자친구: ${femaleCount}명`);
+            }
+
+            else if (msg.startsWith("/") && /^\/\d{4}채팅 /.test(msg)) {
+                const parts = msg.split(' ');
+                if (parts.length < 2) {
+                    channel.sendChat("❌ 이름을 입력해줘!");
+                    return;
+                }
+                
+                const yearMonth = parts[0].substring(1, 5);
+                const targetName = parts.slice(1).join(' ').trim();
+                const year = yearMonth.substring(0, 2);
+                const month = yearMonth.substring(2, 4);
+                const searchPrefix = `20${year}-${month}`;
+                
+                const files = fs.readdirSync('user_data');
+                let targetUserData = null;
+                
+                for (const file of files) {
+                    if (file.endsWith('.json')) {
+                        const userData = JSON.parse(read(`user_data/${file}`));
+                        if (userData.info?.name === targetName) {
+                            targetUserData = userData;
+                            break;
+                        }
+                    }
+                }
+                
+                if (!targetUserData) {
+                    channel.sendChat(`❌ "${targetName}" 이름을 가진 친구를 찾을 수 없어!`);
+                    return;
+                }
+                
+                const dailyChatLog = targetUserData.daily_chat_log || {};
+                
+                const monthData = {};
+                Object.keys(dailyChatLog).forEach(date => {
+                    if (date.startsWith(searchPrefix)) {
+                        monthData[date] = dailyChatLog[date];
+                    }
+                });
+                
+                if (Object.keys(monthData).length === 0) {
+                    channel.sendChat(`📅 ${targetName} 친구의 20${year}년 ${month}월 글 수\n\n데이터가 없어🥺`);
+                    return;
+                }
+                
+                let total = 0;
+                let maxCount = 0;
+                let maxDate = '';
+                
+                Object.keys(monthData).forEach(date => {
+                    const count = monthData[date];
+                    total += count;
+                    if (count > maxCount) {
+                        maxCount = count;
+                        maxDate = date;
+                    }
+                });
+                
+                const daysCount = Object.keys(monthData).length;
+                const average = (total / daysCount).toFixed(1);
+                
+                const dateList = Object.keys(monthData).sort().map(date => {
+                    return `▪ ${date} : ${monthData[date].toLocaleString()}개`;
+                });
+                
+                const result = [
+                    `📅 ${targetName} 친구의 20${year}년 ${month}월 글 수`,
+                    ``,
+                    `총합: ${total.toLocaleString()}개`,
+                    `일평균: ${parseFloat(average).toLocaleString()}개`,
+                    `최다: ${maxDate} / ${maxCount.toLocaleString()}개`,
+                    view_all,
+                    ...dateList
+                ].join('\n');
+                
+                channel.sendChat(result);
+            }
+
+            else if (msg.startsWith("/") && /^\/\d{4}글수$/.test(msg)) {
+                const yearMonth = msg.substring(1, 5);
+                const year = yearMonth.substring(0, 2);
+                const month = yearMonth.substring(2, 4);
+                const searchPrefix = `20${year}-${month}`;
+                
+                let chatLog = read('chat_log.json');
+                if (!chatLog) {
+                    channel.sendChat(`📅 20${year}년 ${month}월 글 수\n\n데이터가 없어🥺`);
+                    return;
+                }
+                chatLog = JSON.parse(chatLog);
+                
+                const monthData = {};
+                Object.keys(chatLog).forEach(date => {
+                    if (date.startsWith(searchPrefix)) {
+                        monthData[date] = chatLog[date];
+                    }
+                });
+                
+                if (Object.keys(monthData).length === 0) {
+                    channel.sendChat(`📅 20${year}년 ${month}월 글 수\n\n데이터가 없어🥺`);
+                    return;
+                }
+                
+                let total = 0;
+                let maxCount = 0;
+                let maxDate = '';
+                
+                Object.keys(monthData).forEach(date => {
+                    const count = monthData[date];
+                    total += count;
+                    if (count > maxCount) {
+                        maxCount = count;
+                        maxDate = date;
+                    }
+                });
+                
+                const daysCount = Object.keys(monthData).length;
+                const average = (total / daysCount).toFixed(1);
+                
+                const dateList = Object.keys(monthData).sort().map(date => {
+                    return `▪ ${date} : ${monthData[date].toLocaleString()}개`;
+                });
+                
+                const result = [
+                    `📅 20${year}년 ${month}월 글 수`,
+                    ``,
+                    `총합: ${total.toLocaleString()}개`,
+                    `일평균: ${parseFloat(average).toLocaleString()}개`,
+                    `최다: ${maxDate} / ${maxCount.toLocaleString()}개`,
+                    view_all,
+                    ...dateList
+                ].join('\n');
+                
+                channel.sendChat(result);
+            }
+
+            else if (msg.startsWith("/입방") && msg.length == 7 && /^\/입방\d{4}$/.test(msg)) {
+                const yearMonth = msg.substring(3);
+                const year = yearMonth.substring(0, 2);
+                const month = yearMonth.substring(2, 4);
+                const searchDate = `${year}.${month}`;
+                
+                const files = fs.readdirSync('user_data');
+                const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                    .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
+                
+                const entryUsers = userList
+                    .filter(user => user.info?.date?.startsWith(searchDate))
+                    .map(user => user.info?.name || user.nickname || '알 수 없음');
+                
+                if (entryUsers.length > 0) {
+                    channel.sendChat(`${year}년 ${month}월 입방 친구들 (${entryUsers.length}명):\n${entryUsers.join(', ')}`);
+                } else {
+                    channel.sendChat(`${year}년 ${month}월 입방한 친구가 없어🥺`);
+                }
+            }
+
+            else if (msg.startsWith("/지역 ")) {
+                const searchQuery = msg.substring(4).trim();
+                
+                if (!searchQuery) {
+                    channel.sendChat("❌ 검색할 지역을 입력해줘!");
+                    return;
+                }
+                
+                const files = fs.readdirSync('user_data');
+                const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                    .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
+                
+                const locationUsers = userList
+                    .filter(user => user.info?.address && user.info.address.includes(searchQuery))
+                    .map(user => user.info?.name || user.nickname || '알 수 없음');
+                
+                if (locationUsers.length > 0) {
+                    channel.sendChat(`${searchQuery} 친구들 (${locationUsers.length}명):\n${locationUsers.join(', ')}`);
+                } else {
+                    channel.sendChat(`${searchQuery} 친구가 없어🥺`);
+                }
+            }
+
+            else if (msg.startsWith("/") && msg.length == 5 && /^\/[a-zA-Z]{4}$/i.test(msg)) {
+                const searchMBTI = msg.substring(1).toUpperCase();
+                const validMBTI = ['ISTJ', 'ISFJ', 'INFJ', 'INTJ', 'ISTP', 'ISFP', 'INFP', 'INTP', 
+                                   'ESTP', 'ESFP', 'ENFP', 'ENTP', 'ESTJ', 'ESFJ', 'ENFJ', 'ENTJ'];
+                
+                if (validMBTI.includes(searchMBTI)) {
+                    const files = fs.readdirSync('user_data');
+                    const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                        .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
+                    
+                    const mbtiUsers = userList
+                        .filter(user => user.info?.mbti?.toUpperCase() === searchMBTI)
+                        .map(user => user.info?.name || user.nickname || '알 수 없음');
+                    
+                    if (mbtiUsers.length > 0) {
+                        channel.sendChat(`${searchMBTI} 친구들 (${mbtiUsers.length}명):\n${mbtiUsers.join(', ')}`);
+                    } else {
+                        channel.sendChat(`${searchMBTI} 친구가 없어..`);
+                    }
+                }
+            }
+
+            user_data.last_chat = new Date().toString();
+            user_data.exp++;
+            user_data.total_chat++;
+            
+            // 날짜별 채팅 수 기록 (전체)
+            const today = new Date().getKoreanTime().toYYYYMMDD();
+            let chatLog = read('chat_log.json');
+            if (chatLog) {
+                chatLog = JSON.parse(chatLog);
+            } else {
+                chatLog = {};
+            }
+            chatLog[today] = (chatLog[today] || 0) + 1;
+            save('chat_log.json', JSON.stringify(chatLog, null, 4));
+            
+            // 개인별 날짜별 채팅 수 기록
+            if (!user_data.daily_chat_log) {
+                user_data.daily_chat_log = {};
+            }
+            user_data.daily_chat_log[today] = (user_data.daily_chat_log[today] || 0) + 1;
+            
+            const requiredExp = getRequiredExp(user_data.level);
+            if (user_data.exp >= requiredExp) {
+                user_data.level++;
+                user_data.exp -= requiredExp;
+                
+                // 최고 레벨 업데이트
+                if (!user_data.max_level) user_data.max_level = 1;
+                if (user_data.level > user_data.max_level) {
+                    user_data.max_level = user_data.level;
+                    
+                    // 레벨 51 달성 시 무지개 스택 증가 (최대 3)
+                    if (user_data.max_level >= 51) {
+                        if (!user_data.rainbow_stack) user_data.rainbow_stack = 0;
+                        if (user_data.rainbow_stack < 3) {
+                            user_data.rainbow_stack++;
+                        }
+                    }
+                }
+                
+                const levelEmoji = getLevelEmoji(user_data.level);
+                const nickname = sender.nickname || user_data.nickname;
+                channel.sendChat(`🎉 ${nickname} 레벨 ${user_data.level} (${levelEmoji}) 레벨업!`);
+            }
+            
+            // 입방 7일 이상 경과 시 삐약이 빼기 알림 (10분마다)
+            if (user_data.info?.date && sender.nickname && sender.nickname.includes('🐣')) {
+                // info.date 파싱 (YY.MM.DD 형식)
+                const dateParts = user_data.info.date.split('.');
+                if (dateParts.length === 3) {
+                    const entryYear = 2000 + parseInt(dateParts[0]);
+                    const entryMonth = parseInt(dateParts[1]) - 1; // 0-indexed
+                    const entryDay = parseInt(dateParts[2]);
+                    const entryDate = new Date(entryYear, entryMonth, entryDay);
+                    
+                    // 현재 날짜
+                    const now = new Date();
+                    const diffTime = now - entryDate;
+                    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+                    
+                    // 7일 이상 경과 확인
+                    if (diffDays >= 7) {
+                        // 마지막 알림으로부터 10분 이상 경과했는지 확인
+                        const lastReminder = user_data.last_chick_reminder;
+                        const tenMinutes = 10 * 60 * 1000; // 10분 = 600,000ms
+                        
+                        if (!lastReminder || (now.getTime() - new Date(lastReminder).getTime() >= tenMinutes)) {
+                            user_data.last_chick_reminder = now.toString();
+                            channel.sendChat(`💐 축하해! 입방 ${diffDays}일차야!\n${sender.nickname} 삐약이 빼도 돼!`);
+                        }
+                    }
+                }
+            }
+            
+            // 명상 시간 체크
+            if (user_data.meditation && user_data.meditation.startTime && user_data.meditation.duration) {
+                const now = new Date();
+                const startTime = new Date(user_data.meditation.startTime);
+                const diffTime = now - startTime;
+                const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+                
+                const requiredDays = user_data.meditation.duration === '1주' ? 7 : 14;
+                
+                if (diffDays >= requiredDays) {
+                    channel.sendChat(`${sender.nickname} 명상시간 수고많았어 ☀️`);
+                    // 명상 정보 초기화
+                    delete user_data.meditation;
+                }
+            }
+            
+            save(`user_data/${sender.userId}.json`, JSON.stringify(user_data, null, 4));
+        }
+
+        
+    } catch(e) {
+        console.log(e);
+    }
+});
+
+client.on('error', (err) => {
+    console.log(`클라이언트 에러 발생\n오류: ${err.stack}`);
+});
+
+client.on('disconnected', (reason) => {
+    console.log(`연결이 끊어졌습니다.\n사유: ${reason}`);
+});
+
+client.on('user_join', async (joinLog, channel, user, feed) => {
+    let user_data = read(`user_data/${user.userId}.json`);
+    if (user_data) {
+        user_data = JSON.parse(user_data);
+    } else {
+        const newName = user.nickname.split(" ")[0];
+        
+        // 이름 중복 체크 (처음 입방하는 유저만)
+        if (isNameDuplicated(newName, user.userId)) {
+            channel.sendChat(`${newName}친구! 그 이름은 이미 사용중이야. 다른 이름으로 바꿔줘!`);
+        }
+        
+        user_data = {
+            nickname: user.nickname,
+            last_attend: null,
+            entry_log: [],
+            info: {
+                name: newName,
+                role: "친구",
+                date: new Date().toYYMMDD(),
+                mbti: null,
+                gender: user.nickname.split(" ")[1]?.includes("남") ? "남자" : (user.nickname.split(" ")[1]?.includes("여") ? "여자" : null),
+                address: null,
+                gimidol: null,
+                isExit: {
+                    type: null
+                },
+                couple: {
+                    type: null,
+                    target: null,
+                    emoji: null
+                },
+                titles: [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            level: 1,
+            exp: 0,
+            total_chat: 0,
+            last_chat: null,
+            profile_change_log: [],
+            daily_chat_log: {},
+            max_level: 1,
+            rainbow_stack: 0,
+            meditation: null
+        };
+    }
+    user_data.entry_log.push({
+        type: "입장",
+        date: new Date().toString(),
+        name: user.nickname
+    });
+    if (user_data.entry_log.length > 1) {
+        let entry_log = user_data.entry_log.map(log => `· ${new Date(log.date).toYYYYMMDD} - ${log.name} ㅡ ${log.type}`);
+        channel.sendChat(`📡🚨 특정 닉네임 입방!\n${view_all}\n\n현재 닉: ${user.nickname}\n${entry_log.join("\n")}`);
+    } else {
+        channel.sendChat(`어서와👋 친구야🤩
+우리방에 온걸 진심으로 환영해🥳
+✴️지금부터는 우리방 친구들이
+친절하게 안내해줄꺼야!!
+⭕️집중해서 입방절차 안내를 따라줘⭕️`);
+        channel.sendChat(`🖐️기존 친구들은 잠시만!!🖐️
+📵잠깐 키보드에서 손을 때고 
+🚼새친구가 입방절차를 잘할수있게
+기다려주자👀`);
+    }
+    save(`user_data/${user.userId}.json`, JSON.stringify(user_data, null, 4));
+});
+
+client.on('user_join', async (joinLog, channel, user, feed) => {
+    let user_data = read(`user_data/${user.userId}.json`);
+    if (user_data) {
+        user_data = JSON.parse(user_data);
+        user_data.entry_log.push({
+            type: "퇴장",
+            date: new Date().toString(),
+            name: user.nickname
+        });
+        save(`user_data/${user.userId}.json`, JSON.stringify(user_data, null, 4));
+    }
+});
+  
+client.on('user_left', (leftLog, channel, user, feed) => {
+    let user_data = read(`user_data/${user.userId}.json`);
+    if (user_data) {
+        const kicker = channel.getUserInfo(leftLog.sender);
+        user_data = JSON.parse(user_data);
+        user_data.entry_log.push({
+            type: `강퇴 by ${kicker.nickname}`,
+            date: new Date().toString(),
+            name: user.nickname
+        });
+        save(`user_data/${user.userId}.json`, JSON.stringify(user_data, null, 4));
+    }
+})
+  
+client.on('profile_changed', (channel, lastInfo, user) => {
+    let user_data = read(`user_data/${user.userId}.json`);
+    if (user_data) {
+        user_data = JSON.parse(user_data);
+        const newName = user.nickname.split(" ")[0];
+        
+        // 이름 중복 체크
+        if (isNameDuplicated(newName, user.userId)) {
+            channel.sendChat(`${newName}친구! 그 이름은 이미 사용중이야. 다른 이름으로 바꿔줘!`);
+        }
+        
+        user_data.nickname = user.nickname;
+        user_data.info.name = newName;
+        user_data.info.gender = user.nickname.split(" ")[1]?.includes("남") ? "남자" : (user.nickname.split(" ")[1]?.includes("여") ? "여자" : null);
+        user_data.profile_change_log.push({
+            prev: lastInfo.nickname,
+            name: user.nickname,
+            date: new Date().toString()
+        });
+        save(`user_data/${user.userId}.json`, JSON.stringify(user_data, null, 4));
+    }
+});
+
+async function registerDevice(authClient) {
+    let requestData = await authClient.requestPasscode({"email": EMAIL, "password": PASSWORD, "forced": true});
+    if (!requestData.success) {
+    return {"success": false, "message": `RequestPasscode Failed! Data: ${JSON.stringify(requestData, null, 2)}`};
+    } else {
+        let readline = require("readline");
+        let inputInterface = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout,
+        });
+        let passcode = await new Promise((resolve) => inputInterface.question("Enter passcode: ", resolve));
+        inputInterface.close();
+        let registerData = await authClient.registerDevice({"email": EMAIL, "password": PASSWORD, "forced": true}, passcode, true);
+        if (!registerData.success) {
+            return {"success": false, "message": `RegisterDevice Failed! Data: ${JSON.stringify(registerData, null, 2)}`};
+        }
+        return {"success": true};
+    }
+}
+
+async function login() {
+    let config = { countryIso: "KR", language: "ko" };
+    if (DEVICE_UUID === "") {
+        if (DEVICE_TYPE === "pc") {
+            DEVICE_UUID = util.randomWin32DeviceUUID();
+        }
+        if (DEVICE_TYPE === "tablet") {
+            DEVICE_UUID = util.randomAndroidSubDeviceUUID();
+        }
+        console.log(`uuid: ${DEVICE_UUID}`);
+    }
+    let authClient = await AuthApiClient.create(DEVICE_NAME, DEVICE_UUID, config, xvc.AndroidSubXVCProvider);
+    let loginData = await authClient.login({"email": EMAIL, "password": PASSWORD, "forced": true});
+    if (!loginData.success) {
+        if (loginData.status === KnownAuthStatusCode.DEVICE_NOT_REGISTERED) {
+            let result = await registerDevice(authClient);
+            if (!result.success) {
+                console.log(result.message);
+            } else {
+                login();
+            }
+        } else {
+            console.log(`Login Failed! Data: ${JSON.stringify(loginData, null, 2)}`);
+        }
+    } else {
+        let loginRes = await client.login(loginData.result);
+        if (!loginRes.success) {
+            console.log(`Login Failed! loginResult: ${JSON.stringify(loginRes, null, 2)}`);
+        } else {
+            token = `${loginData.result.accessToken}-${loginData.result.deviceUUID}`;
+            console.log(`Login Success!`);
+        }
+    }
+}
+
+keepAlive();
+login().then();

@@ -1,0 +1,66 @@
+{
+    "nickname": "딜루 남",
+    "last_attend": "Wed Dec 24 2025 23:19:01 GMT+0900 (대한민국 표준시)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 23:19:01 GMT+0900 (대한민국 표준시)",
+            "name": "DeluTive"
+        }
+    ],
+    "info": {
+        "name": "딜루",
+        "role": "친구",
+        "date": "25.12.15",
+        "mbti": "ESTJ",
+        "gender": "남자",
+        "address": "서울",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": "외출"
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            "테스트",
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 69,
+    "total_chat": 69,
+    "last_chat": "Thu Dec 25 2025 00:24:03 GMT+0900 (대한민국 표준시)",
+    "profile_change_log": [
+        {
+            "prev": "DeluTive",
+            "name": "딜루 남",
+            "date": "Wed Dec 24 2025 23:20:11 GMT+0900 (대한민국 표준시)"
+        },
+        {
+            "prev": "딜루 남",
+            "name": "딜루 남 🐣",
+            "date": "Wed Dec 24 2025 23:21:28 GMT+0900 (대한민국 표준시)"
+        },
+        {
+            "prev": "딜루 남 🐣",
+            "name": "DeluTive",
+            "date": "Thu Dec 25 2025 00:16:26 GMT+0900 (대한민국 표준시)"
+        },
+        {
+            "prev": "DeluTive",
+            "name": "딜루 남",
+            "date": "Thu Dec 25 2025 00:16:30 GMT+0900 (대한민국 표준시)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-24": 38,
+        "2025-12-25": 31
+    },
+    "last_chick_reminder": "Thu Dec 25 2025 00:16:10 GMT+0900 (대한민국 표준시)"
+}

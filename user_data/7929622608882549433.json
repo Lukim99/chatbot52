@@ -1,0 +1,51 @@
+{
+    "nickname": "쏘니 남",
+    "last_attend": "Sun Dec 28 2025 16:34:29 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 19:24:06 GMT+0000 (Coordinated Universal Time)",
+            "name": "쏘니 남"
+        }
+    ],
+    "info": {
+        "name": "쏘니",
+        "role": "친구",
+        "date": "25.12.04",
+        "mbti": "ESFP",
+        "gender": "남자",
+        "address": "대전",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            "벙개요정 6회 ⚡",
+            null
+        ]
+    },
+    "level": 7,
+    "exp": 43,
+    "total_chat": 1343,
+    "last_chat": "Mon Dec 29 2025 16:14:42 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 237,
+        "2025-12-26": 135,
+        "2025-12-27": 152,
+        "2025-12-28": 396,
+        "2025-12-29": 410,
+        "2025-12-30": 13
+    },
+    "max_level": 7,
+    "rainbow_stack": 0,
+    "meditation": null
+}

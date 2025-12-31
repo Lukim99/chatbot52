@@ -1,0 +1,74 @@
+{
+    "nickname": "벤지 남 🐣",
+    "last_attend": "Mon Dec 29 2025 00:00:00 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Sat Dec 27 2025 14:09:33 GMT+0000 (Coordinated Universal Time)",
+            "name": "Benji/Engineer"
+        },
+        {
+            "type": "퇴장",
+            "date": "Sat Dec 27 2025 14:09:33 GMT+0000 (Coordinated Universal Time)",
+            "name": "Benji/Engineer"
+        }
+    ],
+    "info": {
+        "name": "벤지",
+        "role": "친구",
+        "date": "25.12.27",
+        "mbti": "ENFP",
+        "gender": "남자",
+        "address": "인천",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 73,
+    "total_chat": 73,
+    "last_chat": "Sun Dec 28 2025 15:00:00 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "Benji/Engineer",
+            "name": "밴지 남",
+            "date": "Sat Dec 27 2025 14:10:03 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "밴지 남",
+            "name": "밴지 남 🐣",
+            "date": "Sat Dec 27 2025 14:10:50 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "밴지 남 🐣",
+            "name": "밴지 남 🐣",
+            "date": "Sat Dec 27 2025 14:11:33 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "밴지 남 🐣",
+            "name": "벤지 남 🐣",
+            "date": "Sat Dec 27 2025 14:25:16 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-27": 28,
+        "2025-12-28": 44,
+        "2025-12-29": 1
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

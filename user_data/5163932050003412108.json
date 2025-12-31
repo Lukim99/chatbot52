@@ -1,0 +1,46 @@
+{
+    "nickname": "황제 남",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 00:20:57 GMT+0000 (Coordinated Universal Time)",
+            "name": "황제 남"
+        }
+    ],
+    "info": {
+        "name": "황제",
+        "role": "친구",
+        "date": "25.06.13",
+        "mbti": "ESFP",
+        "gender": "남자",
+        "address": "서울",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            "퀴즈의 달인 3회 📖",
+            "출석 1위 1회 💯",
+            "벙개요정 10회 ⚡",
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 3,
+    "total_chat": 3,
+    "last_chat": "Thu Dec 25 2025 09:09:14 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 3
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

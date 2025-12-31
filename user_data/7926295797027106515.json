@@ -1,0 +1,50 @@
+{
+    "nickname": "프렌 남",
+    "last_attend": "Mon Dec 29 2025 00:08:22 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 03:47:57 GMT+0000 (Coordinated Universal Time)",
+            "name": "프렌 남"
+        }
+    ],
+    "info": {
+        "name": "프렌",
+        "role": "친구",
+        "date": "25.11.11",
+        "mbti": "ENFP",
+        "gender": "남자",
+        "address": "충남 당진",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            "출석 1위 1회 💯",
+            "벙개요정 3회 ⚡",
+            null
+        ]
+    },
+    "level": 2,
+    "exp": 137,
+    "total_chat": 337,
+    "last_chat": "Mon Dec 29 2025 05:56:34 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 13,
+        "2025-12-26": 44,
+        "2025-12-27": 35,
+        "2025-12-28": 29,
+        "2025-12-29": 216
+    },
+    "max_level": 2,
+    "rainbow_stack": 0,
+    "meditation": null
+}

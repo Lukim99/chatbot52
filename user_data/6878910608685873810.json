@@ -1,0 +1,52 @@
+{
+    "nickname": "이누 여",
+    "last_attend": "Wed Dec 31 2025 00:00:01 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 17:23:17 GMT+0000 (Coordinated Universal Time)",
+            "name": "이누 여"
+        }
+    ],
+    "info": {
+        "name": "이누",
+        "role": "친구",
+        "date": "25.10.04",
+        "mbti": "ESFP",
+        "gender": "여자",
+        "address": "세종",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            "벙개요정 5회 ⚡",
+            null
+        ]
+    },
+    "level": 10,
+    "exp": 11,
+    "total_chat": 2211,
+    "last_chat": "Tue Dec 30 2025 16:38:18 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 301,
+        "2025-12-26": 690,
+        "2025-12-27": 190,
+        "2025-12-28": 113,
+        "2025-12-29": 629,
+        "2025-12-30": 202,
+        "2025-12-31": 86
+    },
+    "max_level": 10,
+    "rainbow_stack": 0,
+    "meditation": null
+}

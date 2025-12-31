@@ -1,0 +1,46 @@
+{
+    "nickname": "화요 남",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Sat Dec 27 2025 17:00:25 GMT+0000 (Coordinated Universal Time)",
+            "name": "화요 남"
+        }
+    ],
+    "info": {
+        "name": "화요",
+        "role": "친구",
+        "date": "25.11.05",
+        "mbti": "ISFJ",
+        "gender": "남자",
+        "address": "서울",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 26,
+    "total_chat": 26,
+    "last_chat": "Sat Dec 27 2025 17:23:40 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-28": 26
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

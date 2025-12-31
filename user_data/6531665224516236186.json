@@ -1,0 +1,49 @@
+{
+    "nickname": "초롱초롱 어피치",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Tue Dec 30 2025 02:37:38 GMT+0000 (Coordinated Universal Time)",
+            "name": "초롱초롱 어피치"
+        },
+        {
+            "type": "퇴장",
+            "date": "Tue Dec 30 2025 02:37:38 GMT+0000 (Coordinated Universal Time)",
+            "name": "초롱초롱 어피치"
+        }
+    ],
+    "info": {
+        "name": "초롱초롱",
+        "role": "친구",
+        "date": "25.12.30",
+        "mbti": null,
+        "gender": null,
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 0,
+    "total_chat": 0,
+    "last_chat": null,
+    "profile_change_log": [],
+    "daily_chat_log": {},
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

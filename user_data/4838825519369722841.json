@@ -1,0 +1,75 @@
+{
+    "nickname": "동준 남 🐣",
+    "last_attend": "Wed Dec 31 2025 00:02:56 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 22:29:18 GMT+0000 (Coordinated Universal Time)",
+            "name": "고구마 먹는 춘식이"
+        },
+        {
+            "type": "퇴장",
+            "date": "Thu Dec 25 2025 22:29:18 GMT+0000 (Coordinated Universal Time)",
+            "name": "고구마 먹는 춘식이"
+        }
+    ],
+    "info": {
+        "name": "동준",
+        "role": "친구",
+        "date": "25.12.26",
+        "mbti": "ENFJ",
+        "gender": "남자",
+        "address": "서울",
+        "gimidol": "기혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 129,
+    "total_chat": 129,
+    "last_chat": "Tue Dec 30 2025 15:31:36 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "고구마 먹는 춘식이",
+            "name": "동준 남",
+            "date": "Thu Dec 25 2025 22:30:08 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "동준 남",
+            "name": "동준 남 🐣",
+            "date": "Thu Dec 25 2025 22:34:09 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "동준 남 🐣",
+            "name": "동준 남 🐣",
+            "date": "Thu Dec 25 2025 22:35:07 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "동준 남 🐣",
+            "name": "동준 남 🐣",
+            "date": "Tue Dec 30 2025 00:34:02 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-26": 23,
+        "2025-12-28": 16,
+        "2025-12-30": 1,
+        "2025-12-31": 89
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

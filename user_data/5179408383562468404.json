@@ -1,0 +1,48 @@
+{
+    "nickname": "송이 여",
+    "last_attend": "Sun Dec 28 2025 12:18:44 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 00:27:46 GMT+0000 (Coordinated Universal Time)",
+            "name": "송이 여"
+        }
+    ],
+    "info": {
+        "name": "송이",
+        "role": "친구",
+        "date": "25.10.13",
+        "mbti": "INTP",
+        "gender": "여자",
+        "address": "경기 용인",
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            "송이 ❤️ 마메"
+        ]
+    },
+    "level": 1,
+    "exp": 36,
+    "total_chat": 36,
+    "last_chat": "Sun Dec 28 2025 03:19:33 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 26,
+        "2025-12-27": 7,
+        "2025-12-28": 3
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

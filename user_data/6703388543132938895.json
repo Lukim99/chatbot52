@@ -1,0 +1,69 @@
+{
+    "nickname": "춘봉 여 🐣",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Sun Dec 28 2025 04:48:27 GMT+0000 (Coordinated Universal Time)",
+            "name": "첨지"
+        },
+        {
+            "type": "퇴장",
+            "date": "Sun Dec 28 2025 04:48:27 GMT+0000 (Coordinated Universal Time)",
+            "name": "첨지"
+        }
+    ],
+    "info": {
+        "name": "춘봉",
+        "role": "친구",
+        "date": "25.12.28",
+        "mbti": "INFP",
+        "gender": "여자",
+        "address": "서울",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 35,
+    "total_chat": 35,
+    "last_chat": "Tue Dec 30 2025 01:40:34 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "첨지",
+            "name": "첨지 여",
+            "date": "Sun Dec 28 2025 04:48:38 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "첨지 여",
+            "name": "첨지 여 🐣",
+            "date": "Sun Dec 28 2025 04:51:26 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "첨지 여 🐣",
+            "name": "춘봉 여 🐣",
+            "date": "Sun Dec 28 2025 04:57:56 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-28": 31,
+        "2025-12-29": 1,
+        "2025-12-30": 3
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

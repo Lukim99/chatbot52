@@ -1,0 +1,52 @@
+{
+    "nickname": "오픈채팅봇",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 15:35:43 GMT+0000 (Coordinated Universal Time)",
+            "name": "오픈채팅봇"
+        }
+    ],
+    "info": {
+        "name": "오픈채팅봇",
+        "role": "친구",
+        "date": "25.12.24",
+        "mbti": null,
+        "gender": null,
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 3,
+    "exp": 190,
+    "total_chat": 590,
+    "last_chat": "Tue Dec 30 2025 15:38:30 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 85,
+        "2025-12-26": 72,
+        "2025-12-27": 88,
+        "2025-12-28": 119,
+        "2025-12-29": 101,
+        "2025-12-30": 97,
+        "2025-12-31": 28
+    },
+    "max_level": 3,
+    "rainbow_stack": 0,
+    "meditation": null
+}

@@ -10,6 +10,92 @@ const { isString } = require('util');
 const { get } = require('request');
 const { userInfo } = require('os');
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const AWS = require('aws-sdk');
+
+AWS.config.update({
+    region: 'ap-northeast-2',
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+});
+
+const dynamoDB = new AWS.DynamoDB.DocumentClient();
+const USER_TABLE_NAME = 'chatbot52_user';
+const SAVE_DATA_TABLE_NAME = 'save_data';
+
+async function getSaveData(id) {
+    try {
+        const params = {
+            TableName: SAVE_DATA_TABLE_NAME,
+            Key: { id: id }
+        };
+        const result = await dynamoDB.get(params).promise();
+        return result.Item?.data || null;
+    } catch (error) {
+        console.error('Error getting save data:', error);
+        return null;
+    }
+}
+
+async function setSaveData(id, data) {
+    try {
+        const params = {
+            TableName: SAVE_DATA_TABLE_NAME,
+            Item: {
+                id: id,
+                data: data
+            }
+        };
+        await dynamoDB.put(params).promise();
+        return data;
+    } catch (error) {
+        console.error('Error setting save data:', error);
+        throw error;
+    }
+}
+
+async function getUserData(userId) {
+    try {
+        const params = {
+            TableName: USER_TABLE_NAME,
+            Key: { userId: userId.toString() }
+        };
+        const result = await dynamoDB.get(params).promise();
+        return result.Item || null;
+    } catch (error) {
+        console.error('Error getting user data:', error);
+        return null;
+    }
+}
+
+async function saveUserData(userId, userData) {
+    try {
+        const params = {
+            TableName: USER_TABLE_NAME,
+            Item: {
+                userId: userId.toString(),
+                ...userData
+            }
+        };
+        await dynamoDB.put(params).promise();
+        return userData;
+    } catch (error) {
+        console.error('Error saving user data:', error);
+        throw error;
+    }
+}
+
+async function getAllUsers() {
+    try {
+        const params = {
+            TableName: USER_TABLE_NAME
+        };
+        const result = await dynamoDB.scan(params).promise();
+        return result.Items || [];
+    } catch (error) {
+        console.error('Error scanning users:', error);
+        return [];
+    }
+}
 const view_all = ('\u200e'.repeat(500));
 
 const DEVICE_TYPE = "tablet";
@@ -79,6 +165,14 @@ Date.prototype.getKoreanTime = function() {
     const utc = curr.getTime() + (curr.getTimezoneOffset() * 60 * 1000);
     const korea = new Date(utc + (3600000 * 9));
     return korea;
+}
+
+function numberWithCommas(x) {
+    return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+Number.prototype.toComma = function() {
+    return this.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 var CHOSEONG = ["ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"],
@@ -185,15 +279,11 @@ function getLevelEmoji(level) {
     return '🌈';
 }
 
-function isNameDuplicated(name, currentUserId) {
-    const files = fs.readdirSync('user_data');
-    for (const file of files) {
-        if (!file.endsWith('.json')) continue;
+async function isNameDuplicated(name, currentUserId) {
+    const allUsers = await getAllUsers();
+    for (const userData of allUsers) {
+        if (userData.userId === currentUserId.toString()) continue;
         
-        const userId = file.replace('.json', '');
-        if (userId === currentUserId.toString()) continue;
-        
-        const userData = JSON.parse(read(`user_data/${file}`));
         if (userData.info?.name === name) {
             return true;
         }
@@ -242,35 +332,29 @@ client.on('chat', async (data, channel) => {
             }
 
             const currentYearMonth = new Date().getFullYear() + '-' + pad_num((new Date().getMonth() + 1).toString(), 2);
-            let lastReset = read('last_reset.json');
-            if (lastReset) {
-                lastReset = JSON.parse(lastReset);
-            } else {
+            let lastReset = await getSaveData('last_reset');
+            if (!lastReset) {
                 lastReset = { yearMonth: null };
             }
             
             if (lastReset.yearMonth !== currentYearMonth) {
-                const files = fs.readdirSync('user_data');
-                files.forEach(file => {
-                    if (file.endsWith('.json')) {
-                        const userData = JSON.parse(read(`user_data/${file}`));
-                        userData.level = 1;
-                        userData.exp = 0;
-                        userData.total_chat = 0;
-                        save(`user_data/${file}`, JSON.stringify(userData, null, 4));
-                    }
-                });
+                const allUsers = await getAllUsers();
+                for (const userData of allUsers) {
+                    userData.level = 1;
+                    userData.exp = 0;
+                    userData.total_chat = 0;
+                    await saveUserData(userData.userId, userData);
+                }
                 
                 lastReset.yearMonth = currentYearMonth;
-                save('last_reset.json', JSON.stringify(lastReset, null, 4));
+                await setSaveData('last_reset', lastReset);
             }
 
-            let user_data = read(`user_data/${sender.userId}.json`);
-            if (user_data) user_data = JSON.parse(user_data);
-            else {
+            let user_data = await getUserData(sender.userId);
+            if (!user_data) {
                 const newName = sender.nickname.split(" ")[0];
                 
-                if (isNameDuplicated(newName, sender.userId)) {
+                if (await isNameDuplicated(newName, sender.userId)) {
                     channel.sendChat(`${newName}친구! 그 이름은 이미 사용중이야. 다른 이름으로 바꿔줘!`);
                     return;
                 }
@@ -363,8 +447,7 @@ client.on('chat', async (data, channel) => {
             }
 
             else if (msg == "/출석순위") {
-                const files = fs.readdirSync('user_data');
-                const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                const userList = (await getAllUsers())
                     .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
                 
                 let rank = [];
@@ -379,8 +462,7 @@ client.on('chat', async (data, channel) => {
             }
 
             else if (msg == "/레벨순위") {
-                const files = fs.readdirSync('user_data');
-                const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                const userList = (await getAllUsers())
                     .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
                 
                 const levelRank = userList
@@ -481,23 +563,20 @@ client.on('chat', async (data, channel) => {
                     return;
                 }
                 
-                const files = fs.readdirSync('user_data');
+                const allUsers = await getAllUsers();
                 let targetUserData = null;
                 let targetUserInfo = null;
                 
-                for (const file of files) {
-                    if (file.endsWith('.json')) {
-                        const userData = JSON.parse(read(`user_data/${file}`));
-                        if (userData.info?.name === targetName) {
-                            targetUserData = userData;
-                            for (const channelUser of channel.getAllUserInfo()) {
-                                if (file.replace('.json', '') === channelUser.userId.toString()) {
-                                    targetUserInfo = channelUser;
-                                    break;
-                                }
+                for (const userData of allUsers) {
+                    if (userData.info?.name === targetName) {
+                        targetUserData = userData;
+                        for (const channelUser of channel.getAllUserInfo()) {
+                            if (userData.userId === channelUser.userId.toString()) {
+                                targetUserInfo = channelUser;
+                                break;
                             }
-                            break;
                         }
+                        break;
                     }
                 }
                 
@@ -561,17 +640,16 @@ client.on('chat', async (data, channel) => {
                 const levelInfo = [
                     `📘 ${sender.nickname} 레벨 정보`,
                     `레벨 : ${user_data.level} ${levelEmoji}`,
-                    `총 채팅수 : ${user_data.total_chat}개`,
-                    `진행도 : ${user_data.exp} / ${requiredExp}`,
-                    `다음 레벨까지 : ${remainingExp}개`
+                    `총 채팅수 : ${user_data.total_chat.toComma()}개`,
+                    `진행도 : ${user_data.exp.toComma()} / ${requiredExp.toComma()}`,
+                    `다음 레벨까지 : ${remainingExp.toComma()}개`
                 ].join('\n');
                 
                 channel.sendChat(levelInfo);
             }
 
             else if (msg == "/외출") {
-                const files = fs.readdirSync('user_data');
-                const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                const userList = (await getAllUsers())
                     .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
                 
                 const exitUsers = [];
@@ -620,8 +698,7 @@ client.on('chat', async (data, channel) => {
             }
 
             else if (msg == "/커플") {
-                const files = fs.readdirSync('user_data');
-                const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                const userList = (await getAllUsers())
                     .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
                 
                 const publicCouples = [];
@@ -695,8 +772,7 @@ client.on('chat', async (data, channel) => {
                     const now = new Date();
                     const threshold = new Date(now.getTime() - (days * 24 * 60 * 60 * 1000));
                     
-                    const files = fs.readdirSync('user_data');
-                    const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                    const userList = (await getAllUsers())
                         .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
                     
                     const inactiveUsers = userList
@@ -744,18 +820,15 @@ client.on('chat', async (data, channel) => {
                         return;
                     }
                     
-                    const files = fs.readdirSync('user_data');
+                    const allUsers = await getAllUsers();
                     let targetUserData = null;
                     let targetUserId = null;
                     
-                    for (const file of files) {
-                        if (file.endsWith('.json')) {
-                            const userData = JSON.parse(read(`user_data/${file}`));
-                            if (userData.info?.name === targetName) {
-                                targetUserData = userData;
-                                targetUserId = file.replace('.json', '');
-                                break;
-                            }
+                    for (const userData of allUsers) {
+                        if (userData.info?.name === targetName) {
+                            targetUserData = userData;
+                            targetUserId = userData.userId;
+                            break;
                         }
                     }
                     
@@ -860,7 +933,7 @@ client.on('chat', async (data, channel) => {
                     if (errors.length > 0) {
                         channel.sendChat(`❌ ${errors.join('\n')}`);
                     } else if (updates.length > 0) {
-                        save(`user_data/${targetUserId}.json`, JSON.stringify(targetUserData, null, 4));
+                        await saveUserData(targetUserId, targetUserData);
                         channel.sendChat(`✅ ${targetName} 친구의 정보가 수정되었어!\n${updates.join('\n')}`);
                     } else {
                         channel.sendChat(`❌ 수정할 정보가 없어..`);
@@ -891,21 +964,18 @@ client.on('chat', async (data, channel) => {
                         const name1 = names[0].trim();
                         const name2 = names[1].trim();
                         
-                        const files = fs.readdirSync('user_data');
+                        const allUsers = await getAllUsers();
                         let user1Data = null, user1Id = null;
                         let user2Data = null, user2Id = null;
                         
-                        for (const file of files) {
-                            if (file.endsWith('.json')) {
-                                const userData = JSON.parse(read(`user_data/${file}`));
-                                if (userData.info?.name === name1) {
-                                    user1Data = userData;
-                                    user1Id = file.replace('.json', '');
-                                }
-                                if (userData.info?.name === name2) {
-                                    user2Data = userData;
-                                    user2Id = file.replace('.json', '');
-                                }
+                        for (const userData of allUsers) {
+                            if (userData.info?.name === name1) {
+                                user1Data = userData;
+                                user1Id = userData.userId;
+                            }
+                            if (userData.info?.name === name2) {
+                                user2Data = userData;
+                                user2Id = userData.userId;
                             }
                         }
                         
@@ -922,8 +992,8 @@ client.on('chat', async (data, channel) => {
                         user1Data.info.couple = { type: "공개", target: name2, emoji: null };
                         user2Data.info.couple = { type: "공개", target: name1, emoji: null };
                         
-                        save(`user_data/${user1Id}.json`, JSON.stringify(user1Data, null, 4));
-                        save(`user_data/${user2Id}.json`, JSON.stringify(user2Data, null, 4));
+                        await saveUserData(user1Id, user1Data);
+                        await saveUserData(user2Id, user2Data);
                         
                         channel.sendChat(`💕 ${name1} 친구와 ${name2} 친구가 공개커플로 등록되었어!`);
                     }
@@ -938,21 +1008,18 @@ client.on('chat', async (data, channel) => {
                         const emoji = args[1].trim();
                         const name2 = args[2].trim();
                         
-                        const files = fs.readdirSync('user_data');
+                        const allUsers = await getAllUsers();
                         let user1Data = null, user1Id = null;
                         let user2Data = null, user2Id = null;
                         
-                        for (const file of files) {
-                            if (file.endsWith('.json')) {
-                                const userData = JSON.parse(read(`user_data/${file}`));
-                                if (userData.info?.name === name1) {
-                                    user1Data = userData;
-                                    user1Id = file.replace('.json', '');
-                                }
-                                if (userData.info?.name === name2) {
-                                    user2Data = userData;
-                                    user2Id = file.replace('.json', '');
-                                }
+                        for (const userData of allUsers) {
+                            if (userData.info?.name === name1) {
+                                user1Data = userData;
+                                user1Id = userData.userId;
+                            }
+                            if (userData.info?.name === name2) {
+                                user2Data = userData;
+                                user2Id = userData.userId;
                             }
                         }
                         
@@ -968,8 +1035,8 @@ client.on('chat', async (data, channel) => {
                         user1Data.info.couple = { type: "일방", target: name2, emoji: emoji };
                         user2Data.info.couple = { type: "일방", target: name1, emoji: emoji };
                         
-                        save(`user_data/${user1Id}.json`, JSON.stringify(user1Data, null, 4));
-                        save(`user_data/${user2Id}.json`, JSON.stringify(user2Data, null, 4));
+                        await saveUserData(user1Id, user1Data);
+                        await saveUserData(user2Id, user2Data);
                         
                         channel.sendChat(`${emoji} ${name1} 친구와 ${name2} 친구가 일방커플로 등록되었어! ${emoji}`);
                     }
@@ -982,17 +1049,14 @@ client.on('chat', async (data, channel) => {
                         }
                         
                         // 사람 찾기
-                        const files = fs.readdirSync('user_data');
+                        const allUsers = await getAllUsers();
                         let userData = null, userId = null;
                         
-                        for (const file of files) {
-                            if (file.endsWith('.json')) {
-                                const data = JSON.parse(read(`user_data/${file}`));
-                                if (data.info?.name === name) {
-                                    userData = data;
-                                    userId = file.replace('.json', '');
-                                    break;
-                                }
+                        for (const data of allUsers) {
+                            if (data.info?.name === name) {
+                                userData = data;
+                                userId = data.userId;
+                                break;
                             }
                         }
                         
@@ -1003,7 +1067,7 @@ client.on('chat', async (data, channel) => {
                         
                         userData.info.couple = { type: "바깥", target: null, emoji: null };
                         
-                        save(`user_data/${userId}.json`, JSON.stringify(userData, null, 4));
+                        await saveUserData(userId, userData);
                         
                         channel.sendChat(`💑 ${name} 친구가 바깥커플로 등록되었어!`);
                     }
@@ -1024,17 +1088,14 @@ client.on('chat', async (data, channel) => {
                         return;
                     }
                     
-                    const files = fs.readdirSync('user_data');
+                    const allUsers = await getAllUsers();
                     let userData = null, userId = null;
                     
-                    for (const file of files) {
-                        if (file.endsWith('.json')) {
-                            const data = JSON.parse(read(`user_data/${file}`));
-                            if (data.info?.name === name) {
-                                userData = data;
-                                userId = file.replace('.json', '');
-                                break;
-                            }
+                    for (const data of allUsers) {
+                        if (data.info?.name === name) {
+                            userData = data;
+                            userId = data.userId;
+                            break;
                         }
                     }
                     
@@ -1047,24 +1108,21 @@ client.on('chat', async (data, channel) => {
                     let partnerData = null, partnerId = null;
                     
                     if (partnerName) {
-                        for (const file of files) {
-                            if (file.endsWith('.json')) {
-                                const data = JSON.parse(read(`user_data/${file}`));
-                                if (data.info?.name === partnerName) {
-                                    partnerData = data;
-                                    partnerId = file.replace('.json', '');
-                                    break;
-                                }
+                        for (const data of allUsers) {
+                            if (data.info?.name === partnerName) {
+                                partnerData = data;
+                                partnerId = data.userId;
+                                break;
                             }
                         }
                     }
                     
                     userData.info.couple = { type: null, target: null, emoji: null };
-                    save(`user_data/${userId}.json`, JSON.stringify(userData, null, 4));
+                    await saveUserData(userId, userData);
                     
                     if (partnerData) {
                         partnerData.info.couple = { type: null, target: null, emoji: null };
-                        save(`user_data/${partnerId}.json`, JSON.stringify(partnerData, null, 4));
+                        await saveUserData(partnerId, partnerData);
                         channel.sendChat(`💔 ${name} 친구와 ${partnerName} 친구의 커플이 해제되었어!`);
                     } else {
                         channel.sendChat(`💔 ${name} 친구의 커플이 해제되었어!`);
@@ -1091,17 +1149,14 @@ client.on('chat', async (data, channel) => {
                         return;
                     }
                     
-                    const files = fs.readdirSync('user_data');
+                    const allUsers = await getAllUsers();
                     let userData = null, userId = null;
                     
-                    for (const file of files) {
-                        if (file.endsWith('.json')) {
-                            const data = JSON.parse(read(`user_data/${file}`));
-                            if (data.info?.name === name) {
-                                userData = data;
-                                userId = file.replace('.json', '');
-                                break;
-                            }
+                    for (const data of allUsers) {
+                        if (data.info?.name === name) {
+                            userData = data;
+                            userId = data.userId;
+                            break;
                         }
                     }
                     
@@ -1115,8 +1170,80 @@ client.on('chat', async (data, channel) => {
                         duration: duration
                     };
                     
-                    save(`user_data/${userId}.json`, JSON.stringify(userData, null, 4));
+                    await saveUserData(userId, userData);
                     channel.sendChat(`🧘 ${name} 친구의 ${duration} 명상이 시작되었어!`);
+                }
+            }
+
+            else if (msg.startsWith("/경험치추가 ")) {
+                if (!(sender.perm == 4 || sender.perm == 1)) {
+                    channel.sendChat("❌ 관리자만 사용할 수 있는 명령어야.");
+                } else {
+                    const args = msg.substring(7).trim().split(' ');
+                    
+                    if (args.length < 2) {
+                        channel.sendChat("❌ 형식: /경험치추가 [이름] [경험치]");
+                        return;
+                    }
+                    
+                    const name = args[0];
+                    const expToAdd = parseInt(args[1]);
+                    
+                    if (isNaN(expToAdd) || expToAdd <= 0) {
+                        channel.sendChat("❌ 경험치는 양수여야 해!");
+                        return;
+                    }
+                    
+                    const allUsers = await getAllUsers();
+                    let userData = null, userId = null;
+                    
+                    for (const data of allUsers) {
+                        if (data.info?.name === name) {
+                            userData = data;
+                            userId = data.userId;
+                            break;
+                        }
+                    }
+                    
+                    if (!userData) {
+                        channel.sendChat(`❌ "${name}" 이름을 가진 친구를 찾을 수 없어!`);
+                        return;
+                    }
+                    
+                    const startLevel = userData.level;
+                    userData.exp += expToAdd;
+                    userData.total_chat += expToAdd;
+                    
+                    while (true) {
+                        const requiredExp = getRequiredExp(userData.level);
+                        if (userData.exp >= requiredExp) {
+                            userData.level++;
+                            userData.exp -= requiredExp;
+                            
+                            if (!userData.max_level) userData.max_level = 1;
+                            if (userData.level > userData.max_level) {
+                                userData.max_level = userData.level;
+                            }
+
+                            if (userData.level == 51) {
+                                if (!userData.rainbow_stack) userData.rainbow_stack = 0;
+                                if (userData.rainbow_stack < 3) {
+                                    userData.rainbow_stack++;
+                                }
+                            }
+                        } else {
+                            break;
+                        }
+                    }
+                    
+                    await saveUserData(userId, userData);
+                    
+                    const levelEmoji = getLevelEmoji(userData.level);
+                    if (startLevel === userData.level) {
+                        channel.sendChat(`✅ ${name} 친구에게 경험치를 ${expToAdd.toComma()}만큼 추가했어!\n현재 레벨: Lv.${userData.level} ${levelEmoji}\n현재 경험치: ${userData.exp.toComma()}/${getRequiredExp(userData.level).toComma()}`);
+                    } else {
+                        channel.sendChat(`✅ ${name} 친구에게 경험치를 ${expToAdd.toComma()}만큼 추가했어!\n레벨: Lv.${startLevel} → Lv.${userData.level} ${levelEmoji}\n현재 경험치: ${userData.exp.toComma()}/${getRequiredExp(userData.level).toComma()}`);
+                    }
                 }
             }
 
@@ -1199,7 +1326,7 @@ client.on('chat', async (data, channel) => {
                 if (errors.length > 0) {
                     channel.sendChat(`❌ ${errors.join('\n')}`);
                 } else if (updates.length > 0) {
-                    save(`user_data/${sender.userId}.json`, JSON.stringify(user_data, null, 4));
+                    await saveUserData(sender.userId, user_data);
                     channel.sendChat(`✅ 정보가 수정되었어!\n${updates.join('\n')}`);
                 } else {
                     channel.sendChat(`❌ 수정할 정보가 없어..`);
@@ -1214,8 +1341,7 @@ client.on('chat', async (data, channel) => {
                     return;
                 }
                 
-                const files = fs.readdirSync('user_data');
-                const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                const userList = (await getAllUsers())
                     .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
                 
                 const matchedUsers = userList.filter(user => {
@@ -1252,8 +1378,7 @@ client.on('chat', async (data, channel) => {
             }
 
             else if (msg == "/성비") {
-                const files = fs.readdirSync('user_data');
-                const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                const userList = (await getAllUsers())
                     .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
                 
                 let maleCount = 0;
@@ -1283,16 +1408,13 @@ client.on('chat', async (data, channel) => {
                 const month = yearMonth.substring(2, 4);
                 const searchPrefix = `20${year}-${month}`;
                 
-                const files = fs.readdirSync('user_data');
+                const allUsers = await getAllUsers();
                 let targetUserData = null;
                 
-                for (const file of files) {
-                    if (file.endsWith('.json')) {
-                        const userData = JSON.parse(read(`user_data/${file}`));
-                        if (userData.info?.name === targetName) {
-                            targetUserData = userData;
-                            break;
-                        }
+                for (const userData of allUsers) {
+                    if (userData.info?.name === targetName) {
+                        targetUserData = userData;
+                        break;
                     }
                 }
                 
@@ -1354,12 +1476,11 @@ client.on('chat', async (data, channel) => {
                 const month = yearMonth.substring(2, 4);
                 const searchPrefix = `20${year}-${month}`;
                 
-                let chatLog = read('chat_log.json');
+                let chatLog = await getSaveData('chat_log');
                 if (!chatLog) {
                     channel.sendChat(`📅 20${year}년 ${month}월 글 수\n\n데이터가 없어🥺`);
                     return;
                 }
-                chatLog = JSON.parse(chatLog);
                 
                 const monthData = {};
                 Object.keys(chatLog).forEach(date => {
@@ -1412,8 +1533,7 @@ client.on('chat', async (data, channel) => {
                 const month = yearMonth.substring(2, 4);
                 const searchDate = `${year}.${month}`;
                 
-                const files = fs.readdirSync('user_data');
-                const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                const userList = (await getAllUsers())
                     .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
                 
                 const entryUsers = userList
@@ -1435,8 +1555,7 @@ client.on('chat', async (data, channel) => {
                     return;
                 }
                 
-                const files = fs.readdirSync('user_data');
-                const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                const userList = (await getAllUsers())
                     .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
                 
                 const locationUsers = userList
@@ -1456,8 +1575,7 @@ client.on('chat', async (data, channel) => {
                                    'ESTP', 'ESFP', 'ENFP', 'ENTP', 'ESTJ', 'ESFJ', 'ENFJ', 'ENTJ'];
                 
                 if (validMBTI.includes(searchMBTI)) {
-                    const files = fs.readdirSync('user_data');
-                    const userList = files.filter(file => file.endsWith('.json')).map(file => JSON.parse(read(`user_data/${file}`)))
+                    const userList = (await getAllUsers())
                         .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
                     
                     const mbtiUsers = userList
@@ -1478,14 +1596,12 @@ client.on('chat', async (data, channel) => {
             
             // 날짜별 채팅 수 기록 (전체)
             const today = new Date().getKoreanTime().toYYYYMMDD();
-            let chatLog = read('chat_log.json');
-            if (chatLog) {
-                chatLog = JSON.parse(chatLog);
-            } else {
+            let chatLog = await getSaveData('chat_log');
+            if (!chatLog) {
                 chatLog = {};
             }
             chatLog[today] = (chatLog[today] || 0) + 1;
-            save('chat_log.json', JSON.stringify(chatLog, null, 4));
+            await setSaveData('chat_log', chatLog);
             
             // 개인별 날짜별 채팅 수 기록
             if (!user_data.daily_chat_log) {
@@ -1498,17 +1614,15 @@ client.on('chat', async (data, channel) => {
                 user_data.level++;
                 user_data.exp -= requiredExp;
                 
-                // 최고 레벨 업데이트
                 if (!user_data.max_level) user_data.max_level = 1;
                 if (user_data.level > user_data.max_level) {
                     user_data.max_level = user_data.level;
-                    
-                    // 레벨 51 달성 시 무지개 스택 증가 (최대 3)
-                    if (user_data.max_level >= 51) {
-                        if (!user_data.rainbow_stack) user_data.rainbow_stack = 0;
-                        if (user_data.rainbow_stack < 3) {
-                            user_data.rainbow_stack++;
-                        }
+                }
+
+                if (user_data.level == 51) {
+                    if (!user_data.rainbow_stack) user_data.rainbow_stack = 0;
+                    if (user_data.rainbow_stack < 3) {
+                        user_data.rainbow_stack++;
                     }
                 }
                 
@@ -1562,7 +1676,7 @@ client.on('chat', async (data, channel) => {
                 }
             }
             
-            save(`user_data/${sender.userId}.json`, JSON.stringify(user_data, null, 4));
+            await saveUserData(sender.userId, user_data);
         }
 
         
@@ -1580,14 +1694,12 @@ client.on('disconnected', (reason) => {
 });
 
 client.on('user_join', async (joinLog, channel, user, feed) => {
-    let user_data = read(`user_data/${user.userId}.json`);
-    if (user_data) {
-        user_data = JSON.parse(user_data);
-    } else {
+    let user_data = await getUserData(user.userId);
+    if (!user_data) {
         const newName = user.nickname.split(" ")[0];
         
         // 이름 중복 체크 (처음 입방하는 유저만)
-        if (isNameDuplicated(newName, user.userId)) {
+        if (await isNameDuplicated(newName, user.userId)) {
             channel.sendChat(`${newName}친구! 그 이름은 이미 사용중이야. 다른 이름으로 바꿔줘!`);
         }
         
@@ -1649,44 +1761,41 @@ client.on('user_join', async (joinLog, channel, user, feed) => {
 🚼새친구가 입방절차를 잘할수있게
 기다려주자👀`);
     }
-    save(`user_data/${user.userId}.json`, JSON.stringify(user_data, null, 4));
+    await saveUserData(user.userId, user_data);
 });
 
 client.on('user_join', async (joinLog, channel, user, feed) => {
-    let user_data = read(`user_data/${user.userId}.json`);
+    let user_data = await getUserData(user.userId);
     if (user_data) {
-        user_data = JSON.parse(user_data);
         user_data.entry_log.push({
             type: "퇴장",
             date: new Date().toString(),
             name: user.nickname
         });
-        save(`user_data/${user.userId}.json`, JSON.stringify(user_data, null, 4));
+        await saveUserData(user.userId, user_data);
     }
 });
   
-client.on('user_left', (leftLog, channel, user, feed) => {
-    let user_data = read(`user_data/${user.userId}.json`);
+client.on('user_left', async (leftLog, channel, user, feed) => {
+    let user_data = await getUserData(user.userId);
     if (user_data) {
         const kicker = channel.getUserInfo(leftLog.sender);
-        user_data = JSON.parse(user_data);
         user_data.entry_log.push({
             type: `강퇴 by ${kicker.nickname}`,
             date: new Date().toString(),
             name: user.nickname
         });
-        save(`user_data/${user.userId}.json`, JSON.stringify(user_data, null, 4));
+        await saveUserData(user.userId, user_data);
     }
 })
   
-client.on('profile_changed', (channel, lastInfo, user) => {
-    let user_data = read(`user_data/${user.userId}.json`);
+client.on('profile_changed', async (channel, lastInfo, user) => {
+    let user_data = await getUserData(user.userId);
     if (user_data) {
-        user_data = JSON.parse(user_data);
         const newName = user.nickname.split(" ")[0];
         
         // 이름 중복 체크
-        if (isNameDuplicated(newName, user.userId)) {
+        if (await isNameDuplicated(newName, user.userId)) {
             channel.sendChat(`${newName}친구! 그 이름은 이미 사용중이야. 다른 이름으로 바꿔줘!`);
         }
         
@@ -1698,7 +1807,7 @@ client.on('profile_changed', (channel, lastInfo, user) => {
             name: user.nickname,
             date: new Date().toString()
         });
-        save(`user_data/${user.userId}.json`, JSON.stringify(user_data, null, 4));
+        await saveUserData(user.userId, user_data);
         
         const recentLogs = user_data.profile_change_log.slice(-3);
         const logMessages = recentLogs.map(log => {

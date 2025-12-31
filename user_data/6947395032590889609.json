@@ -1,0 +1,58 @@
+{
+    "nickname": "시우 남",
+    "last_attend": "Wed Dec 31 2025 00:00:35 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 15:35:14 GMT+0000 (Coordinated Universal Time)",
+            "name": "시우 남 🧘"
+        }
+    ],
+    "info": {
+        "name": "시우",
+        "role": "친구",
+        "date": "25.09.09",
+        "mbti": "ISFJ",
+        "gender": "남자",
+        "address": "강원",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            "월간 메시지 메달 3회 🎖️",
+            null,
+            "출석 1위 7회 💯",
+            "벙개요정 8회 ⚡",
+            "𝕄𝕪 𝕤𝕖𝕔𝕠𝕟𝕕 𝕝𝕚𝕗𝕖, 𝕋𝕙𝕒𝕚𝕝𝕒𝕟𝕕"
+        ]
+    },
+    "level": 87,
+    "exp": 402,
+    "total_chat": 106702,
+    "last_chat": "Tue Dec 30 2025 15:30:05 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "시우 남 🧘",
+            "name": "시우 남",
+            "date": "Sat Dec 27 2025 04:35:50 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 472,
+        "2025-12-26": 53,
+        "2025-12-27": 286,
+        "2025-12-28": 407,
+        "2025-12-29": 141,
+        "2025-12-30": 315,
+        "2025-12-31": 28
+    },
+    "max_level": 87,
+    "rainbow_stack": 1,
+    "meditation": null
+}

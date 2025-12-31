@@ -1,0 +1,82 @@
+{
+    "nickname": "고령 남 🐣",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 05:45:12 GMT+0000 (Coordinated Universal Time)",
+            "name": "아재"
+        },
+        {
+            "type": "퇴장",
+            "date": "Thu Dec 25 2025 05:45:12 GMT+0000 (Coordinated Universal Time)",
+            "name": "아재"
+        },
+        {
+            "type": "강퇴 by 으리 남",
+            "date": "Thu Dec 25 2025 05:52:09 GMT+0000 (Coordinated Universal Time)",
+            "name": "고령 남 🐣"
+        }
+    ],
+    "info": {
+        "name": "고령",
+        "role": "친구",
+        "date": "25.12.25",
+        "mbti": null,
+        "gender": "남자",
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 8,
+    "total_chat": 8,
+    "last_chat": "Thu Dec 25 2025 05:52:04 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "아재",
+            "name": "아재 남",
+            "date": "Thu Dec 25 2025 05:46:11 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "아재 남",
+            "name": "노인 남",
+            "date": "Thu Dec 25 2025 05:46:42 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "노인 남",
+            "name": "노인 남 🐣",
+            "date": "Thu Dec 25 2025 05:48:05 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "노인 남 🐣",
+            "name": "노인 남 🐣",
+            "date": "Thu Dec 25 2025 05:48:42 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "노인 남 🐣",
+            "name": "고령 남 🐣",
+            "date": "Thu Dec 25 2025 05:51:51 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 8
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

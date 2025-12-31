@@ -1,0 +1,74 @@
+{
+    "nickname": "둥이 남 🧘‍♂️",
+    "last_attend": "Mon Dec 29 2025 00:00:25 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 02:40:39 GMT+0000 (Coordinated Universal Time)",
+            "name": "둥이 남 🧘‍♂️"
+        }
+    ],
+    "info": {
+        "name": "둥이",
+        "role": "친구",
+        "date": "25.05.13",
+        "mbti": "INFJ",
+        "gender": "남자",
+        "address": "인천",
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            "월간 메시지 메달 1회 🎖️",
+            null,
+            "출석 1위 6회 💯",
+            "벙개요정 10회 ⚡",
+            null
+        ]
+    },
+    "level": 7,
+    "exp": 283,
+    "total_chat": 1583,
+    "last_chat": "Mon Dec 29 2025 11:46:33 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "둥이 남 🧘‍♂️",
+            "name": "둥이 남 🧘‍♂️🌧",
+            "date": "Thu Dec 25 2025 05:19:32 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "둥이 남 🧘‍♂️🌧",
+            "name": "둥이 남 🧘‍♂️",
+            "date": "Thu Dec 25 2025 05:19:41 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "둥이 남 🧘‍♂️",
+            "name": "둥이 남 🧘‍♂️",
+            "date": "Fri Dec 26 2025 06:06:33 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "둥이 남 🧘‍♂️",
+            "name": "둥이 남 🧘‍♂️",
+            "date": "Sun Dec 28 2025 04:44:22 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 33,
+        "2025-12-26": 340,
+        "2025-12-27": 265,
+        "2025-12-28": 605,
+        "2025-12-29": 340
+    },
+    "max_level": 7,
+    "rainbow_stack": 0,
+    "meditation": {
+        "startTime": "Fri Dec 26 2025 06:23:10 GMT+0000 (Coordinated Universal Time)",
+        "duration": "1주"
+    }
+}

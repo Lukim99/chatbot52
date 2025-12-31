@@ -1,0 +1,73 @@
+{
+    "nickname": "팜므 여 🐣",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Mon Dec 29 2025 08:47:10 GMT+0000 (Coordinated Universal Time)",
+            "name": "행복"
+        },
+        {
+            "type": "퇴장",
+            "date": "Mon Dec 29 2025 08:47:10 GMT+0000 (Coordinated Universal Time)",
+            "name": "행복"
+        }
+    ],
+    "info": {
+        "name": "팜므",
+        "role": "친구",
+        "date": "25.12.29",
+        "mbti": "ESTJ",
+        "gender": "여자",
+        "address": "홍천",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 42,
+    "total_chat": 42,
+    "last_chat": "Tue Dec 30 2025 13:23:05 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "행복",
+            "name": "행복 여",
+            "date": "Mon Dec 29 2025 08:47:33 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "행복 여",
+            "name": "행복 여",
+            "date": "Mon Dec 29 2025 08:48:55 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "행복 여",
+            "name": "팜프 여",
+            "date": "Mon Dec 29 2025 08:50:01 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "팜프 여",
+            "name": "팜므 여 🐣",
+            "date": "Mon Dec 29 2025 08:50:43 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-29": 11,
+        "2025-12-30": 31
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

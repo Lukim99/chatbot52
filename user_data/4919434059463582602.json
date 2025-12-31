@@ -1,0 +1,63 @@
+{
+    "nickname": "순이 여 🧘🏿‍♀️",
+    "last_attend": "Wed Dec 31 2025 00:02:38 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 17:35:08 GMT+0000 (Coordinated Universal Time)",
+            "name": "순이 여 🧘🏻‍♀️"
+        }
+    ],
+    "info": {
+        "name": "순이",
+        "role": "친구",
+        "date": "25.12.15",
+        "mbti": "ENTJ",
+        "gender": "여자",
+        "address": "경북",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 10,
+    "exp": 115,
+    "total_chat": 2315,
+    "last_chat": "Tue Dec 30 2025 15:55:30 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "순이 여 🧘🏻‍♀️",
+            "name": "순이 여 🧘🏻‍♀️",
+            "date": "Wed Dec 24 2025 18:05:53 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "순이 여 🧘🏻‍♀️",
+            "name": "순이 여 🧘🏿‍♀️",
+            "date": "Wed Dec 24 2025 18:06:01 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 432,
+        "2025-12-26": 216,
+        "2025-12-27": 112,
+        "2025-12-28": 544,
+        "2025-12-29": 590,
+        "2025-12-30": 405,
+        "2025-12-31": 16
+    },
+    "max_level": 10,
+    "rainbow_stack": 0,
+    "meditation": null
+}

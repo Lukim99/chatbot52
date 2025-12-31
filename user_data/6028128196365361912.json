@@ -1,0 +1,58 @@
+{
+    "nickname": "순둥 남",
+    "last_attend": "Wed Dec 31 2025 00:03:05 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 15:34:31 GMT+0000 (Coordinated Universal Time)",
+            "name": "승윤 남"
+        }
+    ],
+    "info": {
+        "name": "순둥",
+        "role": "친구",
+        "date": "25.10.21",
+        "mbti": "ESFJ",
+        "gender": "남자",
+        "address": "경기 화성",
+        "gimidol": "기혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            "월간 메시지 메달 1회 🎖️",
+            null,
+            null,
+            "벙개요정 4회 ⚡",
+            "순둥이는 못말려🕹"
+        ]
+    },
+    "level": 5,
+    "exp": 172,
+    "total_chat": 972,
+    "last_chat": "Tue Dec 30 2025 23:48:09 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "순둥 남 (승윤)",
+            "name": "순둥 남",
+            "date": "Sun Dec 28 2025 15:00:07 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 201,
+        "2025-12-26": 19,
+        "2025-12-27": 30,
+        "2025-12-28": 80,
+        "2025-12-29": 235,
+        "2025-12-30": 358,
+        "2025-12-31": 49
+    },
+    "max_level": 5,
+    "rainbow_stack": 0,
+    "meditation": null
+}

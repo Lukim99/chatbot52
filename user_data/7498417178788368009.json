@@ -1,0 +1,54 @@
+{
+    "nickname": "커피 마시는 어피치",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Mon Dec 29 2025 16:32:35 GMT+0000 (Coordinated Universal Time)",
+            "name": "커피 마시는 어피치"
+        },
+        {
+            "type": "퇴장",
+            "date": "Mon Dec 29 2025 16:32:35 GMT+0000 (Coordinated Universal Time)",
+            "name": "커피 마시는 어피치"
+        },
+        {
+            "type": "강퇴 by 제니 여",
+            "date": "Mon Dec 29 2025 16:34:38 GMT+0000 (Coordinated Universal Time)",
+            "name": "커피 마시는 어피치"
+        }
+    ],
+    "info": {
+        "name": "커피",
+        "role": "친구",
+        "date": "25.05.21",
+        "mbti": "ESFJ",
+        "gender": "남자",
+        "address": "경북 울진",
+        "gimidol": "기혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            "출석 1위 1회 💯",
+            "벙개요정 6회 ⚡",
+            "🎵우리방 명가수🎶"
+        ]
+    },
+    "level": 1,
+    "exp": 0,
+    "total_chat": 0,
+    "last_chat": null,
+    "profile_change_log": [],
+    "daily_chat_log": {},
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

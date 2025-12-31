@@ -1,0 +1,73 @@
+{
+    "nickname": "상우 남",
+    "last_attend": "Wed Dec 31 2025 00:34:03 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 02:39:33 GMT+0000 (Coordinated Universal Time)",
+            "name": "이킴 남"
+        },
+        {
+            "type": "입장",
+            "date": "Sat Dec 27 2025 07:07:43 GMT+0000 (Coordinated Universal Time)",
+            "name": "상우 남 (이킴)"
+        },
+        {
+            "type": "퇴장",
+            "date": "Sat Dec 27 2025 07:07:43 GMT+0000 (Coordinated Universal Time)",
+            "name": "상우 남 (이킴)"
+        }
+    ],
+    "info": {
+        "name": "상우",
+        "role": "친구",
+        "date": "25.09.30",
+        "mbti": "ESTP",
+        "gender": "남자",
+        "address": "경북 포항",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            "월간 메시지 메달 1회 🎖️",
+            "퀴즈의 달인 1회 📖",
+            "출석 1위 4회 💯",
+            "벙개요정 6회 ⚡",
+            null
+        ]
+    },
+    "level": 100,
+    "exp": 524,
+    "total_chat": 130224,
+    "last_chat": "Tue Dec 30 2025 23:27:47 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "이킴 남",
+            "name": "상우 남 (이킴)",
+            "date": "Thu Dec 25 2025 22:27:41 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "상우 남 (이킴)",
+            "name": "상우 남",
+            "date": "Sun Dec 28 2025 15:56:35 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 24,
+        "2025-12-26": 89,
+        "2025-12-27": 39,
+        "2025-12-28": 42,
+        "2025-12-29": 307,
+        "2025-12-30": 201,
+        "2025-12-31": 4
+    },
+    "max_level": 100,
+    "rainbow_stack": 1,
+    "meditation": null
+}

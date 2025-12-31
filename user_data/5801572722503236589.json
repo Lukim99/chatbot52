@@ -1,0 +1,81 @@
+{
+    "nickname": "새벽",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Sat Dec 27 2025 18:11:25 GMT+0000 (Coordinated Universal Time)",
+            "name": "새벽"
+        },
+        {
+            "type": "퇴장",
+            "date": "Sat Dec 27 2025 18:11:25 GMT+0000 (Coordinated Universal Time)",
+            "name": "새벽"
+        },
+        {
+            "type": "강퇴 by 시우 남",
+            "date": "Sat Dec 27 2025 18:12:52 GMT+0000 (Coordinated Universal Time)",
+            "name": "새벽"
+        },
+        {
+            "type": "입장",
+            "date": "Sat Dec 27 2025 18:13:19 GMT+0000 (Coordinated Universal Time)",
+            "name": "유유 여"
+        },
+        {
+            "type": "퇴장",
+            "date": "Sat Dec 27 2025 18:13:19 GMT+0000 (Coordinated Universal Time)",
+            "name": "유유 여"
+        },
+        {
+            "type": "강퇴 by 시우 남",
+            "date": "Sat Dec 27 2025 18:14:23 GMT+0000 (Coordinated Universal Time)",
+            "name": "유유 여"
+        },
+        {
+            "type": "입장",
+            "date": "Sat Dec 27 2025 18:15:01 GMT+0000 (Coordinated Universal Time)",
+            "name": "유유 여"
+        },
+        {
+            "type": "퇴장",
+            "date": "Sat Dec 27 2025 18:15:01 GMT+0000 (Coordinated Universal Time)",
+            "name": "유유 여"
+        }
+    ],
+    "info": {
+        "name": "새벽",
+        "role": "친구",
+        "date": "25.12.27",
+        "mbti": null,
+        "gender": null,
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 5,
+    "total_chat": 5,
+    "last_chat": "Sat Dec 27 2025 18:17:13 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-28": 5
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

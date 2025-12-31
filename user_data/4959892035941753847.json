@@ -1,0 +1,47 @@
+{
+    "nickname": "혀니 여",
+    "last_attend": "Thu Dec 25 2025 12:00:42 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 03:00:42 GMT+0000 (Coordinated Universal Time)",
+            "name": "혀니 여"
+        }
+    ],
+    "info": {
+        "name": "혀니",
+        "role": "친구",
+        "date": "25.07.13",
+        "mbti": "ISTP",
+        "gender": "여자",
+        "address": "전북 전주",
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            "출석 1위 3회 💯",
+            "벙개요정 7회 ⚡",
+            "혀니 ❤️ 버디"
+        ]
+    },
+    "level": 1,
+    "exp": 6,
+    "total_chat": 6,
+    "last_chat": "Fri Dec 26 2025 09:16:42 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 5,
+        "2025-12-26": 1
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

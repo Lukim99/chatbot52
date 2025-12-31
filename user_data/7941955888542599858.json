@@ -1,0 +1,52 @@
+{
+    "nickname": "천사 남",
+    "last_attend": "Wed Dec 31 2025 00:00:00 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 00:26:51 GMT+0000 (Coordinated Universal Time)",
+            "name": "천사 남"
+        }
+    ],
+    "info": {
+        "name": "천사",
+        "role": "친구",
+        "date": "25.06.17",
+        "mbti": "ENFP",
+        "gender": "남자",
+        "address": "청주&천안",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            "출석 1위 3회 💯",
+            "벙개요정 2회 ⚡",
+            "오톡계 천사는 나!"
+        ]
+    },
+    "level": 5,
+    "exp": 186,
+    "total_chat": 986,
+    "last_chat": "Tue Dec 30 2025 16:35:44 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 219,
+        "2025-12-26": 103,
+        "2025-12-27": 10,
+        "2025-12-28": 54,
+        "2025-12-29": 456,
+        "2025-12-30": 116,
+        "2025-12-31": 28
+    },
+    "max_level": 5,
+    "rainbow_stack": 0,
+    "meditation": null
+}

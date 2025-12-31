@@ -1,0 +1,69 @@
+{
+    "nickname": "피치 여 🐣",
+    "last_attend": "Tue Dec 30 2025 00:01:38 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Sun Dec 28 2025 14:53:28 GMT+0000 (Coordinated Universal Time)",
+            "name": "휴가 즐기는 어피치"
+        },
+        {
+            "type": "퇴장",
+            "date": "Sun Dec 28 2025 14:53:28 GMT+0000 (Coordinated Universal Time)",
+            "name": "휴가 즐기는 어피치"
+        }
+    ],
+    "info": {
+        "name": "피치",
+        "role": "친구",
+        "date": "25.12.29",
+        "mbti": "INFJ",
+        "gender": "여자",
+        "address": "서울",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            "🍑 피치여왕 🄿🄴🄰🄲🄷 🍑"
+        ]
+    },
+    "level": 1,
+    "exp": 184,
+    "total_chat": 184,
+    "last_chat": "Tue Dec 30 2025 14:34:31 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "휴가 즐기는 어피치",
+            "name": "지인 여",
+            "date": "Sun Dec 28 2025 14:58:25 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "지인 여",
+            "name": "피치 여",
+            "date": "Sun Dec 28 2025 15:00:39 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "피치 여",
+            "name": "피치 여 🐣",
+            "date": "Sun Dec 28 2025 15:04:48 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-28": 5,
+        "2025-12-29": 79,
+        "2025-12-30": 100
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

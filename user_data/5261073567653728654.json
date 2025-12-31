@@ -1,0 +1,50 @@
+{
+    "nickname": "AI팟타이",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Sat Dec 27 2025 11:15:42 GMT+0000 (Coordinated Universal Time)",
+            "name": "AI팟타이"
+        }
+    ],
+    "info": {
+        "name": "AI팟타이",
+        "role": "친구",
+        "date": "25.12.27",
+        "mbti": "ESFP",
+        "gender": "여자",
+        "address": "경기",
+        "gimidol": "기혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            "월간 메시지 메달 6회 🎖️",
+            null,
+            "출석 1위 18회 💯",
+            "벙개요정 12회 ⚡",
+            "박효신😍대장나무🌳"
+        ]
+    },
+    "level": 2,
+    "exp": 4,
+    "total_chat": 204,
+    "last_chat": "Tue Dec 30 2025 15:11:51 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-27": 35,
+        "2025-12-28": 61,
+        "2025-12-29": 25,
+        "2025-12-30": 74,
+        "2025-12-31": 9
+    },
+    "max_level": 2,
+    "rainbow_stack": 0,
+    "meditation": null
+}

@@ -1,0 +1,61 @@
+{
+    "nickname": "호성 남",
+    "last_attend": "Mon Dec 29 2025 00:00:00 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 15:37:34 GMT+0000 (Coordinated Universal Time)",
+            "name": "덕원 남"
+        }
+    ],
+    "info": {
+        "name": "호성",
+        "role": "친구",
+        "date": "25.06.27",
+        "mbti": "ESFP",
+        "gender": "남자",
+        "address": "경기",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            "출석 1위 5회 💯",
+            "벙개요정 3회 ⚡",
+            null
+        ]
+    },
+    "level": 3,
+    "exp": 128,
+    "total_chat": 528,
+    "last_chat": "Mon Dec 29 2025 12:08:59 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "호성 남 (덕원)",
+            "name": "호성 남 (덕원)",
+            "date": "Fri Dec 26 2025 05:41:26 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "호성 남 (덕원)",
+            "name": "호성 남",
+            "date": "Sun Dec 28 2025 15:10:56 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 107,
+        "2025-12-26": 130,
+        "2025-12-27": 82,
+        "2025-12-28": 109,
+        "2025-12-29": 100
+    },
+    "max_level": 3,
+    "rainbow_stack": 0,
+    "meditation": null
+}

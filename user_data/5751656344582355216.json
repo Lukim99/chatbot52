@@ -1,0 +1,47 @@
+{
+    "nickname": "지오 여",
+    "last_attend": "Tue Dec 30 2025 13:21:01 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Fri Dec 26 2025 00:17:02 GMT+0000 (Coordinated Universal Time)",
+            "name": "지오 여"
+        }
+    ],
+    "info": {
+        "name": "지오",
+        "role": "친구",
+        "date": "25.11.15",
+        "mbti": "ISTJ",
+        "gender": "여자",
+        "address": "서울",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 37,
+    "total_chat": 37,
+    "last_chat": "Tue Dec 30 2025 09:02:12 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-26": 5,
+        "2025-12-30": 32
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

@@ -1,0 +1,51 @@
+{
+    "nickname": "😈차차👿",
+    "last_attend": "Mon Dec 29 2025 13:47:45 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 19:21:31 GMT+0000 (Coordinated Universal Time)",
+            "name": "😈차차👿"
+        }
+    ],
+    "info": {
+        "name": "😈차차👿",
+        "role": "친구",
+        "date": "25.12.24",
+        "mbti": null,
+        "gender": null,
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 3,
+    "exp": 150,
+    "total_chat": 550,
+    "last_chat": "Tue Dec 30 2025 13:30:58 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 156,
+        "2025-12-26": 37,
+        "2025-12-27": 24,
+        "2025-12-28": 39,
+        "2025-12-29": 73,
+        "2025-12-30": 221
+    },
+    "max_level": 3,
+    "rainbow_stack": 0,
+    "meditation": null
+}

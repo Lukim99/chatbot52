@@ -1,0 +1,48 @@
+{
+    "nickname": "마늘 남",
+    "last_attend": "Sun Dec 28 2025 04:33:04 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 19:57:30 GMT+0000 (Coordinated Universal Time)",
+            "name": "마늘 남"
+        }
+    ],
+    "info": {
+        "name": "마늘",
+        "role": "친구",
+        "date": "25.04.28",
+        "mbti": null,
+        "gender": "남자",
+        "address": "전북 군산",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 20,
+    "total_chat": 20,
+    "last_chat": "Sun Dec 28 2025 00:18:19 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 11,
+        "2025-12-27": 4,
+        "2025-12-28": 5
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

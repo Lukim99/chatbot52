@@ -1,0 +1,77 @@
+{
+    "nickname": "솔린 남 🐣",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 21:39:23 GMT+0000 (Coordinated Universal Time)",
+            "name": "발류 남 🐣"
+        }
+    ],
+    "info": {
+        "name": "솔린",
+        "role": "친구",
+        "date": "25.12.25",
+        "mbti": null,
+        "gender": "남자",
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 2,
+    "exp": 22,
+    "total_chat": 222,
+    "last_chat": "Fri Dec 26 2025 09:17:07 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "발류 남 🐣",
+            "name": "발류 남 🐣",
+            "date": "Fri Dec 26 2025 00:40:14 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "발류 남 🐣",
+            "name": "발류 남 🐣",
+            "date": "Fri Dec 26 2025 00:56:10 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "발류 남 🐣",
+            "name": "발류 남 🐣",
+            "date": "Fri Dec 26 2025 00:57:36 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "발류 남 🐣",
+            "name": "발류 남 🐣",
+            "date": "Fri Dec 26 2025 05:00:25 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "발류 남 🐣",
+            "name": "솔린 남 🐣",
+            "date": "Fri Dec 26 2025 05:18:39 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "솔린 남 🐣",
+            "name": "솔린 남 🐣",
+            "date": "Fri Dec 26 2025 05:20:20 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-26": 222
+    },
+    "max_level": 2,
+    "rainbow_stack": 0,
+    "meditation": null
+}

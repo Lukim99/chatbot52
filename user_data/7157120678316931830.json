@@ -1,0 +1,58 @@
+{
+    "nickname": "하루 남",
+    "last_attend": "Mon Dec 29 2025 10:38:13 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 17:02:59 GMT+0000 (Coordinated Universal Time)",
+            "name": "하루 남 🧘‍♂️"
+        }
+    ],
+    "info": {
+        "name": "하루",
+        "role": "친구",
+        "date": "25.11.12",
+        "mbti": "INFP",
+        "gender": "남자",
+        "address": "대전",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            "월간 메시지 메달 1회 🎖️",
+            null,
+            null,
+            "벙개요정 3회 ⚡",
+            "[ 𝓔𝓵𝓮𝓶𝓮𝓷𝓽𝓪𝓵 𝓛𝓸𝓻𝓭 ]"
+        ]
+    },
+    "level": 6,
+    "exp": 126,
+    "total_chat": 1126,
+    "last_chat": "Tue Dec 30 2025 23:39:31 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "하루 남 🧘‍♂️",
+            "name": "하루 남",
+            "date": "Sat Dec 27 2025 20:12:07 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 296,
+        "2025-12-26": 169,
+        "2025-12-27": 89,
+        "2025-12-28": 144,
+        "2025-12-29": 242,
+        "2025-12-30": 173,
+        "2025-12-31": 13
+    },
+    "max_level": 6,
+    "rainbow_stack": 0,
+    "meditation": null
+}

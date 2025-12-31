@@ -1,0 +1,73 @@
+{
+    "nickname": "짱이 남",
+    "last_attend": "Wed Dec 31 2025 00:00:01 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 20:09:21 GMT+0000 (Coordinated Universal Time)",
+            "name": "짱이 남"
+        }
+    ],
+    "info": {
+        "name": "짱이",
+        "role": "친구",
+        "date": "25.12.04",
+        "mbti": "ESFP",
+        "gender": "남자",
+        "address": "경기 수원",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            "벙개요정 6회 ⚡",
+            "💕 Ṃäṩċöẗ 짱이 💕"
+        ]
+    },
+    "level": 12,
+    "exp": 211,
+    "total_chat": 3111,
+    "last_chat": "Tue Dec 30 2025 16:39:47 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "짱이 남",
+            "name": "짱이 남",
+            "date": "Fri Dec 26 2025 06:10:22 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "짱이 남",
+            "name": "짱이 남",
+            "date": "Sat Dec 27 2025 20:25:19 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "짱이 남",
+            "name": "짱이 남",
+            "date": "Sat Dec 27 2025 21:00:37 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "짱이 남",
+            "name": "짱이 남",
+            "date": "Tue Dec 30 2025 08:42:45 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 436,
+        "2025-12-26": 401,
+        "2025-12-27": 217,
+        "2025-12-28": 558,
+        "2025-12-29": 442,
+        "2025-12-30": 895,
+        "2025-12-31": 162
+    },
+    "max_level": 12,
+    "rainbow_stack": 0,
+    "meditation": null
+}

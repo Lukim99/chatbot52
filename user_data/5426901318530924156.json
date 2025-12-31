@@ -1,0 +1,58 @@
+{
+    "nickname": "제니 여",
+    "last_attend": "Wed Dec 31 2025 00:14:06 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 15:38:37 GMT+0000 (Coordinated Universal Time)",
+            "name": "제니 여 🧘🏻‍♀️"
+        }
+    ],
+    "info": {
+        "name": "제니",
+        "role": "친구",
+        "date": "25.06.09",
+        "mbti": "ISTP",
+        "gender": "여자",
+        "address": "캐나다",
+        "gimidol": "기혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            "월간 메시지 메달 4회",
+            null,
+            "출석 1위 9회 💯",
+            "벙개요정 13회 ⚡",
+            "𝕀 𝕝𝕚𝕜𝕖 ✨ 𝕁𝕖𝕟𝕟𝕪"
+        ]
+    },
+    "level": 107,
+    "exp": 1049,
+    "total_chat": 143349,
+    "last_chat": "Tue Dec 30 2025 16:34:48 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "제니 여",
+            "name": "제니 여",
+            "date": "Tue Dec 30 2025 00:32:13 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 568,
+        "2025-12-26": 220,
+        "2025-12-27": 111,
+        "2025-12-28": 557,
+        "2025-12-29": 145,
+        "2025-12-30": 210,
+        "2025-12-31": 38
+    },
+    "max_level": 107,
+    "rainbow_stack": 1,
+    "meditation": null
+}

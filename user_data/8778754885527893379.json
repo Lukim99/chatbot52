@@ -1,0 +1,63 @@
+{
+    "nickname": "봉봉 여",
+    "last_attend": "Tue Dec 30 2025 09:40:37 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Fri Dec 26 2025 02:02:29 GMT+0000 (Coordinated Universal Time)",
+            "name": "봉봉 여"
+        },
+        {
+            "type": "퇴장",
+            "date": "Fri Dec 26 2025 02:02:29 GMT+0000 (Coordinated Universal Time)",
+            "name": "봉봉 여"
+        },
+        {
+            "type": "입장",
+            "date": "Tue Dec 30 2025 00:29:28 GMT+0000 (Coordinated Universal Time)",
+            "name": "봉봉 여"
+        },
+        {
+            "type": "퇴장",
+            "date": "Tue Dec 30 2025 00:29:28 GMT+0000 (Coordinated Universal Time)",
+            "name": "봉봉 여"
+        }
+    ],
+    "info": {
+        "name": "봉봉",
+        "role": "친구",
+        "date": "25.11.12",
+        "mbti": "INFJ",
+        "gender": "여자",
+        "address": "경기",
+        "gimidol": "기혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 4,
+    "exp": 43,
+    "total_chat": 643,
+    "last_chat": "Tue Dec 30 2025 08:24:25 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-26": 194,
+        "2025-12-29": 345,
+        "2025-12-30": 104
+    },
+    "max_level": 4,
+    "rainbow_stack": 0,
+    "meditation": null
+}

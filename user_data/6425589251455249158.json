@@ -1,0 +1,52 @@
+{
+    "nickname": "승우 여",
+    "last_attend": "Wed Dec 31 2025 00:09:40 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 01:38:36 GMT+0000 (Coordinated Universal Time)",
+            "name": "승우 여"
+        }
+    ],
+    "info": {
+        "name": "승우",
+        "role": "친구",
+        "date": "25.09.12",
+        "mbti": "INFJ",
+        "gender": "여자",
+        "address": "서울",
+        "gimidol": "기혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            "출석 1위 1회 💯",
+            "벙개요정 3회 ⚡",
+            "돌발소녀 승우"
+        ]
+    },
+    "level": 4,
+    "exp": 154,
+    "total_chat": 754,
+    "last_chat": "Tue Dec 30 2025 23:42:21 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 47,
+        "2025-12-26": 218,
+        "2025-12-27": 82,
+        "2025-12-28": 220,
+        "2025-12-29": 117,
+        "2025-12-30": 67,
+        "2025-12-31": 3
+    },
+    "max_level": 4,
+    "rainbow_stack": 0,
+    "meditation": null
+}

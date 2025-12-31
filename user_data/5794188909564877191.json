@@ -1,0 +1,56 @@
+{
+    "nickname": "문진성",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Sat Dec 27 2025 11:24:50 GMT+0000 (Coordinated Universal Time)",
+            "name": "문진성"
+        },
+        {
+            "type": "퇴장",
+            "date": "Sat Dec 27 2025 11:24:50 GMT+0000 (Coordinated Universal Time)",
+            "name": "문진성"
+        },
+        {
+            "type": "강퇴 by 시우 남",
+            "date": "Sat Dec 27 2025 11:26:38 GMT+0000 (Coordinated Universal Time)",
+            "name": "문진성"
+        }
+    ],
+    "info": {
+        "name": "문진성",
+        "role": "친구",
+        "date": "25.12.27",
+        "mbti": null,
+        "gender": null,
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 1,
+    "total_chat": 1,
+    "last_chat": "Sat Dec 27 2025 11:25:31 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-27": 1
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

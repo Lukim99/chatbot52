@@ -1,0 +1,46 @@
+{
+    "nickname": "레몬 여",
+    "last_attend": "Thu Dec 25 2025 00:54:27 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 15:54:27 GMT+0000 (Coordinated Universal Time)",
+            "name": "레몬 여"
+        }
+    ],
+    "info": {
+        "name": "레몬",
+        "role": "친구",
+        "date": "25.10.09",
+        "mbti": "INFP",
+        "gender": "여자",
+        "address": "경기",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 15,
+    "total_chat": 15,
+    "last_chat": "Thu Dec 25 2025 04:32:20 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 15
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

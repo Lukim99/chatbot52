@@ -1,0 +1,48 @@
+{
+    "nickname": "당근 여",
+    "last_attend": "Sat Dec 27 2025 13:08:32 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 05:56:14 GMT+0000 (Coordinated Universal Time)",
+            "name": "당근 여"
+        }
+    ],
+    "info": {
+        "name": "당근",
+        "role": "친구",
+        "date": "25.04.25",
+        "mbti": "ISFJ",
+        "gender": "여자",
+        "address": "서울",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            "출석 1위 1회 💯",
+            "벙개요정 7회 ⚡",
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 47,
+    "total_chat": 47,
+    "last_chat": "Sun Dec 28 2025 13:30:37 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 6,
+        "2025-12-27": 23,
+        "2025-12-28": 18
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

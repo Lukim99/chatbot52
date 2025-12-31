@@ -1,0 +1,52 @@
+{
+    "nickname": "봉구 남",
+    "last_attend": "Wed Dec 31 2025 00:00:02 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 16:52:44 GMT+0000 (Coordinated Universal Time)",
+            "name": "봉구 남"
+        }
+    ],
+    "info": {
+        "name": "봉구",
+        "role": "친구",
+        "date": "25.10.21",
+        "mbti": "ENTP",
+        "gender": "남자",
+        "address": "전북",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            "월간 메시지 메달 1회 🎖️",
+            null,
+            null,
+            "벙개요정 4회 ⚡",
+            "[ 𝓗𝓸𝓶𝓶𝓮 𝓕𝓪𝓽𝓪𝓵𝓮 ]"
+        ]
+    },
+    "level": 6,
+    "exp": 19,
+    "total_chat": 1019,
+    "last_chat": "Tue Dec 30 2025 16:40:39 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 226,
+        "2025-12-26": 106,
+        "2025-12-27": 208,
+        "2025-12-28": 27,
+        "2025-12-29": 192,
+        "2025-12-30": 218,
+        "2025-12-31": 42
+    },
+    "max_level": 6,
+    "rainbow_stack": 0,
+    "meditation": null
+}

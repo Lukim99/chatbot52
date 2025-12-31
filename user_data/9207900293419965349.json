@@ -1,0 +1,54 @@
+{
+    "nickname": "수깡 남",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 05:32:18 GMT+0000 (Coordinated Universal Time)",
+            "name": "수깡 남 🐣"
+        }
+    ],
+    "info": {
+        "name": "수깡",
+        "role": "친구",
+        "date": "25.12.14",
+        "mbti": "ENFP",
+        "gender": "남자",
+        "address": "순천",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 47,
+    "total_chat": 47,
+    "last_chat": "Mon Dec 29 2025 12:19:23 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "수깡 남 🐣",
+            "name": "수깡 남",
+            "date": "Thu Dec 25 2025 05:32:26 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 2,
+        "2025-12-28": 39,
+        "2025-12-29": 6
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

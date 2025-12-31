@@ -1,0 +1,52 @@
+{
+    "nickname": "지안 여",
+    "last_attend": "Wed Dec 31 2025 00:04:11 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 20:04:32 GMT+0000 (Coordinated Universal Time)",
+            "name": "지안 여"
+        }
+    ],
+    "info": {
+        "name": "지안",
+        "role": "친구",
+        "date": "25.10.30",
+        "mbti": "ENFJ",
+        "gender": "여자",
+        "address": "서울",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            "송파여식 돼지안🐽"
+        ]
+    },
+    "level": 5,
+    "exp": 165,
+    "total_chat": 965,
+    "last_chat": "Tue Dec 30 2025 23:39:20 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 27,
+        "2025-12-26": 305,
+        "2025-12-27": 107,
+        "2025-12-28": 74,
+        "2025-12-29": 332,
+        "2025-12-30": 112,
+        "2025-12-31": 8
+    },
+    "max_level": 5,
+    "rainbow_stack": 0,
+    "meditation": null
+}

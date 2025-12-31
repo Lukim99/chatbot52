@@ -1,0 +1,51 @@
+{
+    "nickname": "차차 남",
+    "last_attend": "Mon Dec 29 2025 13:47:53 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 19:16:20 GMT+0000 (Coordinated Universal Time)",
+            "name": "차차 남"
+        }
+    ],
+    "info": {
+        "name": "차차",
+        "role": "친구",
+        "date": "25.04.25",
+        "mbti": "ESTP",
+        "gender": "남자",
+        "address": "서울",
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            "퀴즈의 달인 1회 📖",
+            "출석 1위 14회 💯",
+            "벙개요정 16회 ⚡",
+            "차차 ❤️ 엄지"
+        ]
+    },
+    "level": 2,
+    "exp": 136,
+    "total_chat": 336,
+    "last_chat": "Tue Dec 30 2025 07:35:49 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 45,
+        "2025-12-26": 84,
+        "2025-12-27": 70,
+        "2025-12-28": 16,
+        "2025-12-29": 58,
+        "2025-12-30": 63
+    },
+    "max_level": 2,
+    "rainbow_stack": 0,
+    "meditation": null
+}

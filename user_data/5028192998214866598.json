@@ -1,0 +1,51 @@
+{
+    "nickname": "베베 여",
+    "last_attend": "Tue Dec 30 2025 00:08:25 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 16:50:01 GMT+0000 (Coordinated Universal Time)",
+            "name": "베베 여"
+        }
+    ],
+    "info": {
+        "name": "베베",
+        "role": "친구",
+        "date": "25.08.25",
+        "mbti": "INFJ",
+        "gender": "여자",
+        "address": "경북 포항",
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            "월간 메시지 메달 3회 🎖️",
+            null,
+            "출석 1위 2회 💯",
+            "벙개요정 3회 ⚡",
+            "베베 ❤️ 다루"
+        ]
+    },
+    "level": 3,
+    "exp": 9,
+    "total_chat": 409,
+    "last_chat": "Tue Dec 30 2025 13:21:08 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 110,
+        "2025-12-26": 9,
+        "2025-12-27": 17,
+        "2025-12-28": 72,
+        "2025-12-29": 49,
+        "2025-12-30": 152
+    },
+    "max_level": 3,
+    "rainbow_stack": 0,
+    "meditation": null
+}

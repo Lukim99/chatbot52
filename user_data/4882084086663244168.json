@@ -1,0 +1,66 @@
+{
+    "nickname": "토토 남 🧘‍♂️",
+    "last_attend": "Wed Dec 31 2025 00:09:40 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 16:35:58 GMT+0000 (Coordinated Universal Time)",
+            "name": "토토 남"
+        }
+    ],
+    "info": {
+        "name": "토토",
+        "role": "친구",
+        "date": "25.07.31",
+        "mbti": "ENFJ",
+        "gender": "남자",
+        "address": "서울",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            "출석 1위 1회 💯",
+            "벙개요정 9회 ⚡",
+            null
+        ]
+    },
+    "level": 2,
+    "exp": 122,
+    "total_chat": 322,
+    "last_chat": "Tue Dec 30 2025 15:09:40 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "토토 남",
+            "name": "토토 남 요가",
+            "date": "Sat Dec 27 2025 10:30:43 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "토토 남 요가",
+            "name": "토토 남 🧘‍♂️",
+            "date": "Sat Dec 27 2025 10:33:36 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 132,
+        "2025-12-26": 17,
+        "2025-12-27": 22,
+        "2025-12-28": 73,
+        "2025-12-29": 37,
+        "2025-12-30": 40,
+        "2025-12-31": 1
+    },
+    "max_level": 2,
+    "rainbow_stack": 0,
+    "meditation": {
+        "startTime": "Sat Dec 27 2025 09:40:14 GMT+0000 (Coordinated Universal Time)",
+        "duration": "2주"
+    }
+}

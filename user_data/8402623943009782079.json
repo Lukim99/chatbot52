@@ -1,0 +1,68 @@
+{
+    "nickname": "간지 남 🐣",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Sat Dec 27 2025 16:43:27 GMT+0000 (Coordinated Universal Time)",
+            "name": "간지"
+        },
+        {
+            "type": "퇴장",
+            "date": "Sat Dec 27 2025 16:43:27 GMT+0000 (Coordinated Universal Time)",
+            "name": "간지"
+        }
+    ],
+    "info": {
+        "name": "간지",
+        "role": "친구",
+        "date": "25.12.28",
+        "mbti": null,
+        "gender": "남자",
+        "address": "경기",
+        "gimidol": "기혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 157,
+    "total_chat": 157,
+    "last_chat": "Mon Dec 29 2025 12:25:59 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "간지",
+            "name": "간지 남",
+            "date": "Sat Dec 27 2025 16:43:41 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "간지 남",
+            "name": "간지 남 🐤",
+            "date": "Sat Dec 27 2025 16:45:20 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "간지 남 🐤",
+            "name": "간지 남 🐣",
+            "date": "Sat Dec 27 2025 16:45:53 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-28": 132,
+        "2025-12-29": 25
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

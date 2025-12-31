@@ -1,0 +1,46 @@
+{
+    "nickname": "하드 남",
+    "last_attend": "Sat Dec 27 2025 15:40:56 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Sat Dec 27 2025 06:40:56 GMT+0000 (Coordinated Universal Time)",
+            "name": "하드 남"
+        }
+    ],
+    "info": {
+        "name": "하드",
+        "role": "친구",
+        "date": "25.11.24",
+        "mbti": "ENTJ",
+        "gender": "남자",
+        "address": "세종",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 1,
+    "total_chat": 1,
+    "last_chat": "Sat Dec 27 2025 06:40:56 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-27": 1
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

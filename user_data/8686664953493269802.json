@@ -1,0 +1,50 @@
+{
+    "nickname": "무초 남",
+    "last_attend": "Mon Dec 29 2025 00:38:57 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 05:26:52 GMT+0000 (Coordinated Universal Time)",
+            "name": "무초 남"
+        }
+    ],
+    "info": {
+        "name": "무초",
+        "role": "친구",
+        "date": "25.06.23",
+        "mbti": "INFJ",
+        "gender": "남자",
+        "address": "대구",
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            "출석 1위 5회 💯",
+            "벙개요정 2회 ⚡",
+            "무초 ❤️ 바미"
+        ]
+    },
+    "level": 1,
+    "exp": 88,
+    "total_chat": 88,
+    "last_chat": "Sun Dec 28 2025 16:31:14 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 41,
+        "2025-12-26": 2,
+        "2025-12-27": 10,
+        "2025-12-28": 11,
+        "2025-12-29": 24
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

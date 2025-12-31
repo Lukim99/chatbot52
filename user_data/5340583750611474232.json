@@ -1,0 +1,62 @@
+{
+    "nickname": "안경 남 🐣",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Sat Dec 27 2025 05:07:16 GMT+0000 (Coordinated Universal Time)",
+            "name": "인사하는 춘식이"
+        },
+        {
+            "type": "퇴장",
+            "date": "Sat Dec 27 2025 05:07:16 GMT+0000 (Coordinated Universal Time)",
+            "name": "인사하는 춘식이"
+        }
+    ],
+    "info": {
+        "name": "안경",
+        "role": "친구",
+        "date": "25.12.27",
+        "mbti": "INTJ",
+        "gender": "남자",
+        "address": "서울",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 6,
+    "total_chat": 6,
+    "last_chat": "Sat Dec 27 2025 05:18:14 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "인사하는 춘식이",
+            "name": "안경 남 🐣",
+            "date": "Sat Dec 27 2025 05:10:00 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "안경 남 🐣",
+            "name": "안경 남 🐣",
+            "date": "Sat Dec 27 2025 05:11:03 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-27": 6
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

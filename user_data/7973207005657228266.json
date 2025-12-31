@@ -1,0 +1,47 @@
+{
+    "nickname": "독도 남",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Fri Dec 26 2025 05:03:42 GMT+0000 (Coordinated Universal Time)",
+            "name": "독도 남"
+        }
+    ],
+    "info": {
+        "name": "독도",
+        "role": "친구",
+        "date": "25.11.30",
+        "mbti": "ESTJ",
+        "gender": "남자",
+        "address": "서울",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 36,
+    "total_chat": 36,
+    "last_chat": "Sat Dec 27 2025 01:47:26 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-26": 14,
+        "2025-12-27": 22
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

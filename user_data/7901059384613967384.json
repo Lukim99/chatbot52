@@ -1,0 +1,54 @@
+{
+    "nickname": "⭐️으리⭐️",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 05:54:28 GMT+0000 (Coordinated Universal Time)",
+            "name": "😍으리😍"
+        }
+    ],
+    "info": {
+        "name": "⭐️으리⭐️",
+        "role": "친구",
+        "date": "25.12.25",
+        "mbti": null,
+        "gender": null,
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 11,
+    "total_chat": 11,
+    "last_chat": "Tue Dec 30 2025 13:47:17 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "😍으리😍",
+            "name": "⭐️으리⭐️",
+            "date": "Mon Dec 29 2025 07:16:39 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 5,
+        "2025-12-29": 3,
+        "2025-12-30": 3
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

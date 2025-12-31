@@ -1,0 +1,47 @@
+{
+    "nickname": "마메 남",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Sat Dec 27 2025 01:49:06 GMT+0000 (Coordinated Universal Time)",
+            "name": "마메 남"
+        }
+    ],
+    "info": {
+        "name": "마메",
+        "role": "친구",
+        "date": "25.12.27",
+        "mbti": null,
+        "gender": "남자",
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 13,
+    "total_chat": 13,
+    "last_chat": "Mon Dec 29 2025 03:40:25 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-27": 9,
+        "2025-12-29": 4
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

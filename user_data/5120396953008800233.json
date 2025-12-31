@@ -1,0 +1,72 @@
+{
+    "nickname": "대박 여 🐣",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Fri Dec 26 2025 10:21:57 GMT+0000 (Coordinated Universal Time)",
+            "name": "대박이"
+        },
+        {
+            "type": "퇴장",
+            "date": "Fri Dec 26 2025 10:21:57 GMT+0000 (Coordinated Universal Time)",
+            "name": "대박이"
+        },
+        {
+            "type": "강퇴 by 차차 남",
+            "date": "Fri Dec 26 2025 10:33:56 GMT+0000 (Coordinated Universal Time)",
+            "name": "대박 여 🐣"
+        }
+    ],
+    "info": {
+        "name": "대박",
+        "role": "친구",
+        "date": "25.12.26",
+        "mbti": null,
+        "gender": "여자",
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 4,
+    "total_chat": 4,
+    "last_chat": "Fri Dec 26 2025 10:25:48 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "대박이",
+            "name": "대박 여",
+            "date": "Fri Dec 26 2025 10:22:23 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "대박 여",
+            "name": "대박 여",
+            "date": "Fri Dec 26 2025 10:22:49 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "대박 여",
+            "name": "대박 여 🐣",
+            "date": "Fri Dec 26 2025 10:24:54 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-26": 4
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

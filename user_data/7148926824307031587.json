@@ -1,0 +1,57 @@
+{
+    "nickname": "아라 여",
+    "last_attend": "Sun Dec 28 2025 00:00:00 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 15:34:41 GMT+0000 (Coordinated Universal Time)",
+            "name": "아라 여"
+        }
+    ],
+    "info": {
+        "name": "아라",
+        "role": "친구",
+        "date": "25.11.07",
+        "mbti": "ISFJ",
+        "gender": "여자",
+        "address": "인천",
+        "gimidol": "기혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            "벙개요정 5회 ⚡",
+            "🤩귀요미 뽀짝😘"
+        ]
+    },
+    "level": 7,
+    "exp": 106,
+    "total_chat": 1406,
+    "last_chat": "Tue Dec 30 2025 11:10:54 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "아라 여",
+            "name": "아라 여",
+            "date": "Sat Dec 27 2025 15:52:47 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 188,
+        "2025-12-26": 437,
+        "2025-12-27": 157,
+        "2025-12-28": 159,
+        "2025-12-29": 151,
+        "2025-12-30": 314
+    },
+    "max_level": 7,
+    "rainbow_stack": 0,
+    "meditation": null
+}

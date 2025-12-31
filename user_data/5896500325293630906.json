@@ -1,0 +1,50 @@
+{
+    "nickname": "짱구 남",
+    "last_attend": "Tue Dec 30 2025 00:01:27 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 16:28:09 GMT+0000 (Coordinated Universal Time)",
+            "name": "짱구 남"
+        }
+    ],
+    "info": {
+        "name": "짱구",
+        "role": "친구",
+        "date": "25.06.26",
+        "mbti": "ISTJ",
+        "gender": "남자",
+        "address": "서울",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            "벙개요정 1회 ⚡",
+            "짱구는 흰둥이"
+        ]
+    },
+    "level": 1,
+    "exp": 193,
+    "total_chat": 193,
+    "last_chat": "Tue Dec 30 2025 12:35:24 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 15,
+        "2025-12-27": 114,
+        "2025-12-28": 50,
+        "2025-12-29": 1,
+        "2025-12-30": 13
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

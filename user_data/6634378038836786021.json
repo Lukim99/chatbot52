@@ -1,0 +1,51 @@
+{
+    "nickname": "석도 남",
+    "last_attend": "Tue Dec 30 2025 01:21:56 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 21:21:29 GMT+0000 (Coordinated Universal Time)",
+            "name": "석도 남"
+        }
+    ],
+    "info": {
+        "name": "석도",
+        "role": "친구",
+        "date": "25.10.04",
+        "mbti": "ESFJ",
+        "gender": "남자",
+        "address": "대구",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 2,
+    "exp": 155,
+    "total_chat": 355,
+    "last_chat": "Tue Dec 30 2025 02:47:05 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 36,
+        "2025-12-26": 140,
+        "2025-12-27": 17,
+        "2025-12-28": 70,
+        "2025-12-29": 70,
+        "2025-12-30": 22
+    },
+    "max_level": 2,
+    "rainbow_stack": 0,
+    "meditation": null
+}

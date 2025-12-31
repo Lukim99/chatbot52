@@ -1,0 +1,64 @@
+{
+    "nickname": "민성 남 🐣",
+    "last_attend": "Sun Dec 28 2025 04:33:21 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Fri Dec 26 2025 06:21:41 GMT+0000 (Coordinated Universal Time)",
+            "name": "민성 남 🐣"
+        },
+        {
+            "type": "강퇴 by 버디 남",
+            "date": "Sun Dec 28 2025 13:27:11 GMT+0000 (Coordinated Universal Time)",
+            "name": "민성 남 🐣"
+        }
+    ],
+    "info": {
+        "name": "민성",
+        "role": "친구",
+        "date": "25.12.26",
+        "mbti": "ENFP",
+        "gender": "남자",
+        "address": "서울&대전",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 3,
+    "exp": 31,
+    "total_chat": 431,
+    "last_chat": "Sun Dec 28 2025 13:26:34 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "민성 남 🐣",
+            "name": "민성 남 🐣",
+            "date": "Sat Dec 27 2025 19:28:19 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "민성 남 🐣",
+            "name": "민성 남 🐣",
+            "date": "Sat Dec 27 2025 21:21:01 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-26": 126,
+        "2025-12-27": 3,
+        "2025-12-28": 302
+    },
+    "max_level": 3,
+    "rainbow_stack": 0,
+    "meditation": null
+}

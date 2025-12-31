@@ -1,0 +1,78 @@
+{
+    "nickname": "아이 여 🐣",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Fri Dec 26 2025 14:07:17 GMT+0000 (Coordinated Universal Time)",
+            "name": "티비 보는 라이언"
+        },
+        {
+            "type": "퇴장",
+            "date": "Fri Dec 26 2025 14:07:17 GMT+0000 (Coordinated Universal Time)",
+            "name": "티비 보는 라이언"
+        }
+    ],
+    "info": {
+        "name": "아이",
+        "role": "친구",
+        "date": "25.12.26",
+        "mbti": "ISTJ",
+        "gender": "여자",
+        "address": "충남",
+        "gimidol": "기혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 10,
+    "total_chat": 10,
+    "last_chat": "Sat Dec 27 2025 07:15:07 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "티비 보는 라이언",
+            "name": "아라 여",
+            "date": "Fri Dec 26 2025 14:09:13 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "아라 여",
+            "name": "아이 여",
+            "date": "Fri Dec 26 2025 14:09:53 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "아이 여",
+            "name": "아이 여",
+            "date": "Fri Dec 26 2025 14:11:05 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "아이 여",
+            "name": "아이 여🐣",
+            "date": "Fri Dec 26 2025 14:12:16 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "아이 여🐣",
+            "name": "아이 여 🐣",
+            "date": "Fri Dec 26 2025 14:12:32 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-26": 8,
+        "2025-12-27": 2
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

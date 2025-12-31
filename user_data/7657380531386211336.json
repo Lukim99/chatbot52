@@ -1,0 +1,51 @@
+{
+    "nickname": "수지 여",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 16:10:37 GMT+0000 (Coordinated Universal Time)",
+            "name": "수지 여"
+        }
+    ],
+    "info": {
+        "name": "수지",
+        "role": "친구",
+        "date": "25.11.14",
+        "mbti": "INTP",
+        "gender": "여자",
+        "address": "경기 수원",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            "벙개요정 1회 ⚡",
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 126,
+    "total_chat": 126,
+    "last_chat": "Tue Dec 30 2025 14:17:09 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 35,
+        "2025-12-26": 10,
+        "2025-12-27": 53,
+        "2025-12-28": 17,
+        "2025-12-29": 9,
+        "2025-12-30": 2
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

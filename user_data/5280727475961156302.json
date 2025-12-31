@@ -1,0 +1,49 @@
+{
+    "nickname": "나른한 니니즈",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Sat Dec 27 2025 11:18:31 GMT+0000 (Coordinated Universal Time)",
+            "name": "나른한 니니즈"
+        },
+        {
+            "type": "퇴장",
+            "date": "Sat Dec 27 2025 11:18:31 GMT+0000 (Coordinated Universal Time)",
+            "name": "나른한 니니즈"
+        }
+    ],
+    "info": {
+        "name": "나른한",
+        "role": "친구",
+        "date": "25.12.27",
+        "mbti": null,
+        "gender": null,
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 0,
+    "total_chat": 0,
+    "last_chat": null,
+    "profile_change_log": [],
+    "daily_chat_log": {},
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

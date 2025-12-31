@@ -1,0 +1,62 @@
+{
+    "nickname": "라미 여 🐣",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Tue Dec 30 2025 00:28:36 GMT+0000 (Coordinated Universal Time)",
+            "name": "누워있는 라이언"
+        },
+        {
+            "type": "퇴장",
+            "date": "Tue Dec 30 2025 00:28:36 GMT+0000 (Coordinated Universal Time)",
+            "name": "누워있는 라이언"
+        }
+    ],
+    "info": {
+        "name": "라미",
+        "role": "친구",
+        "date": "25.12.30",
+        "mbti": null,
+        "gender": "여자",
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 13,
+    "total_chat": 13,
+    "last_chat": "Tue Dec 30 2025 00:35:00 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "누워있는 라이언",
+            "name": "라미 여",
+            "date": "Tue Dec 30 2025 00:29:34 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "라미 여",
+            "name": "라미 여 🐣",
+            "date": "Tue Dec 30 2025 00:30:47 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-30": 13
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

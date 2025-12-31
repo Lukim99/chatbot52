@@ -1,0 +1,62 @@
+{
+    "nickname": "헤헤 여 🐣",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Tue Dec 30 2025 00:32:12 GMT+0000 (Coordinated Universal Time)",
+            "name": "축하하는 죠르디"
+        },
+        {
+            "type": "퇴장",
+            "date": "Tue Dec 30 2025 00:32:12 GMT+0000 (Coordinated Universal Time)",
+            "name": "축하하는 죠르디"
+        }
+    ],
+    "info": {
+        "name": "헤헤",
+        "role": "친구",
+        "date": "25.12.30",
+        "mbti": null,
+        "gender": "여자",
+        "address": "경기",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 73,
+    "total_chat": 73,
+    "last_chat": "Tue Dec 30 2025 11:58:09 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "축하하는 죠르디",
+            "name": "헤헤 여 🐣",
+            "date": "Tue Dec 30 2025 00:36:14 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "헤헤 여 🐣",
+            "name": "헤헤 여 🐣",
+            "date": "Tue Dec 30 2025 00:37:16 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-30": 73
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

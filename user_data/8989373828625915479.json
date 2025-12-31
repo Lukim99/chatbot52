@@ -1,0 +1,47 @@
+{
+    "nickname": "리아 여",
+    "last_attend": "Wed Dec 24 2025 15:37:55 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 15:37:55 GMT+0000 (Coordinated Universal Time)",
+            "name": "리아 여"
+        }
+    ],
+    "info": {
+        "name": "리아",
+        "role": "친구",
+        "date": "25.12.03",
+        "mbti": "ISTP",
+        "gender": "여자",
+        "address": "서울",
+        "gimidol": "기혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 21,
+    "total_chat": 21,
+    "last_chat": "Fri Dec 26 2025 13:37:17 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 15,
+        "2025-12-26": 6
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

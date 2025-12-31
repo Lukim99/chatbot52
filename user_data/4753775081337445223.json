@@ -1,0 +1,46 @@
+{
+    "nickname": "이지 여",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Sat Dec 27 2025 17:00:09 GMT+0000 (Coordinated Universal Time)",
+            "name": "이지 여"
+        }
+    ],
+    "info": {
+        "name": "이지",
+        "role": "친구",
+        "date": "25.05.26",
+        "mbti": "ESTP",
+        "gender": "여자",
+        "address": "서울",
+        "gimidol": "기혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 12,
+    "total_chat": 12,
+    "last_chat": "Sat Dec 27 2025 17:16:30 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-28": 12
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

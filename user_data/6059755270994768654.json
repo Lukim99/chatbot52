@@ -1,0 +1,65 @@
+{
+    "nickname": "홍이 남 🧘",
+    "last_attend": "Sat Dec 27 2025 00:00:55 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 00:31:50 GMT+0000 (Coordinated Universal Time)",
+            "name": "홍이 남 ☃️"
+        },
+        {
+            "type": "강퇴 by 엄지 여",
+            "date": "Sun Dec 28 2025 13:27:11 GMT+0000 (Coordinated Universal Time)",
+            "name": "홍이 남 🧘"
+        }
+    ],
+    "info": {
+        "name": "홍이",
+        "role": "친구",
+        "date": "25.07.11",
+        "mbti": "ISTJ",
+        "gender": "남자",
+        "address": "인천",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            "출석 1위 6회 💯",
+            null,
+            "홍이 ☃️ 민하"
+        ]
+    },
+    "level": 1,
+    "exp": 29,
+    "total_chat": 29,
+    "last_chat": "Sun Dec 28 2025 11:50:31 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "홍이 남 ☃️",
+            "name": "홍이 남 요가",
+            "date": "Sun Dec 28 2025 13:17:09 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "홍이 남 요가",
+            "name": "홍이 남 🧘",
+            "date": "Sun Dec 28 2025 13:17:52 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 7,
+        "2025-12-26": 17,
+        "2025-12-27": 2,
+        "2025-12-28": 3
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

@@ -1,6 +1,6 @@
 {
-    "nickname": "시우 남",
-    "last_attend": "Wed Dec 24 2025 23:39:20 GMT+0900 (대한민국 표준시)",
+    "nickname": "AI",
+    "last_attend": "Fri Dec 26 2025 18:59:10 GMT+0000 (Coordinated Universal Time)",
     "entry_log": [
         {
             "type": "입장",
@@ -9,11 +9,11 @@
         }
     ],
     "info": {
-        "name": "시우",
+        "name": "AI",
         "role": "친구",
         "date": "25.12.24",
         "mbti": null,
-        "gender": "남자",
+        "gender": null,
         "address": null,
         "gimidol": null,
         "isExit": {
@@ -24,22 +24,33 @@
             "target": null,
             "emoji": null
         },
-        "titles": [
-            null,
-            null,
-            null,
-            null,
-            null
-        ]
+        "titles": [null, null, null, null, null]
     },
-    "level": 2,
-    "exp": 9,
-    "total_chat": 209,
-    "last_chat": "Thu Dec 25 2025 00:28:57 GMT+0900 (대한민국 표준시)",
-    "profile_change_log": [],
+    "level": 4,
+    "exp": 102,
+    "total_chat": 702,
+    "last_chat": "Tue Dec 30 2025 23:41:03 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "시우 남",
+            "name": "얼굴 부비는 라이언",
+            "date": "Wed Dec 24 2025 15:35:04 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "얼굴 부비는 라이언",
+            "name": "AI",
+            "date": "Wed Dec 24 2025 20:28:58 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
     "daily_chat_log": {
         "2025-12-24": 119,
-        "2025-12-25": 90
+        "2025-12-25": 400,
+        "2025-12-26": 31,
+        "2025-12-27": 117,
+        "2025-12-28": 20,
+        "2025-12-29": 6,
+        "2025-12-30": 1,
+        "2025-12-31": 8
     },
-    "max_level": 2
+    "max_level": 4
 }

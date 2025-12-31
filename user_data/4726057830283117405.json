@@ -1,0 +1,71 @@
+{
+    "nickname": "미소 여🧘🏼‍♀️",
+    "last_attend": "Tue Dec 30 2025 00:00:14 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 16:10:26 GMT+0000 (Coordinated Universal Time)",
+            "name": "미소 여"
+        }
+    ],
+    "info": {
+        "name": "미소",
+        "role": "친구",
+        "date": "25.08.04",
+        "mbti": "ISTP",
+        "gender": "여자",
+        "address": "경기 화성",
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            "월간 메시지 메달 2회 🎖️",
+            null,
+            "출석 1위 2회 💯",
+            "벙개요정 3회 ⚡",
+            "﴾ Bᴇᴀᴜᴛɪғᴜʟ Mɪꜱᴏ ﴿"
+        ]
+    },
+    "level": 11,
+    "exp": 153,
+    "total_chat": 2653,
+    "last_chat": "Tue Dec 30 2025 23:47:25 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "미소 여",
+            "name": "미소 여",
+            "date": "Mon Dec 29 2025 05:08:39 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "미소 여",
+            "name": "미소 여🧘🏼‍♀️",
+            "date": "Mon Dec 29 2025 05:11:18 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "미소 여🧘🏼‍♀️",
+            "name": "미소 여🧘🏼‍♀️",
+            "date": "Mon Dec 29 2025 14:55:30 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 419,
+        "2025-12-26": 573,
+        "2025-12-27": 79,
+        "2025-12-28": 535,
+        "2025-12-29": 249,
+        "2025-12-30": 745,
+        "2025-12-31": 53
+    },
+    "max_level": 11,
+    "rainbow_stack": 0,
+    "meditation": {
+        "startTime": "Mon Dec 29 2025 05:12:39 GMT+0000 (Coordinated Universal Time)",
+        "duration": "2주"
+    }
+}

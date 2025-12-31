@@ -1,0 +1,79 @@
+{
+    "nickname": "겨울 여 🐣",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Sat Dec 27 2025 15:52:13 GMT+0000 (Coordinated Universal Time)",
+            "name": "슬픈 어피치"
+        },
+        {
+            "type": "퇴장",
+            "date": "Sat Dec 27 2025 15:52:13 GMT+0000 (Coordinated Universal Time)",
+            "name": "슬픈 어피치"
+        }
+    ],
+    "info": {
+        "name": "겨울",
+        "role": "친구",
+        "date": "25.12.28",
+        "mbti": "ENFP",
+        "gender": "여자",
+        "address": "대전",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 31,
+    "total_chat": 31,
+    "last_chat": "Mon Dec 29 2025 22:53:29 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "슬픈 어피치",
+            "name": "쩡이 여",
+            "date": "Sat Dec 27 2025 15:52:42 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "쩡이 여",
+            "name": "사랑 여",
+            "date": "Sat Dec 27 2025 15:54:47 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "사랑 여",
+            "name": "겨울 여",
+            "date": "Sat Dec 27 2025 15:55:23 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "겨울 여",
+            "name": "겨울 여 🐣",
+            "date": "Sat Dec 27 2025 15:56:25 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "겨울 여 🐣",
+            "name": "겨울 여 🐣",
+            "date": "Sat Dec 27 2025 15:56:43 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-28": 21,
+        "2025-12-29": 2,
+        "2025-12-30": 8
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

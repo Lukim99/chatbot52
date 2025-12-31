@@ -1,0 +1,58 @@
+{
+    "nickname": "모니 여",
+    "last_attend": "Wed Dec 31 2025 00:00:38 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 15:34:05 GMT+0000 (Coordinated Universal Time)",
+            "name": "모니 여"
+        }
+    ],
+    "info": {
+        "name": "모니",
+        "role": "친구",
+        "date": "25.05.11",
+        "mbti": "ESFJ",
+        "gender": "여자",
+        "address": "경기 김포",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            "월간 메시지 메달 1회 🎖️",
+            null,
+            "출석 1위 8회 💯",
+            "벙개요정 15회 ⚡",
+            "😙모니모니해도 모니_🙊"
+        ]
+    },
+    "level": 8,
+    "exp": 187,
+    "total_chat": 1787,
+    "last_chat": "Tue Dec 30 2025 23:40:45 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "모니 여",
+            "name": "모니 여",
+            "date": "Wed Dec 24 2025 15:59:37 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 366,
+        "2025-12-26": 57,
+        "2025-12-27": 327,
+        "2025-12-28": 439,
+        "2025-12-29": 56,
+        "2025-12-30": 364,
+        "2025-12-31": 178
+    },
+    "max_level": 8,
+    "rainbow_stack": 0,
+    "meditation": null
+}

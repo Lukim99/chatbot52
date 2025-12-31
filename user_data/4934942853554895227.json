@@ -1,6 +1,6 @@
 {
     "nickname": "서윤 여 🐣",
-    "last_attend": null,
+    "last_attend": "Thu Dec 25 2025 01:36:41 GMT+0000 (Coordinated Universal Time)",
     "entry_log": [
         {
             "type": "입장",
@@ -17,10 +17,10 @@
         "name": "서윤",
         "role": "친구",
         "date": "25.12.25",
-        "mbti": null,
+        "mbti": "INTP",
         "gender": "여자",
-        "address": null,
-        "gimidol": null,
+        "address": "인천",
+        "gimidol": "기혼",
         "isExit": {
             "type": null
         },
@@ -38,9 +38,9 @@
         ]
     },
     "level": 1,
-    "exp": 0,
-    "total_chat": 0,
-    "last_chat": null,
+    "exp": 18,
+    "total_chat": 18,
+    "last_chat": "Wed Dec 24 2025 16:55:48 GMT+0000 (Coordinated Universal Time)",
     "profile_change_log": [
         {
             "prev": "부끄러운 앙몬드",
@@ -56,14 +56,11 @@
             "prev": "서윤 여 🐣",
             "name": "서윤 여 🐣",
             "date": "Thu Dec 25 2025 00:24:15 GMT+0900 (대한민국 표준시)"
-        },
-        {
-            "prev": "서윤 여 🐣",
-            "name": "서윤 여 🐣",
-            "date": "Thu Dec 25 2025 00:31:23 GMT+0900 (대한민국 표준시)"
         }
     ],
-    "daily_chat_log": {},
+    "daily_chat_log": {
+        "2025-12-25": 18
+    },
     "max_level": 1,
     "rainbow_stack": 0,
     "meditation": null

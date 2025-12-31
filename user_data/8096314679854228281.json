@@ -1,0 +1,67 @@
+{
+    "nickname": "알콩 여",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Sun Dec 28 2025 00:53:57 GMT+0000 (Coordinated Universal Time)",
+            "name": "알콩"
+        },
+        {
+            "type": "퇴장",
+            "date": "Sun Dec 28 2025 00:53:57 GMT+0000 (Coordinated Universal Time)",
+            "name": "알콩"
+        },
+        {
+            "type": "강퇴 by 시우 남",
+            "date": "Sun Dec 28 2025 01:03:50 GMT+0000 (Coordinated Universal Time)",
+            "name": "알콩 여"
+        }
+    ],
+    "info": {
+        "name": "알콩",
+        "role": "친구",
+        "date": "25.12.28",
+        "mbti": null,
+        "gender": "여자",
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 3,
+    "total_chat": 3,
+    "last_chat": "Sun Dec 28 2025 00:58:37 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "알콩",
+            "name": "알콩 여",
+            "date": "Sun Dec 28 2025 00:54:31 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "알콩 여",
+            "name": "알콩 여",
+            "date": "Sun Dec 28 2025 00:58:28 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-28": 3
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

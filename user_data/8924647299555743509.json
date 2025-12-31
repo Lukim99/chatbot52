@@ -1,0 +1,68 @@
+{
+    "nickname": "딸기 여",
+    "last_attend": "Wed Dec 31 2025 00:00:00 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 00:23:00 GMT+0000 (Coordinated Universal Time)",
+            "name": "딸기 여"
+        }
+    ],
+    "info": {
+        "name": "딸기",
+        "role": "친구",
+        "date": "25.05.18",
+        "mbti": "ESFP",
+        "gender": "여자",
+        "address": "경기",
+        "gimidol": "기혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            "월간 메시지 메달 6회 🎖️",
+            "퀴즈의 달인 2회 📖",
+            "출석 1위 19회 💯",
+            "벙개요정 12회 ⚡",
+            "박효신😍대장나무🌳"
+        ]
+    },
+    "level": 102,
+    "exp": 525,
+    "total_chat": 133825,
+    "last_chat": "Tue Dec 30 2025 16:27:19 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "딸기 여",
+            "name": "딸기 여",
+            "date": "Thu Dec 25 2025 21:42:58 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "딸기 여",
+            "name": "딸기 여",
+            "date": "Sat Dec 27 2025 08:40:52 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "딸기 여",
+            "name": "딸기 여",
+            "date": "Sun Dec 28 2025 06:05:19 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 709,
+        "2025-12-26": 773,
+        "2025-12-27": 386,
+        "2025-12-28": 964,
+        "2025-12-29": 502,
+        "2025-12-30": 854,
+        "2025-12-31": 137
+    },
+    "max_level": 102,
+    "rainbow_stack": 1,
+    "meditation": null
+}

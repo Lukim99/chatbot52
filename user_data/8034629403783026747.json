@@ -1,0 +1,47 @@
+{
+    "nickname": "필수 남 🐣",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Fri Dec 26 2025 07:49:07 GMT+0000 (Coordinated Universal Time)",
+            "name": "필수 남 🐣"
+        }
+    ],
+    "info": {
+        "name": "필수",
+        "role": "친구",
+        "date": "25.12.20",
+        "mbti": "ESFJ",
+        "gender": "남자",
+        "address": "부산",
+        "gimidol": "기혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 104,
+    "total_chat": 104,
+    "last_chat": "Sat Dec 27 2025 08:18:10 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-26": 97,
+        "2025-12-27": 7
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

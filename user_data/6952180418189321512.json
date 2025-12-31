@@ -1,0 +1,62 @@
+{
+    "nickname": "뿌잉 여 🐣",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Sat Dec 27 2025 12:27:05 GMT+0000 (Coordinated Universal Time)",
+            "name": "뿌잉 여"
+        },
+        {
+            "type": "퇴장",
+            "date": "Sat Dec 27 2025 12:27:05 GMT+0000 (Coordinated Universal Time)",
+            "name": "뿌잉 여"
+        }
+    ],
+    "info": {
+        "name": "뿌잉",
+        "role": "친구",
+        "date": "25.12.27",
+        "mbti": null,
+        "gender": "여자",
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 6,
+    "total_chat": 6,
+    "last_chat": "Sat Dec 27 2025 12:35:15 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "뿌잉 여",
+            "name": "뿌잉 여 🐣",
+            "date": "Sat Dec 27 2025 12:29:54 GMT+0000 (Coordinated Universal Time)"
+        },
+        {
+            "prev": "뿌잉 여 🐣",
+            "name": "뿌잉 여 🐣",
+            "date": "Sat Dec 27 2025 12:31:47 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-27": 6
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

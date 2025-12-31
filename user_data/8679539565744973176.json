@@ -1,0 +1,47 @@
+{
+    "nickname": "실버 여 🐣",
+    "last_attend": "Sun Dec 28 2025 08:05:57 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Fri Dec 26 2025 15:03:10 GMT+0000 (Coordinated Universal Time)",
+            "name": "실버 여 🐣"
+        }
+    ],
+    "info": {
+        "name": "실버",
+        "role": "친구",
+        "date": "25.12.24",
+        "mbti": null,
+        "gender": "여자",
+        "address": "광주",
+        "gimidol": "기혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 3,
+    "total_chat": 3,
+    "last_chat": "Sat Dec 27 2025 23:07:00 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-27": 1,
+        "2025-12-28": 2
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

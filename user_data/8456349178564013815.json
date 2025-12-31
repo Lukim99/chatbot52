@@ -1,0 +1,52 @@
+{
+    "nickname": "산들 여",
+    "last_attend": "Wed Dec 31 2025 00:00:20 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 21:11:11 GMT+0000 (Coordinated Universal Time)",
+            "name": "산들 여"
+        }
+    ],
+    "info": {
+        "name": "산들",
+        "role": "친구",
+        "date": "25.06.16",
+        "mbti": "INFP",
+        "gender": "여자",
+        "address": "경기 여주",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            "월간 메시지 메달 1회 🎖️",
+            null,
+            "출석 1위 4회 💯",
+            "벙개요정 9회 ⚡",
+            "😘청순가련 상여자😚"
+        ]
+    },
+    "level": 7,
+    "exp": 97,
+    "total_chat": 1397,
+    "last_chat": "Tue Dec 30 2025 16:41:07 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 308,
+        "2025-12-26": 179,
+        "2025-12-27": 175,
+        "2025-12-28": 361,
+        "2025-12-29": 103,
+        "2025-12-30": 203,
+        "2025-12-31": 68
+    },
+    "max_level": 7,
+    "rainbow_stack": 0,
+    "meditation": null
+}

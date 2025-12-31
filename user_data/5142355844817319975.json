@@ -1,0 +1,51 @@
+{
+    "nickname": "🪽엄지🪽",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 19:20:46 GMT+0000 (Coordinated Universal Time)",
+            "name": "🪽엄지🪽"
+        }
+    ],
+    "info": {
+        "name": "🪽엄지🪽",
+        "role": "친구",
+        "date": "25.12.24",
+        "mbti": null,
+        "gender": null,
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 106,
+    "total_chat": 106,
+    "last_chat": "Tue Dec 30 2025 07:02:56 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 19,
+        "2025-12-26": 35,
+        "2025-12-27": 4,
+        "2025-12-28": 1,
+        "2025-12-29": 26,
+        "2025-12-30": 21
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

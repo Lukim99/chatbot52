@@ -1,0 +1,56 @@
+{
+    "nickname": "환영 여",
+    "last_attend": "Thu Dec 25 2025 11:39:47 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Thu Dec 25 2025 02:13:27 GMT+0000 (Coordinated Universal Time)",
+            "name": "환영 여 🐣"
+        }
+    ],
+    "info": {
+        "name": "환영",
+        "role": "친구",
+        "date": "25.12.18",
+        "mbti": "ESFP",
+        "gender": "여자",
+        "address": "경기",
+        "gimidol": "미혼",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 47,
+    "total_chat": 47,
+    "last_chat": "Tue Dec 30 2025 12:21:23 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "환영 여 🐣",
+            "name": "환영 여",
+            "date": "Thu Dec 25 2025 03:04:31 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-25": 40,
+        "2025-12-26": 2,
+        "2025-12-28": 3,
+        "2025-12-30": 2
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null,
+    "last_chick_reminder": "Thu Dec 25 2025 02:55:19 GMT+0000 (Coordinated Universal Time)"
+}

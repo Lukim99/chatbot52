@@ -1,0 +1,55 @@
+{
+    "nickname": "주주 여",
+    "last_attend": "Mon Dec 29 2025 00:00:10 GMT+0000 (Coordinated Universal Time)",
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Wed Dec 24 2025 16:04:32 GMT+0000 (Coordinated Universal Time)",
+            "name": "주주 여"
+        },
+        {
+            "type": "강퇴 by 당근 여",
+            "date": "Mon Dec 29 2025 08:07:17 GMT+0000 (Coordinated Universal Time)",
+            "name": "주주 여"
+        }
+    ],
+    "info": {
+        "name": "주주",
+        "role": "친구",
+        "date": "25.09.18",
+        "mbti": "ENFJ",
+        "gender": "여자",
+        "address": "충북 청주",
+        "gimidol": "돌싱",
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            "월간 메시지 메달 2회 🎖️",
+            null,
+            "출석 1위 13회 💯",
+            "벙개요정 14회 ⚡",
+            null
+        ]
+    },
+    "level": 8,
+    "exp": 211,
+    "total_chat": 1811,
+    "last_chat": "Mon Dec 29 2025 08:07:14 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [],
+    "daily_chat_log": {
+        "2025-12-25": 127,
+        "2025-12-26": 267,
+        "2025-12-27": 344,
+        "2025-12-28": 650,
+        "2025-12-29": 423
+    },
+    "max_level": 8,
+    "rainbow_stack": 0,
+    "meditation": null
+}

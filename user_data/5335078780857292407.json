@@ -1,0 +1,52 @@
+{
+    "nickname": "건건 남",
+    "last_attend": null,
+    "entry_log": [
+        {
+            "type": "입장",
+            "date": "Fri Dec 26 2025 06:11:09 GMT+0000 (Coordinated Universal Time)",
+            "name": "건건 남 🧘"
+        }
+    ],
+    "info": {
+        "name": "건건",
+        "role": "친구",
+        "date": "25.12.26",
+        "mbti": null,
+        "gender": "남자",
+        "address": null,
+        "gimidol": null,
+        "isExit": {
+            "type": null
+        },
+        "couple": {
+            "type": null,
+            "target": null,
+            "emoji": null
+        },
+        "titles": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "level": 1,
+    "exp": 14,
+    "total_chat": 14,
+    "last_chat": "Fri Dec 26 2025 09:33:02 GMT+0000 (Coordinated Universal Time)",
+    "profile_change_log": [
+        {
+            "prev": "건건 남 🧘",
+            "name": "건건 남",
+            "date": "Fri Dec 26 2025 06:16:34 GMT+0000 (Coordinated Universal Time)"
+        }
+    ],
+    "daily_chat_log": {
+        "2025-12-26": 14
+    },
+    "max_level": 1,
+    "rainbow_stack": 0,
+    "meditation": null
+}

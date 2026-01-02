@@ -938,20 +938,45 @@ client.on('chat', async (data, channel) => {
                                 errors.push(`외출상태를 제대로 입력해줘! (외출/출퇴/X)`);
                             }
                         } else if (key === '타이틀1') {
-                            targetUserData.info.titles[0] = value;
-                            updates.push(`타이틀1 → ${value}`);
+                            if (value === 'X' || value === 'x') {
+                                targetUserData.info.titles[0] = null;
+                                updates.push(`타이틀1 → 제거`);
+                            } else {
+                                targetUserData.info.titles[0] = value;
+                                updates.push(`타이틀1 → ${value}`);
+                            }
                         } else if (key === '타이틀2') {
-                            targetUserData.info.titles[1] = value;
-                            updates.push(`타이틀2 → ${value}`);
+                            if (value === 'X' || value === 'x') {
+                                targetUserData.info.titles[1] = null;
+                                updates.push(`타이틀2 → 제거`);
+                            } else {
+                                targetUserData.info.titles[1] = value;
+                                updates.push(`타이틀2 → ${value}`);
+                            }
                         } else if (key === '타이틀3') {
-                            targetUserData.info.titles[2] = value;
-                            updates.push(`타이틀3 → ${value}`);
+                            if (value === 'X' || value === 'x') {
+                                targetUserData.info.titles[2] = null;
+                                updates.push(`타이틀3 → 제거`);
+                            } else {
+                                targetUserData.info.titles[2] = value;
+                                updates.push(`타이틀3 → ${value}`);
+                            }
                         } else if (key === '타이틀4') {
-                            targetUserData.info.titles[3] = value;
-                            updates.push(`타이틀4 → ${value}`);
+                            if (value === 'X' || value === 'x') {
+                                targetUserData.info.titles[3] = null;
+                                updates.push(`타이틀4 → 제거`);
+                            } else {
+                                targetUserData.info.titles[3] = value;
+                                updates.push(`타이틀4 → ${value}`);
+                            }
                         } else if (key === '타이틀5') {
-                            targetUserData.info.titles[4] = value;
-                            updates.push(`타이틀5 → ${value}`);
+                            if (value === 'X' || value === 'x') {
+                                targetUserData.info.titles[4] = null;
+                                updates.push(`타이틀5 → 제거`);
+                            } else {
+                                targetUserData.info.titles[4] = value;
+                                updates.push(`타이틀5 → ${value}`);
+                            }
                         }
                     }
                     

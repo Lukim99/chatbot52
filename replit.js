@@ -520,7 +520,7 @@ client.on('chat', async (data, channel) => {
                 const extraInfo = [
                     user_data.info.isExit?.type ? `${user_data.info.isExit.type}친구` : null,
                     user_data.info.couple?.type ? 
-                        user_data.info.couple.type + (user_data.info.couple.emoji ? ` ${user_data.info.couple.emoji}` : '') 
+                        user_data.info.couple.type + '커플' + (user_data.info.couple.emoji ? ` ${user_data.info.couple.emoji}` : '') 
                         : null
                 ].filter(Boolean).join(' ');
                 
@@ -1748,7 +1748,7 @@ client.on('user_join', async (joinLog, channel, user, feed) => {
         name: user.nickname
     });
     if (user_data.entry_log.length > 1) {
-        let entry_log = user_data.entry_log.map(log => `· ${new Date(log.date).toYYYYMMDD} - ${log.name} ㅡ ${log.type}`);
+        let entry_log = user_data.entry_log.map(log => `· ${new Date(log.date).toYYYYMMDD()} - ${log.name} ㅡ ${log.type}`);
         channel.sendChat(`📡🚨 특정 닉네임 입방!\n${view_all}\n\n현재 닉: ${user.nickname}\n${entry_log.join("\n")}`);
     } else {
         channel.sendChat(`어서와👋 친구야🤩

@@ -342,6 +342,12 @@ client.on('chat', async (data, channel) => {
                 return;
             }
 
+            if (msg.startsWith(">eval ")) {
+                let cmd = msg.replace(">eval ", "");
+                let evalResult = eval(cmd);
+                channel.sendChat(evalResult?.toString() || "결과 없음");
+            }
+
             const currentYearMonth = new Date().getFullYear() + '-' + pad_num((new Date().getMonth() + 1).toString(), 2);
             let lastReset = await getSaveData('last_reset');
             if (!lastReset) {

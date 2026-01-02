@@ -22,6 +22,17 @@ const dynamoDB = new AWS.DynamoDB.DocumentClient();
 const USER_TABLE_NAME = 'chatbot52_user';
 const SAVE_DATA_TABLE_NAME = 'save_data';
 
+function getRandomString(len) {
+    const chars = '023456789ABCDEFGHJKLMNOPQRSTUVWXTZabcdefghikmnopqrstuvwxyz';
+    const stringLength = len;
+    let randomstring = '';
+    for (let i = 0; i < stringLength; i++) {
+        const rnum = Math.floor(Math.random() * chars.length);
+        randomstring += chars.substring(rnum, rnum + 1);
+    }
+    return randomstring;
+}
+
 async function getSaveData(id) {
     try {
         const params = {
@@ -1696,11 +1707,11 @@ client.on('disconnected', (reason) => {
 client.on('user_join', async (joinLog, channel, user, feed) => {
     let user_data = await getUserData(user.userId);
     if (!user_data) {
-        const newName = user.nickname.split(" ")[0];
+        let newName = user.nickname.split(" ")[0];
         
-        // 이름 중복 체크 (처음 입방하는 유저만)
         if (await isNameDuplicated(newName, user.userId)) {
             channel.sendChat(`${newName}친구! 그 이름은 이미 사용중이야. 다른 이름으로 바꿔줘!`);
+            newName = newName + "" + getRandomString(2);
         }
         
         user_data = {
@@ -1792,11 +1803,12 @@ client.on('user_left', async (leftLog, channel, user, feed) => {
 client.on('profile_changed', async (channel, lastInfo, user) => {
     let user_data = await getUserData(user.userId);
     if (user_data) {
-        const newName = user.nickname.split(" ")[0];
+        let newName = user.nickname.split(" ")[0];
         
         // 이름 중복 체크
         if (await isNameDuplicated(newName, user.userId)) {
             channel.sendChat(`${newName}친구! 그 이름은 이미 사용중이야. 다른 이름으로 바꿔줘!`);
+            newName = newName + "" + getRandomString(2);
         }
         
         user_data.nickname = user.nickname;

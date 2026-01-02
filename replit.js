@@ -525,7 +525,7 @@ client.on('chat', async (data, channel) => {
                 ].filter(Boolean).join(' ');
                 
                 if (extraInfo) {
-                    infoLines.push(extraInfo);
+                    //infoLines.push(extraInfo);
                 }
                 
                 const titles = user_data.info.titles.filter(Boolean);
@@ -616,12 +616,12 @@ client.on('chat', async (data, channel) => {
                 const extraInfo = [
                     targetUserData.info.isExit?.type ? `${targetUserData.info.isExit.type}친구` : null,
                     targetUserData.info.couple?.type ? 
-                        targetUserData.info.couple.type + (targetUserData.info.couple.emoji ? ` ${targetUserData.info.couple.emoji}` : '') 
+                        targetUserData.info.couple.type + '커플' + (targetUserData.info.couple.emoji ? ` ${targetUserData.info.couple.emoji}` : '') 
                         : null
                 ].filter(Boolean).join(' ');
                 
                 if (extraInfo) {
-                    infoLines.push(extraInfo);
+                    //infoLines.push(extraInfo);
                 }
                 
                 const titles = targetUserData.info.titles.filter(Boolean);

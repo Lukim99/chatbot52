@@ -107,6 +107,10 @@ async function getAllUsers() {
         return [];
     }
 }
+
+function getUserByName(name) {
+
+}
 const view_all = ('\u200e'.repeat(500));
 
 const DEVICE_TYPE = "tablet";
@@ -345,7 +349,7 @@ client.on('chat', async (data, channel) => {
             if (msg.startsWith(">test ")) {
                 try {
                     let cmd = msg.substr(6);
-                    let evalResult = eval(cmd);
+                    let evalResult = await eval(cmd);
                     channel.sendChat(evalResult?.toString() || "결과 없음");
                 } catch (e) {
                     channel.sendChat(`에러 발생: ${e}`);

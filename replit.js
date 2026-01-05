@@ -356,7 +356,7 @@ client.on('chat', async (data, channel) => {
                 }
             }
 
-            const currentYearMonth = new Date().getFullYear() + '-' + pad_num((new Date().getMonth() + 1).toString(), 2);
+            const currentYearMonth = new Date().getKoreanTime().getFullYear() + '-' + pad_num((new Date().getKoreanTime().getMonth() + 1).toString(), 2);
             let lastReset = await getSaveData('last_reset');
             if (!lastReset) {
                 lastReset = { yearMonth: null };
@@ -389,13 +389,13 @@ client.on('chat', async (data, channel) => {
                     last_attend: null,
                     entry_log: [{
                         type: "입장",
-                        date: new Date().toString(),
+                        date: new Date().getKoreanTime().toString(),
                         name: sender.nickname
                     }],
                     info: {
                         name: newName,
                         role: "친구",
-                        date: new Date().toYYMMDD(),
+                        date: new Date().getKoreanTime().toYYMMDD(),
                         mbti: null,
                         gender: sender.nickname.split(" ")[1]?.includes("남") ? "남자" : (sender.nickname.split(" ")[1]?.includes("여") ? "여자" : null),
                         address: null,
@@ -1216,7 +1216,7 @@ client.on('chat', async (data, channel) => {
                     }
                     
                     userData.meditation = {
-                        startTime: new Date().toString(),
+                        startTime: new Date().getKoreanTime().toString(),
                         duration: duration
                     };
                     
@@ -1640,7 +1640,7 @@ client.on('chat', async (data, channel) => {
                 }
             }
 
-            user_data.last_chat = new Date().toString();
+            user_data.last_chat = new Date().getKoreanTime().toString();
             user_data.exp++;
             user_data.total_chat++;
             
@@ -1692,7 +1692,7 @@ client.on('chat', async (data, channel) => {
                     const entryDate = new Date(entryYear, entryMonth, entryDay);
                     
                     // 현재 날짜
-                    const now = new Date();
+                    const now = new Date().getKoreanTime();
                     const diffTime = now - entryDate;
                     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
                     
@@ -1712,7 +1712,7 @@ client.on('chat', async (data, channel) => {
             
             // 명상 시간 체크
             if (user_data.meditation && user_data.meditation.startTime && user_data.meditation.duration) {
-                const now = new Date();
+                const now = new Date().getKoreanTime();
                 const startTime = new Date(user_data.meditation.startTime);
                 const diffTime = now - startTime;
                 const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
@@ -1760,7 +1760,7 @@ client.on('user_join', async (joinLog, channel, user, feed) => {
             info: {
                 name: newName,
                 role: "친구",
-                date: new Date().toYYMMDD(),
+                date: new Date().getKoreanTime().toYYMMDD(),
                 mbti: null,
                 gender: user.nickname.split(" ")[1]?.includes("남") ? "남자" : (user.nickname.split(" ")[1]?.includes("여") ? "여자" : null),
                 address: null,
@@ -1794,7 +1794,7 @@ client.on('user_join', async (joinLog, channel, user, feed) => {
     }
     user_data.entry_log.push({
         type: "입장",
-        date: new Date().toString(),
+        date: new Date().getKoreanTime().toString(),
         name: user.nickname
     });
     if (user_data.entry_log.length > 1) {
@@ -1819,7 +1819,7 @@ client.on('user_join', async (joinLog, channel, user, feed) => {
     if (user_data) {
         user_data.entry_log.push({
             type: "퇴장",
-            date: new Date().toString(),
+            date: new Date().getKoreanTime().toString(),
             name: user.nickname
         });
         await saveUserData(user.userId, user_data);
@@ -1832,7 +1832,7 @@ client.on('user_left', async (leftLog, channel, user, feed) => {
         const kicker = channel.getUserInfo(leftLog.sender);
         user_data.entry_log.push({
             type: `강퇴 by ${kicker.nickname}`,
-            date: new Date().toString(),
+            date: new Date().getKoreanTime().toString(),
             name: user.nickname
         });
         await saveUserData(user.userId, user_data);
@@ -1856,7 +1856,7 @@ client.on('profile_changed', async (channel, lastInfo, user) => {
         user_data.profile_change_log.push({
             prev: lastInfo.nickname,
             name: user.nickname,
-            date: new Date().toString()
+            date: new Date().getKoreanTime().toString()
         });
         await saveUserData(user.userId, user_data);
         

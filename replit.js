@@ -1,14 +1,7 @@
 const node_kakao = require('./node-kakao');
 const fs = require('fs');
-const express = require('express');
-const request = require('request');
-const convert = require('xml-js');
-const html2json = require('html2json').html2json;
 const keepAlive = require('./server.js');
 const { TalkClient, AuthApiClient, xvc, KnownAuthStatusCode, util, AttachmentApi } = require("./node-kakao");
-const { isString } = require('util');
-const { get } = require('request');
-const { userInfo } = require('os');
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 const AWS = require('aws-sdk');
 

@@ -832,6 +832,36 @@ client.on('chat', async (data, channel) => {
                 }
             }
 
+            else if (msg.startsWith("/삭제 ")) {
+                if (!(sender.perm == 4 || sender.perm == 1)) {
+                    channel.sendChat("❌ 관리자만 사용할 수 있는 명령어야.");
+                } else {
+                    const targetName = firstLine.substring(6).trim();
+                    
+                    if (!targetName) {
+                        channel.sendChat("❌ 이름을 입력해줘!");
+                        return;
+                    }
+                    
+                    const allUsers = await getAllUsers();
+                    let targetUserData = null;
+                    let targetUserId = null;
+                    
+                    for (const userData of allUsers) {
+                        if (userData.info?.name === targetName) {
+                            targetUserData = userData;
+                            targetUserId = userData.userId;
+                            break;
+                        }
+                    }
+                    
+                    if (!targetUserData) {
+                        channel.sendChat(`❌ "${targetName}" 이름을 가진 친구를 찾을 수 없어!`);
+                        return;
+                    }
+                }
+            }
+
             else if (msg.startsWith("/정보수정 ")) {
                 if (!(sender.perm == 4 || sender.perm == 1)) {
                     channel.sendChat("❌ 관리자만 사용할 수 있는 명령어야.");
@@ -904,17 +934,28 @@ client.on('chat', async (data, channel) => {
                             }
                         } else if (key === 'MBTI') {
                             const mbtiUpper = value.toUpperCase();
-                            if (validMBTI.includes(mbtiUpper)) {
+                            if (value === 'x' || value === 'X') {
+                                targetUserData.info.mbti = null;
+                                updates.push(`MBTI → 제거`);
+                            } else if (validMBTI.includes(mbtiUpper)) {
                                 targetUserData.info.mbti = mbtiUpper;
                                 updates.push(`MBTI → ${mbtiUpper}`);
                             } else {
                                 errors.push(`MBTI를 제대로 입력해줘!`);
                             }
                         } else if (key === '사는곳') {
-                            targetUserData.info.address = value;
-                            updates.push(`사는곳 → ${value}`);
+                            if (value === 'X' || value === 'x') {
+                                targetUserData.info.address = null;
+                                updates.push(`사는곳 → 제거`);
+                            } else {
+                                targetUserData.info.address = value;
+                                updates.push(`사는곳 → ${value}`);
+                            }
                         } else if (key === '기미돌') {
-                            if (validGimidol.includes(value)) {
+                            if (value === 'X' || value === 'x') {
+                                targetUserData.info.gimidol = null;
+                                updates.push(`기미돌 → 제거`);
+                            } else if (validGimidol.includes(value)) {
                                 targetUserData.info.gimidol = value;
                                 updates.push(`기미돌 → ${value}`);
                             } else {
@@ -935,7 +976,7 @@ client.on('chat', async (data, channel) => {
                                 targetUserData.info.isExit.type = value;
                                 updates.push(`외출상태 → ${value}`);
                             } else {
-                                errors.push(`외출상태를 제대로 입력해줘! (외출/출퇴/X)`);
+                                errors.push(`외출상태를 제대로 입력해줘! (외출/출퇴)`);
                             }
                         } else if (key === '타이틀1') {
                             if (value === 'X' || value === 'x') {
@@ -1428,8 +1469,7 @@ client.on('chat', async (data, channel) => {
             }
 
             else if (msg == "/성비") {
-                const userList = (await getAllUsers())
-                    .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
+                const userList = await getAllUsers();
                 
                 let maleCount = 0;
                 let femaleCount = 0;
@@ -1520,7 +1560,7 @@ client.on('chat', async (data, channel) => {
                 channel.sendChat(result);
             }
 
-            else if (msg.startsWith("/") && /^\/\d{4}글수$/.test(msg)) {
+            else if (msg.startsWith("/") && /^\/\d{4}채팅수$/.test(msg)) {
                 const yearMonth = msg.substring(1, 5);
                 const year = yearMonth.substring(0, 2);
                 const month = yearMonth.substring(2, 4);
@@ -1528,7 +1568,7 @@ client.on('chat', async (data, channel) => {
                 
                 let chatLog = await getSaveData('chat_log');
                 if (!chatLog) {
-                    channel.sendChat(`📅 20${year}년 ${month}월 글 수\n\n데이터가 없어🥺`);
+                    channel.sendChat(`📅 20${year}년 ${month}월 채팅수\n\n데이터가 없어🥺`);
                     return;
                 }
                 
@@ -1540,7 +1580,7 @@ client.on('chat', async (data, channel) => {
                 });
                 
                 if (Object.keys(monthData).length === 0) {
-                    channel.sendChat(`📅 20${year}년 ${month}월 글 수\n\n데이터가 없어🥺`);
+                    channel.sendChat(`📅 20${year}년 ${month}월 채팅수\n\n데이터가 없어🥺`);
                     return;
                 }
                 
@@ -1565,7 +1605,7 @@ client.on('chat', async (data, channel) => {
                 });
                 
                 const result = [
-                    `📅 20${year}년 ${month}월 글 수`,
+                    `📅 20${year}년 ${month}월 채팅수`,
                     ``,
                     `총합: ${total.toLocaleString()}개`,
                     `일평균: ${parseFloat(average).toLocaleString()}개`,
@@ -1583,8 +1623,7 @@ client.on('chat', async (data, channel) => {
                 const month = yearMonth.substring(2, 4);
                 const searchDate = `${year}.${month}`;
                 
-                const userList = (await getAllUsers())
-                    .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
+                const userList = await getAllUsers();
                 
                 const entryUsers = userList
                     .filter(user => user.info?.date?.startsWith(searchDate))
@@ -1605,8 +1644,7 @@ client.on('chat', async (data, channel) => {
                     return;
                 }
                 
-                const userList = (await getAllUsers())
-                    .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
+                const userList = await getAllUsers();
                 
                 const locationUsers = userList
                     .filter(user => user.info?.address && user.info.address.includes(searchQuery))
@@ -1625,8 +1663,7 @@ client.on('chat', async (data, channel) => {
                                    'ESTP', 'ESFP', 'ENFP', 'ENTP', 'ESTJ', 'ESFJ', 'ENFJ', 'ENTJ'];
                 
                 if (validMBTI.includes(searchMBTI)) {
-                    const userList = (await getAllUsers())
-                        .filter(user => user.entry_log && user.entry_log.length > 0 && user.entry_log[user.entry_log.length - 1].type === '입장');
+                    const userList = await getAllUsers();
                     
                     const mbtiUsers = userList
                         .filter(user => user.info?.mbti?.toUpperCase() === searchMBTI)
@@ -1813,28 +1850,24 @@ client.on('user_join', async (joinLog, channel, user, feed) => {
     }
     await saveUserData(user.userId, user_data);
 });
-
-client.on('user_join', async (joinLog, channel, user, feed) => {
-    let user_data = await getUserData(user.userId);
-    if (user_data) {
-        user_data.entry_log.push({
-            type: "퇴장",
-            date: new Date().getKoreanTime().toString(),
-            name: user.nickname
-        });
-        await saveUserData(user.userId, user_data);
-    }
-});
   
 client.on('user_left', async (leftLog, channel, user, feed) => {
     let user_data = await getUserData(user.userId);
     if (user_data) {
         const kicker = channel.getUserInfo(leftLog.sender);
-        user_data.entry_log.push({
-            type: `강퇴 by ${kicker.nickname}`,
-            date: new Date().getKoreanTime().toString(),
-            name: user.nickname
-        });
+        if (kicker) {
+            user_data.entry_log.push({
+                type: `강퇴 by ${kicker.nickname}`,
+                date: new Date().getKoreanTime().toString(),
+                name: user.nickname
+            });
+        } else {
+            user_data.entry_log.push({
+                type: "퇴장",
+                date: new Date().getKoreanTime().toString(),
+                name: user.nickname
+            });
+        }
         await saveUserData(user.userId, user_data);
     }
 })
